@@ -1,11 +1,27 @@
+blendamp:
+  baselayer.png:
+    eq_background:
+      region:
+        - [0, 0]
+        - [274, 116]
+      dest: "winamp/eqmain.bmp/eq_bg"
+    # playlist_bottom_left_menu:
+    #   region:
+    #     - [-999, -999]
+    #     - [-999, -999]
+    #   dest: "winamp/Pledit.bmp/bl_menu"
+
 winamp:
   AVS.bmp:
+    resolution: [97, 188]
   Pledit.bmp:
+    resolution: [280, 186]
     bl_menu:
       - [0, 72]
-      - []
   balance.bmp:
+    resolution: [68, 433]
   cbuttons.bmp:
+    resolution: [136, 36]
     prev_button_norm:
       - [0, 0]
       - [22, 17]
@@ -25,20 +41,48 @@ winamp:
       - [114, 0]
       - [135, 15]
   eq_ex.bmp:
+    resolution: [275, 82]
   eqmain.bmp:
+    resolution: [275, 315]
     eq_bg:
       - [0, 0]
-      - [275, 116]
+      - [274, 115]
   main.bmp:
+    resolution: [275, 116]
     player_bg:
       - [0, 0]
       - [275, 116]
   mb.bmp:
+    resolution: [242, 119]
   monoster.bmp:
+    resolution: [58, 24]
   nums_ex.bmp:
+    resolution: [108, 13]
   playpaus.bmp:
+    resolution: [42, 9]
   posbar.bmp:
+    resolution: [307, 10]
   shufrep.bmp:
+    resolution: [92, 85]
   text.bmp:
+    resolution: [155, 18]
   titlebar.bmp:
+    resolution: [344, 87]
   volume.bmp:
+    resolution: [68, 433]
+# AVS.bmp: 97 x 188 x 24,
+# balance.bmp: 68 x 433 x 24,
+# cbuttons.bmp: 136 x 36 x 24,
+# eq_ex.bmp: 275 x 82 x 24,
+# eqmain.bmp: 275 x 315 x 24,
+# main.bmp: 275 x 116 x 24,
+# mb.bmp: 242 x 119 x 24,
+# monoster.bmp: 58 x 24 x 24, i
+# nums_ex.bmp: 108 x 13 x 24,
+# playpaus.bmp: 42 x 9 x 24, im
+# Pledit.bmp: 280 x 186 x 24,
+# posbar.bmp: 307 x 10 x 24,
+# shufrep.bmp: 92 x 85 x 24, i
+# text.bmp: 155 x 18 x 24,
+# titlebar.bmp: 344 x 87 x 24,
+# volume.bmp: 68 x 433 x 24,
