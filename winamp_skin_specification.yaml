@@ -1,0 +1,44 @@
+winamp:
+  AVS.bmp:
+  Pledit.bmp:
+    bl_menu:
+      - [0, 72]
+      - []
+  balance.bmp:
+  cbuttons.bmp:
+    prev_button_norm:
+      - [0, 0]
+      - [22, 17]
+    play_button_norm:
+      - [23, 0]
+      - [45, 17]
+    pause_button_norm:
+      - [46, 0]
+      - [68, 17]
+    stop_button_norm:
+      - [69, 0]
+      - [91, 17]
+    next_button_norm:
+      - [92, 0]
+      - [113, 17]
+    eject_button_norm:
+      - [114, 0]
+      - [135, 15]
+  eq_ex.bmp:
+  eqmain.bmp:
+    eq_bg:
+      - [0, 0]
+      - [275, 116]
+  main.bmp:
+    player_bg:
+      - [0, 0]
+      - [275, 116]
+  mb.bmp:
+  monoster.bmp:
+  nums_ex.bmp:
+  playpaus.bmp:
+  posbar.bmp:
+  shufrep.bmp:
+  text.bmp:
+  titlebar.bmp:
+  volume.bmp:
