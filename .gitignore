@@ -1,3 +1,5 @@
 *.png
 *.bmp
 blendamp_venv/
+winamp/
+blendamp/

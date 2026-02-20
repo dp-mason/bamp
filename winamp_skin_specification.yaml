@@ -1,57 +1,55 @@
 blendamp:
   baselayer.png:
     eq_background:
-      region:
-        - [0, 0]
-        - [274, 116]
-      dest: "winamp/eqmain.bmp/eq_bg"
-    # playlist_bottom_left_menu:
-    #   region:
-    #     - [-999, -999]
-    #     - [-999, -999]
-    #   dest: "winamp/Pledit.bmp/bl_menu"
+      region: [0, 0, 275, 116]
+      dest: "eqmain.bmp"
+    playlist_bottom_left_menu:
+      region: [-999, -999, -999, -999]
+      dest: "winamp/Pledit.bmp/bl_menu"
 
 winamp:
   AVS.bmp:
     resolution: [97, 188]
   Pledit.bmp:
     resolution: [280, 186]
-    bl_menu:
-      - [0, 72]
+    bl_menu: [0, 72, 125, 110]
+    br_menu: [126, 72, 275, 110]
+    tl_corner: []
+    tr_corner: []
+    repeated_top_sect: []
+    repeated_b_sect: []
+    expanded_b_sect: []
+    repeated_r_sect: []
+    repeated_l_sect: []
+    scroll_bar: []
+    scroll_bar_pressed: []
   balance.bmp:
     resolution: [68, 433]
   cbuttons.bmp:
     resolution: [136, 36]
-    prev_button_norm:
-      - [0, 0]
-      - [22, 17]
-    play_button_norm:
-      - [23, 0]
-      - [45, 17]
-    pause_button_norm:
-      - [46, 0]
-      - [68, 17]
-    stop_button_norm:
-      - [69, 0]
-      - [91, 17]
-    next_button_norm:
-      - [92, 0]
-      - [113, 17]
-    eject_button_norm:
-      - [114, 0]
-      - [135, 15]
+    buttons_norm: [0, 0, 114, 18]
+    buttons_pressed: [0, 18, 114, 35]
+    eject_button_norm: [114, 0, 135, 16]
+    eject_button_pressed: [114, 16, 135, 32]
   eq_ex.bmp:
     resolution: [275, 82]
   eqmain.bmp:
     resolution: [275, 315]
-    eq_bg:
-      - [0, 0]
-      - [274, 115]
+    eq_background: [0, 0, 275, 116]
+    eq_knob: []
+    eq_knob_pressed: []
+    on: []
+    off: []
+    eq_viz_bg: []
+    eq_viz_spectrum: []
+    # 28 regions representing the highest and lowest state
+    fader_bg_spectrum:
+      dimensions: []
+      gap: -999
+
   main.bmp:
     resolution: [275, 116]
-    player_bg:
-      - [0, 0]
-      - [275, 116]
+    player_bg: [0, 0, 275, 116]
   mb.bmp:
     resolution: [242, 119]
   monoster.bmp:
@@ -64,6 +62,14 @@ winamp:
     resolution: [307, 10]
   shufrep.bmp:
     resolution: [92, 85]
+    shuf_off: []
+    shuf_on: []
+    rep_off: []
+    rep_on: []
+    eq_off: []
+    eq_on: []
+    pl_off: []
+    pl_on: []
   text.bmp:
     resolution: [155, 18]
   titlebar.bmp:
