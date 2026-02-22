@@ -1,5 +1,8 @@
 *.png
 *.bmp
+*.blend1
 blendamp_venv/
 winamp/
+winamp_skin/
 blendamp/
+blendamp_skin/

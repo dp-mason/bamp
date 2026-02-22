@@ -6,6 +6,22 @@ blendamp:
     playlist_bottom_left_menu:
       region: [-999, -999, -999, -999]
       dest: "winamp/Pledit.bmp/bl_menu"
+  # In the blendamp parameter layers, there is a layer for each individual frame used in the ui
+  # Ex. A volume bar with 28 different backgrounds based on volume level will appear
+  # in the same region across 28 sequential layers to make animation design easier
+  # This also includes buttons with multiple states
+  param_based_layers:
+    # Backgrounds
+    player_volume_bar: []
+    player_progress_bar: []
+    player_panning_bar: []
+    eq_volume_bar: []
+    eq_band_bar: []
+    # Elements with State
+    # Normal vs Pressed
+    main_player_buttons: []
+    # Header Bars
+    main_player_header: []
 
 winamp:
   AVS.bmp:
@@ -36,14 +52,14 @@ winamp:
   eqmain.bmp:
     resolution: [275, 315]
     eq_background: [0, 0, 275, 116]
-    eq_knob: []
-    eq_knob_pressed: []
+    eq_handle: []
+    eq_handle_pressed: []
     on: []
     off: []
     eq_viz_bg: []
-    eq_viz_spectrum: []
+    eq_viz_spectrum: [115, 294, 116, 313]
     # 28 regions representing the highest and lowest state
-    fader_bg_spectrum:
+    vol_bg_spectrum:
       dimensions: []
       gap: -999
 
@@ -60,6 +76,9 @@ winamp:
     resolution: [42, 9]
   posbar.bmp:
     resolution: [307, 10]
+    posbar_bg: []
+    posbar_handle: []
+    posbar_handle_pressed: []
   shufrep.bmp:
     resolution: [92, 85]
     shuf_off: []
@@ -72,10 +91,16 @@ winamp:
     pl_on: []
   text.bmp:
     resolution: [155, 18]
+    letter_res: [5, 6]
   titlebar.bmp:
     resolution: [344, 87]
+  # Special case
   volume.bmp:
     resolution: [68, 433]
+    vol_frame_res: [68, 13]
+    vertical_gap: 2
+    vol_handle: [0, 422, 14, 433]
+    vol_handle_pressed: [15, 422, 29, 433]
 # AVS.bmp: 97 x 188 x 24,
 # balance.bmp: 68 x 433 x 24,
 # cbuttons.bmp: 136 x 36 x 24,
