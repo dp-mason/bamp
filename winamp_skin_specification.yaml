@@ -1,7 +1,7 @@
 blendamp:
   background.png:
     eq_background:
-      region: [0, 0, 275, 116]
+      region: [0, 116, 275, 232]
       dest: "eqmain.bmp"
     playlist_bottom_left_menu:
       region: [0, 310, 125, 348]
