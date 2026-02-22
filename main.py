@@ -20,6 +20,19 @@ else:
 with open("winamp_skin_specification.yaml", "r") as file:
     config: dict = yaml.safe_load(file)
 
+# Create empty placeholder winamp files
+for filename, f_md in config["winamp"].items():
+    full_output_path: str = os.path.join(WINAMP_DIR, filename)
+
+    if not os.path.exists(full_output_path):
+        # get the resolution of this file from the config
+        new_map_res = tuple(config["winamp"][filename]["resolution"])
+        # create an new image and fill with magenta, which is the transparent color
+        winamp_img = Image.new("RGB", new_map_res, (255, 0, 255))
+        winamp_img.save(full_output_path)
+
+# TODO: Create "region.txt" file to support transparency
+
 for file_name, mappings in config["blendamp"].items():
     im: ImageFile = Image.open(os.path.join(BLENDAMP_DIR, file_name))
     im_arr = np.array(im)
@@ -43,14 +56,12 @@ for file_name, mappings in config["blendamp"].items():
 
         winamp_img = None
 
-        if not os.path.exists(full_output_path):
-            # get the resolution of this file from the config
-            new_map_res = tuple(config["winamp"][file_name]["resolution"])
-            # create an new image and fill with magenta, which is the transparent color
-            winamp_img = Image.new("RGB", new_map_res, (255, 0, 255))
-            winamp_img.save(full_output_path)
-
-        assert os.path.exists(full_output_path)
+        # if not os.path.exists(full_output_path):
+        #     # get the resolution of this file from the config
+        #     new_map_res = tuple(config["winamp"][file_name]["resolution"])
+        #     # create an new image and fill with magenta, which is the transparent color
+        #     winamp_img = Image.new("RGB", new_map_res, (255, 0, 255))
+        #     winamp_img.save(full_output_path)
 
         winamp_img = Image.open(full_output_path)
 

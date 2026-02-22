@@ -1,35 +1,39 @@
 blendamp:
-  baselayer.png:
+  background.png:
     eq_background:
       region: [0, 0, 275, 116]
       dest: "eqmain.bmp"
     playlist_bottom_left_menu:
-      region: [-999, -999, -999, -999]
-      dest: "winamp/Pledit.bmp/bl_menu"
+      region: [0, 310, 125, 348]
+      dest: "Pledit.bmp"
+    playlist_bottom_right_menu:
+      region: [125, 310, 275, 348]
+      dest: "Pledit.bmp"
+
   # In the blendamp parameter layers, there is a layer for each individual frame used in the ui
   # Ex. A volume bar with 28 different backgrounds based on volume level will appear
   # in the same region across 28 sequential layers to make animation design easier
   # This also includes buttons with multiple states
-  param_based_layers:
-    # Backgrounds
-    player_volume_bar: []
-    player_progress_bar: []
-    player_panning_bar: []
-    eq_volume_bar: []
-    eq_band_bar: []
-    # Elements with State
-    # Normal vs Pressed
-    main_player_buttons: []
-    # Header Bars
-    main_player_header: []
+  # param_based_layers:
+  #   # Backgrounds
+  #   player_volume_bar: []
+  #   player_progress_bar: []
+  #   player_panning_bar: []
+  #   eq_volume_bar: []
+  #   eq_band_bar: []
+  #   # Elements with State
+  #   # Normal vs Pressed
+  #   main_player_buttons: []
+  #   # Header Bars
+  #   main_player_header: []
 
 winamp:
   AVS.bmp:
     resolution: [97, 188]
   Pledit.bmp:
     resolution: [280, 186]
-    bl_menu: [0, 72, 125, 110]
-    br_menu: [126, 72, 275, 110]
+    playlist_bottom_left_menu: [0, 72, 125, 110]
+    playlist_bottom_right_menu: [126, 72, 275, 110]
     tl_corner: []
     tr_corner: []
     repeated_top_sect: []
