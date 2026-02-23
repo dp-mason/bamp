@@ -18,22 +18,22 @@ else:
 
 # Open and read the YAML file
 with open("winamp_skin_specification.yaml", "r") as file:
-    config: dict = yaml.safe_load(file)
+    CONFIG: dict = yaml.safe_load(file)
 
 # Create empty placeholder winamp files
-for filename, f_md in config["winamp"].items():
+for filename, f_md in CONFIG["winamp"].items():
     full_output_path: str = os.path.join(WINAMP_DIR, filename)
 
     if not os.path.exists(full_output_path):
-        # get the resolution of this file from the config
-        new_map_res = tuple(config["winamp"][filename]["resolution"])
+        # get the resolution of this file from the CONFIG
+        new_map_res = tuple(CONFIG["winamp"][filename]["resolution"])
         # create an new image and fill with magenta, which is the transparent color
         winamp_img = Image.new("RGB", new_map_res, (255, 0, 255))
         winamp_img.save(full_output_path)
 
 # TODO: Create "region.txt" file to support transparency
 
-for file_name, mappings in config["blendamp"].items():
+for file_name, mappings in CONFIG["blendamp"].items():
     im: ImageFile = Image.open(os.path.join(BLENDAMP_DIR, file_name))
     im_arr = np.array(im)
 
@@ -57,15 +57,22 @@ for file_name, mappings in config["blendamp"].items():
         winamp_img = None
 
         # if not os.path.exists(full_output_path):
-        #     # get the resolution of this file from the config
-        #     new_map_res = tuple(config["winamp"][file_name]["resolution"])
+        #     # get the resolution of this file from the CONFIG
+        #     new_map_res = tuple(CONFIG["winamp"][file_name]["resolution"])
         #     # create an new image and fill with magenta, which is the transparent color
         #     winamp_img = Image.new("RGB", new_map_res, (255, 0, 255))
         #     winamp_img.save(full_output_path)
 
         winamp_img = Image.open(full_output_path)
 
-        winamp_img.paste(subsct_img, tuple(config["winamp"][file_name][mapname][0:2]))
+        target_region = tuple(CONFIG["winamp"][file_name][mapname][0:2])
+        try:
+            winamp_img.paste(subsct_img, target_region)
+        except Exception as e:
+            os.error(
+                f"Error occurred while remapping {mapname} to {file_name}:{mapname} using"
+                f"target region: {target_region}.\n\n{e}"
+            )
 
         with open(full_output_path, "wb") as f:
             winamp_img.save(f, "bmp")

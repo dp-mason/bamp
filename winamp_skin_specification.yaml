@@ -1,10 +1,10 @@
 blendamp:
-  background.png:
+  background.png: &background
     main_background:
       region: [0, 0, 275, 116]
       dest: "main.bmp"
     player_titlebar:
-      region: [0, 0, 275, 14]
+      region: &player_titlebar_region [0, 0, 275, 14]
       dest: "titlebar.bmp"
     eq_background:
       region: [0, 116, 275, 232]
@@ -15,6 +15,12 @@ blendamp:
     eq_titlebar_inactive: # TODO: Reused eq_titlebar
       region: [0, 116, 275, 130]
       dest: "eqmain.bmp"
+    pl_top_center:
+      region: &pl_top_center_region [87, 232, 187, 252]
+      dest: "Pledit.bmp"
+    pl_top_center_inactive:
+      region: *pl_top_center_region
+      dest: "Pledit.bmp"
     pl_bottom_left_menu:
       region: [0, 310, 125, 348]
       dest: "Pledit.bmp"
@@ -28,7 +34,10 @@ blendamp:
       region: [250, 232, 275, 252]
       dest: "Pledit.bmp"
     pl_repeated_top_sect:
-      region: [25, 232, 50, 252]
+      region: &pl_repeated_top_sect_region [25, 232, 50, 252]
+      dest: "Pledit.bmp"
+    pl_repeated_top_sect_inactive:
+      region: *pl_repeated_top_sect_region
       dest: "Pledit.bmp"
     pl_repeated_left_sect:
       region: [0, 281, 12, 310]
@@ -36,6 +45,39 @@ blendamp:
     pl_repeated_right_sect:
       region: [255, 281, 275, 310]
       dest: "Pledit.bmp"
+    player_titlebar_inactive:
+      region: *player_titlebar_region
+      dest: "titlebar.bmp"
+    player_titlebar_menu:
+      region: &player_titlebar_menu_region [6, 3, 15, 12]
+      dest: "titlebar.bmp"
+    player_titlebar_menu_inactive:
+      region: *player_titlebar_menu_region
+      dest: "titlebar.bmp"
+    player_titlebar_exit:
+      region: &player_titlebar_exit_region [264, 3, 273, 12]
+      dest: "titlebar.bmp"
+    player_titlebar_exit_inactive:
+      region: *player_titlebar_exit_region
+      dest: "titlebar.bmp"
+    player_titlebar_minimize:
+      region: &player_titlebar_minimize_region [244, 3, 253, 12]
+      dest: "titlebar.bmp"
+    player_titlebar_minimize_inactive:
+      region: *player_titlebar_minimize_region
+      dest: "titlebar.bmp"
+    player_titlebar_collapse:
+      region: &player_titlebar_collapse_region [254, 3, 263, 12]
+      dest: "titlebar.bmp"
+    player_titlebar_collapse_inactive:
+      region: *player_titlebar_collapse_region
+      dest: "titlebar.bmp"
+    player_expand:
+      region: *player_titlebar_collapse_region
+      dest: "titlebar.bmp"
+    player_expand_inactive:
+      region: *player_titlebar_collapse_region
+      dest: "titlebar.bmp"
 
   # In the blendamp parameter layers, there is a layer for each individual frame used in the ui
   # Ex. A volume bar with 28 different backgrounds based on volume level will appear
@@ -59,11 +101,16 @@ winamp:
     resolution: [97, 188]
   Pledit.bmp:
     resolution: [280, 186]
+    pl_top_center: [26, 0, 126, 20]
+    pl_top_center_inactive: [26, 21, 126, 41]
     pl_bottom_left_menu: [0, 72, 125, 110]
     pl_bottom_right_menu: [126, 72, 275, 110]
     pl_top_left_corner: [0, 0, 25, 20]
+    pl_top_left_corner_inactive: [0, 21, 25, 41]
     pl_top_right_corner: [153, 0, 178, 20]
+    pl_top_right_corner_inactive: [153, 21, 178, 41]
     pl_repeated_top_sect: [127, 0, 152, 20]
+    pl_repeated_top_sect_inactive: [127, 21, 152, 41]
     pl_repeated_bottom_sect: []
     expanded_b_sect: []
     pl_repeated_left_sect: [0, 42, 12, 71]
