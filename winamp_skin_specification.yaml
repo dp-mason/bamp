@@ -12,6 +12,9 @@ blendamp:
     eq_titlebar:
       region: [0, 116, 275, 130]
       dest: "eqmain.bmp"
+    eq_titlebar_inactive: # TODO: Reused eq_titlebar
+      region: [0, 116, 275, 130]
+      dest: "eqmain.bmp"
     pl_bottom_left_menu:
       region: [0, 310, 125, 348]
       dest: "Pledit.bmp"
@@ -81,6 +84,7 @@ winamp:
     resolution: [275, 315]
     eq_background: [0, 0, 275, 116]
     eq_titlebar: [0, 134, 275, 148]
+    eq_titlebar_inactive: [0, 149, 275, 163]
     eq_handle: []
     eq_handle_pressed: []
     on: []
@@ -124,6 +128,17 @@ winamp:
   titlebar.bmp:
     resolution: [344, 87]
     player_titlebar: [27, 0, 302, 14]
+    player_titlebar_inactive: [27, 15, 302, 29]
+    player_titlebar_menu: [0, 0, 9, 9]
+    player_titlebar_menu_inactive: []
+    player_titlebar_exit: [18, 0, 27, 9]
+    player_titlebar_exit_inactive: []
+    player_titlebar_minimize: [9, 0, 18, 9]
+    player_titlebar_minimize_inactive: []
+    player_titlebar_collapse: [0, 18, 9, 27]
+    player_titlebar_collapse_inactive: []
+    player_expand: []
+    player_expand_inactive: []
   # Special case
   volume.bmp:
     resolution: [68, 433]
