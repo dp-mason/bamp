@@ -1,13 +1,37 @@
 blendamp:
   background.png:
+    main_background:
+      region: [0, 0, 275, 116]
+      dest: "main.bmp"
+    player_titlebar:
+      region: [0, 0, 275, 14]
+      dest: "titlebar.bmp"
     eq_background:
       region: [0, 116, 275, 232]
       dest: "eqmain.bmp"
-    playlist_bottom_left_menu:
+    eq_titlebar:
+      region: [0, 116, 275, 130]
+      dest: "eqmain.bmp"
+    pl_bottom_left_menu:
       region: [0, 310, 125, 348]
       dest: "Pledit.bmp"
-    playlist_bottom_right_menu:
+    pl_bottom_right_menu:
       region: [125, 310, 275, 348]
+      dest: "Pledit.bmp"
+    pl_top_left_corner:
+      region: [0, 232, 25, 252]
+      dest: "Pledit.bmp"
+    pl_top_right_corner:
+      region: [250, 232, 275, 252]
+      dest: "Pledit.bmp"
+    pl_repeated_top_sect:
+      region: [25, 232, 50, 252]
+      dest: "Pledit.bmp"
+    pl_repeated_left_sect:
+      region: [0, 281, 12, 310]
+      dest: "Pledit.bmp"
+    pl_repeated_right_sect:
+      region: [255, 281, 275, 310]
       dest: "Pledit.bmp"
 
   # In the blendamp parameter layers, there is a layer for each individual frame used in the ui
@@ -32,15 +56,15 @@ winamp:
     resolution: [97, 188]
   Pledit.bmp:
     resolution: [280, 186]
-    playlist_bottom_left_menu: [0, 72, 125, 110]
-    playlist_bottom_right_menu: [126, 72, 275, 110]
-    tl_corner: []
-    tr_corner: []
-    repeated_top_sect: []
-    repeated_b_sect: []
+    pl_bottom_left_menu: [0, 72, 125, 110]
+    pl_bottom_right_menu: [126, 72, 275, 110]
+    pl_top_left_corner: [0, 0, 25, 20]
+    pl_top_right_corner: [153, 0, 178, 20]
+    pl_repeated_top_sect: [127, 0, 152, 20]
+    pl_repeated_bottom_sect: []
     expanded_b_sect: []
-    repeated_r_sect: []
-    repeated_l_sect: []
+    pl_repeated_left_sect: [0, 42, 12, 71]
+    pl_repeated_right_sect: [31, 42, 51, 71]
     scroll_bar: []
     scroll_bar_pressed: []
   balance.bmp:
@@ -56,6 +80,7 @@ winamp:
   eqmain.bmp:
     resolution: [275, 315]
     eq_background: [0, 0, 275, 116]
+    eq_titlebar: [0, 134, 275, 148]
     eq_handle: []
     eq_handle_pressed: []
     on: []
@@ -69,7 +94,7 @@ winamp:
 
   main.bmp:
     resolution: [275, 116]
-    player_bg: [0, 0, 275, 116]
+    main_background: [0, 0, 275, 116]
   mb.bmp:
     resolution: [242, 119]
   monoster.bmp:
@@ -98,6 +123,7 @@ winamp:
     letter_res: [5, 6]
   titlebar.bmp:
     resolution: [344, 87]
+    player_titlebar: [27, 0, 302, 14]
   # Special case
   volume.bmp:
     resolution: [68, 433]
