@@ -1,5 +1,8 @@
+special_case_elems:
+  - "eq_fader_background"
+
 blendamp:
-  background.png: &background
+  background.png:
     main_background:
       region: [0, 0, 275, 116]
       dest: "main.bmp"
@@ -10,11 +13,97 @@ blendamp:
       region: [0, 116, 275, 232]
       dest: "eqmain.bmp"
     eq_titlebar:
-      region: [0, 116, 275, 130]
+      region: &eq_titlebar_region [0, 116, 275, 130]
       dest: "eqmain.bmp"
-    eq_titlebar_inactive: # TODO: Reused eq_titlebar
-      region: [0, 116, 275, 130]
+    eq_titlebar_inactive:
+      region: *eq_titlebar_region
       dest: "eqmain.bmp"
+
+    eq_fader_background_00:
+      region: &eq_fader_background_00 [21, 154, 35, 217]
+      dest: "eqmain.bmp"
+    eq_fader_background_01:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_02:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_03:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_04:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_05:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_06:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_07:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_08:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_09:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_10:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_11:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_12:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_13:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_14:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_15:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_16:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_17:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_18:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_19:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_20:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_21:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_22:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_23:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_24:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_25:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_26:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    eq_fader_background_27:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+
     pl_top_center:
       region: &pl_top_center_region [87, 232, 187, 252]
       dest: "Pledit.bmp"
@@ -28,10 +117,16 @@ blendamp:
       region: [125, 310, 275, 348]
       dest: "Pledit.bmp"
     pl_top_left_corner:
-      region: [0, 232, 25, 252]
+      region: &pl_top_left_corner_region [0, 232, 25, 252]
+      dest: "Pledit.bmp"
+    pl_top_left_corner_inactive:
+      region: *pl_top_left_corner_region
       dest: "Pledit.bmp"
     pl_top_right_corner:
-      region: [250, 232, 275, 252]
+      region: &pl_top_right_corner_region [250, 232, 275, 252]
+      dest: "Pledit.bmp"
+    pl_top_right_corner_inactive:
+      region: *pl_top_right_corner_region
       dest: "Pledit.bmp"
     pl_repeated_top_sect:
       region: &pl_repeated_top_sect_region [25, 232, 50, 252]
@@ -132,6 +227,43 @@ winamp:
     eq_background: [0, 0, 275, 116]
     eq_titlebar: [0, 134, 275, 148]
     eq_titlebar_inactive: [0, 149, 275, 163]
+    # eq_fader_background_XX:
+    #   offset: [13, 164]
+    #   size: [14, 63]
+    #   h_gap: 1
+    #   v_gap: 2
+    #   cols: 14
+    #   rows: 2
+
+    eq_fader_background_00: [13, 164, 27, 227]
+    eq_fader_background_01: [28, 164, 42, 227]
+    eq_fader_background_02: [43, 164, 57, 227]
+    eq_fader_background_03: [58, 164, 72, 227]
+    eq_fader_background_04: [73, 164, 87, 227]
+    eq_fader_background_05: [88, 164, 102, 227]
+    eq_fader_background_06: [103, 164, 117, 227]
+    eq_fader_background_07: [118, 164, 132, 227]
+    eq_fader_background_08: [133, 164, 147, 227]
+    eq_fader_background_09: [148, 164, 162, 227]
+    eq_fader_background_10: [163, 164, 177, 227]
+    eq_fader_background_11: [178, 164, 192, 227]
+    eq_fader_background_12: [193, 164, 207, 227]
+    eq_fader_background_13: [208, 164, 222, 227]
+    eq_fader_background_14: [13, 229, 27, 292]
+    eq_fader_background_15: [28, 229, 42, 292]
+    eq_fader_background_16: [43, 229, 57, 292]
+    eq_fader_background_17: [58, 229, 72, 292]
+    eq_fader_background_18: [73, 229, 87, 292]
+    eq_fader_background_19: [88, 229, 102, 292]
+    eq_fader_background_20: [103, 229, 117, 292]
+    eq_fader_background_21: [118, 229, 132, 292]
+    eq_fader_background_22: [133, 229, 147, 292]
+    eq_fader_background_23: [148, 229, 162, 292]
+    eq_fader_background_24: [163, 229, 177, 292]
+    eq_fader_background_25: [178, 229, 192, 292]
+    eq_fader_background_26: [193, 229, 207, 292]
+    eq_fader_background_27: [208, 229, 222, 292]
+
     eq_handle: []
     eq_handle_pressed: []
     on: []

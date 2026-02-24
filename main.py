@@ -20,6 +20,7 @@ else:
 with open("winamp_skin_specification.yaml", "r") as file:
     CONFIG: dict = yaml.safe_load(file)
 
+
 # Create empty placeholder winamp files
 for filename, f_md in CONFIG["winamp"].items():
     full_output_path: str = os.path.join(WINAMP_DIR, filename)
@@ -55,13 +56,6 @@ for file_name, mappings in CONFIG["blendamp"].items():
         full_output_path: str = os.path.join(WINAMP_DIR, file_name)
 
         winamp_img = None
-
-        # if not os.path.exists(full_output_path):
-        #     # get the resolution of this file from the CONFIG
-        #     new_map_res = tuple(CONFIG["winamp"][file_name]["resolution"])
-        #     # create an new image and fill with magenta, which is the transparent color
-        #     winamp_img = Image.new("RGB", new_map_res, (255, 0, 255))
-        #     winamp_img.save(full_output_path)
 
         winamp_img = Image.open(full_output_path)
 
