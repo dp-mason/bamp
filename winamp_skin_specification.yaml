@@ -1,6 +1,3 @@
-special_case_elems:
-  - "eq_fader_background"
-
 blendamp:
   background.png:
     main_background:
@@ -19,6 +16,7 @@ blendamp:
       region: *eq_titlebar_region
       dest: "eqmain.bmp"
 
+    # TODO: separate across separate layers
     eq_fader_background_00:
       region: &eq_fader_background_00 [21, 154, 35, 217]
       dest: "eqmain.bmp"
@@ -104,6 +102,50 @@ blendamp:
       region: *eq_fader_background_00
       dest: "eqmain.bmp"
 
+    eq_exit_button:
+      region: &eq_exit_button_region [264, 119, 273, 128]
+      dest: "eqmain.bmp"
+    eq_exit_button_pressed:
+      region: *eq_exit_button_region
+      dest: "eqmain.bmp"
+
+    # TODO: separate across separate layers
+    eq_onauto:
+      region: &eq_onauto_region [14, 134, 72, 146]
+      dest: "eqmain.bmp"
+    eq_onauto_enabled:
+      region: *eq_onauto_region
+      dest: "eqmain.bmp"
+    eq_onauto_pressed:
+      region: *eq_onauto_region
+      dest: "eqmain.bmp"
+    eq_onauto_enabled_pressed:
+      region: *eq_onauto_region
+      dest: "eqmain.bmp"
+
+    eq_handle:
+      region: &eq_handle_region [22, 179, 33, 190]
+      dest: "eqmain.bmp"
+    eq_handle_pressed:
+      region: *eq_handle_region
+      dest: "eqmain.bmp"
+    eq_viz_bg:
+      region: [86, 133, 199, 152]
+      dest: "eqmain.bmp"
+    eq_viz_spectrum:
+      region: [100, 133, 101, 152]
+      dest: "eqmain.bmp"
+    eq_viz_baseline:
+      region: [86, 142, 199, 143]
+      dest: "eqmain.bmp"
+
+    eq_presets:
+      region: &eq_presets_region [217, 134, 261, 146]
+      dest: "eqmain.bmp"
+    eq_presets_pressed:
+      region: *eq_presets_region
+      dest: "eqmain.bmp"
+
     pl_top_center:
       region: &pl_top_center_region [87, 232, 187, 252]
       dest: "Pledit.bmp"
@@ -128,6 +170,12 @@ blendamp:
     pl_top_right_corner_inactive:
       region: *pl_top_right_corner_region
       dest: "Pledit.bmp"
+    pl_exit_button_pressed:
+      region: [264, 235, 273, 244]
+      dest: "Pledit.bmp"
+    pl_collapse_button_pressed:
+      region: [254, 235, 263, 244]
+      dest: "Pledit.bmp"
     pl_repeated_top_sect:
       region: &pl_repeated_top_sect_region [25, 232, 50, 252]
       dest: "Pledit.bmp"
@@ -140,6 +188,7 @@ blendamp:
     pl_repeated_right_sect:
       region: [255, 281, 275, 310]
       dest: "Pledit.bmp"
+
     player_titlebar_inactive:
       region: *player_titlebar_region
       dest: "titlebar.bmp"
@@ -204,6 +253,8 @@ winamp:
     pl_top_left_corner_inactive: [0, 21, 25, 41]
     pl_top_right_corner: [153, 0, 178, 20]
     pl_top_right_corner_inactive: [153, 21, 178, 41]
+    pl_exit_button_pressed: [52, 42, 61, 51]
+    pl_collapse_button_pressed: [62, 42, 71, 51]
     pl_repeated_top_sect: [127, 0, 152, 20]
     pl_repeated_top_sect_inactive: [127, 21, 152, 41]
     pl_repeated_bottom_sect: []
@@ -264,16 +315,23 @@ winamp:
     eq_fader_background_26: [193, 229, 207, 292]
     eq_fader_background_27: [208, 229, 222, 292]
 
-    eq_handle: []
-    eq_handle_pressed: []
-    on: []
-    off: []
-    eq_viz_bg: []
+    eq_exit_button: [0, 116, 9, 125]
+    eq_exit_button_pressed: [0, 125, 9, 134]
+
+    # TODO: separate across separate layers
+    eq_onauto: [10, 119, 68, 131]
+    eq_onauto_enabled: [68, 119, 127, 119]
+    eq_onauto_pressed: [128, 119, 186, 131]
+    eq_onauto_enabled_pressed: [187, 119, 245, 131]
+
+    eq_handle: [0, 164, 11, 175]
+    eq_handle_pressed: [0, 176, 11, 187]
+    eq_viz_bg: [0, 294, 113, 313]
     eq_viz_spectrum: [115, 294, 116, 313]
-    # 28 regions representing the highest and lowest state
-    vol_bg_spectrum:
-      dimensions: []
-      gap: -999
+    eq_viz_baseline: [0, 314, 113, 315]
+
+    eq_presets: [224, 164, 268, 176]
+    eq_presets_pressed: [224, 177, 268, 189]
 
   main.bmp:
     resolution: [275, 116]
