@@ -309,6 +309,191 @@ blendamp:
     posbar_handle_pressed:
       region: *posbar_handle_region
       dest: "posbar.bmp"
+
+    vol_handle:
+      region: &vol_handle_region [158, 58, 172, 69]
+      dest: "volume.bmp"
+    vol_handle_pressed:
+      region: *vol_handle_region
+      dest: "volume.bmp"
+
+    vol_fader_background_00:
+      region: &volume_fader_background_00 [107, 57, 175, 70]
+      dest: "volume.bmp"
+    vol_fader_background_01:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_02:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_03:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_04:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_05:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_06:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_07:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_08:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_09:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_10:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_11:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_12:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_13:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_14:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_15:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_16:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_17:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_18:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_19:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_20:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_21:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_22:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_23:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_24:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_25:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_26:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    vol_fader_background_27:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+
+    player_pan_handle:
+      region: &player_pan_handle_region [189, 58, 203, 69]
+      dest: "balance.bmp"
+    player_pan_handle_pressed:
+      region: *player_pan_handle_region
+      dest: "balance.bmp"
+
+    player_pan_fader_bg_0:
+      region: &player_pan_fader_bg_00 [177, 57, 215, 70]
+      dest: "balance.bmp"
+    player_pan_fader_bg_1:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_2:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_3:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_4:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_5:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_6:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_7:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_8:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_9:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_10:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_11:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_12:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_13:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_14:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_15:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_16:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_17:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_18:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_19:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_20:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_21:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_22:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_23:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_24:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_25:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_26:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_pan_fader_bg_27:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+
   # In the blendamp parameter layers, there is a layer for each individual frame used in the ui
   # Ex. A volume bar with 28 different backgrounds based on volume level will appear
   # in the same region across 28 sequential layers to make animation design easier
@@ -351,6 +536,38 @@ winamp:
     pl_scroll_bar_pressed: [61, 53, 69, 71]
   balance.bmp:
     resolution: [68, 433]
+
+    player_pan_handle: [0, 422, 14, 433]
+    player_pan_handle_pressed: [15, 422, 29, 433]
+
+    player_pan_fader_bg_0: [9, 0, 47, 13]
+    player_pan_fader_bg_1: [9, 15, 47, 28]
+    player_pan_fader_bg_2: [9, 30, 47, 43]
+    player_pan_fader_bg_3: [9, 45, 47, 58]
+    player_pan_fader_bg_4: [9, 60, 47, 73]
+    player_pan_fader_bg_5: [9, 75, 47, 88]
+    player_pan_fader_bg_6: [9, 90, 47, 103]
+    player_pan_fader_bg_7: [9, 105, 47, 118]
+    player_pan_fader_bg_8: [9, 120, 47, 133]
+    player_pan_fader_bg_9: [9, 135, 47, 148]
+    player_pan_fader_bg_10: [9, 150, 47, 163]
+    player_pan_fader_bg_11: [9, 165, 47, 178]
+    player_pan_fader_bg_12: [9, 180, 47, 193]
+    player_pan_fader_bg_13: [9, 195, 47, 208]
+    player_pan_fader_bg_14: [9, 210, 47, 223]
+    player_pan_fader_bg_15: [9, 225, 47, 238]
+    player_pan_fader_bg_16: [9, 240, 47, 253]
+    player_pan_fader_bg_17: [9, 255, 47, 268]
+    player_pan_fader_bg_18: [9, 270, 47, 283]
+    player_pan_fader_bg_19: [9, 285, 47, 298]
+    player_pan_fader_bg_20: [9, 300, 47, 313]
+    player_pan_fader_bg_21: [9, 315, 47, 328]
+    player_pan_fader_bg_22: [9, 330, 47, 343]
+    player_pan_fader_bg_23: [9, 345, 47, 358]
+    player_pan_fader_bg_24: [9, 360, 47, 373]
+    player_pan_fader_bg_25: [9, 375, 47, 388]
+    player_pan_fader_bg_26: [9, 390, 47, 403]
+    player_pan_fader_bg_27: [9, 405, 47, 418]
   cbuttons.bmp:
     resolution: [136, 36]
     player_buttons: [0, 0, 114, 18]
@@ -479,6 +696,34 @@ winamp:
     vertical_gap: 2
     vol_handle: [0, 422, 14, 433]
     vol_handle_pressed: [15, 422, 29, 433]
+    vol_fader_background_00: [0, 0, 68, 12]
+    vol_fader_background_01: [0, 15, 68, 27]
+    vol_fader_background_02: [0, 30, 68, 42]
+    vol_fader_background_03: [0, 45, 68, 57]
+    vol_fader_background_04: [0, 60, 68, 72]
+    vol_fader_background_05: [0, 75, 68, 87]
+    vol_fader_background_06: [0, 90, 68, 102]
+    vol_fader_background_07: [0, 105, 68, 117]
+    vol_fader_background_08: [0, 120, 68, 132]
+    vol_fader_background_09: [0, 135, 68, 147]
+    vol_fader_background_10: [0, 150, 68, 162]
+    vol_fader_background_11: [0, 165, 68, 177]
+    vol_fader_background_12: [0, 180, 68, 192]
+    vol_fader_background_13: [0, 195, 68, 207]
+    vol_fader_background_14: [0, 210, 68, 222]
+    vol_fader_background_15: [0, 225, 68, 237]
+    vol_fader_background_16: [0, 240, 68, 252]
+    vol_fader_background_17: [0, 255, 68, 267]
+    vol_fader_background_18: [0, 270, 68, 282]
+    vol_fader_background_19: [0, 285, 68, 297]
+    vol_fader_background_20: [0, 300, 68, 312]
+    vol_fader_background_21: [0, 315, 68, 327]
+    vol_fader_background_22: [0, 330, 68, 342]
+    vol_fader_background_23: [0, 345, 68, 357]
+    vol_fader_background_24: [0, 360, 68, 372]
+    vol_fader_background_25: [0, 375, 68, 387]
+    vol_fader_background_26: [0, 390, 68, 402]
+    vol_fader_background_27: [0, 405, 68, 417]
 # AVS.bmp: 97 x 188 x 24,
 # balance.bmp: 68 x 433 x 24,
 # cbuttons.bmp: 136 x 36 x 24,
