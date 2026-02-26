@@ -188,7 +188,12 @@ blendamp:
     pl_repeated_right_sect:
       region: [255, 281, 275, 310]
       dest: "Pledit.bmp"
-
+    pl_scroll_bar:
+      region: &pl_scroll_bar_region [260, 292, 268, 310]
+      dest: "Pledit.bmp"
+    pl_scroll_bar_pressed:
+      region: *pl_scroll_bar_region
+      dest: "Pledit.bmp"
     player_titlebar_inactive:
       region: *player_titlebar_region
       dest: "titlebar.bmp"
@@ -223,6 +228,87 @@ blendamp:
       region: *player_titlebar_collapse_region
       dest: "titlebar.bmp"
 
+    player_buttons:
+      region: &player_buttons_region [16, 88, 130, 106]
+      dest: "cbuttons.bmp"
+    player_buttons_pressed:
+      region: *player_buttons_region
+      dest: "cbuttons.bmp"
+    player_eject_button:
+      region: &player_eject_button_region [136, 89, 158, 105]
+      dest: "cbuttons.bmp"
+    player_eject_button_pressed:
+      region: *player_eject_button_region
+      dest: "cbuttons.bmp"
+
+    player_shuf_off:
+      region: &player_shuf_region [164, 89, 210, 104]
+      dest: "shufrep.bmp"
+    player_shuf_on:
+      region: *player_shuf_region
+      dest: "shufrep.bmp"
+
+    player_rep_off:
+      region: &player_rep_region [210, 89, 238, 104]
+      dest: "shufrep.bmp"
+    player_rep_off_pressed:
+      region: *player_rep_region
+      dest: "shufrep.bmp"
+    player_rep_on:
+      region: *player_rep_region
+      dest: "shufrep.bmp"
+    player_rep_on_pressed:
+      region: *player_rep_region
+      dest: "shufrep.bmp"
+
+    player_eq_off:
+      region: &player_eq_region [219, 58, 242, 70]
+      dest: "shufrep.bmp"
+    player_eq_off_pressed:
+      region: *player_eq_region
+      dest: "shufrep.bmp"
+    player_eq_on:
+      region: *player_eq_region
+      dest: "shufrep.bmp"
+    player_eq_on_pressed:
+      region: *player_eq_region
+      dest: "shufrep.bmp"
+
+    player_pl_off:
+      region: &player_pl_region [242, 58, 265, 70]
+      dest: "shufrep.bmp"
+    player_pl_off_pressed:
+      region: *player_pl_region
+      dest: "shufrep.bmp"
+    player_pl_on:
+      region: *player_pl_region
+      dest: "shufrep.bmp"
+    player_pl_on_pressed:
+      region: *player_pl_region
+      dest: "shufrep.bmp"
+
+    player_mono_active:
+      region: &player_mono_region [212, 41, 239, 53]
+      dest: "monoster.bmp"
+    player_mono_inactive:
+      region: *player_mono_region
+      dest: "monoster.bmp"
+    player_stereo_active:
+      region: &player_stereo_region [239, 41, 268, 53]
+      dest: "monoster.bmp"
+    player_stereo_inactive:
+      region: *player_stereo_region
+      dest: "monoster.bmp"
+
+    posbar_bg:
+      region: [16, 72, 264, 82]
+      dest: "posbar.bmp"
+    posbar_handle:
+      region: &posbar_handle_region [233, 72, 262, 82]
+      dest: "posbar.bmp"
+    posbar_handle_pressed:
+      region: *posbar_handle_region
+      dest: "posbar.bmp"
   # In the blendamp parameter layers, there is a layer for each individual frame used in the ui
   # Ex. A volume bar with 28 different backgrounds based on volume level will appear
   # in the same region across 28 sequential layers to make animation design easier
@@ -261,16 +347,16 @@ winamp:
     expanded_b_sect: []
     pl_repeated_left_sect: [0, 42, 12, 71]
     pl_repeated_right_sect: [31, 42, 51, 71]
-    scroll_bar: []
-    scroll_bar_pressed: []
+    pl_scroll_bar: [52, 53, 60, 71]
+    pl_scroll_bar_pressed: [61, 53, 69, 71]
   balance.bmp:
     resolution: [68, 433]
   cbuttons.bmp:
     resolution: [136, 36]
-    buttons_norm: [0, 0, 114, 18]
-    buttons_pressed: [0, 18, 114, 35]
-    eject_button_norm: [114, 0, 135, 16]
-    eject_button_pressed: [114, 16, 135, 32]
+    player_buttons: [0, 0, 114, 18]
+    player_buttons_pressed: [0, 18, 114, 35]
+    player_eject_button: [114, 0, 135, 16]
+    player_eject_button_pressed: [114, 16, 135, 32]
   eq_ex.bmp:
     resolution: [275, 82]
   eqmain.bmp:
@@ -340,25 +426,35 @@ winamp:
     resolution: [242, 119]
   monoster.bmp:
     resolution: [58, 24]
+    player_mono_active: [29, 0, 56, 12]
+    player_mono_inactive: [29, 12, 56, 24]
+    player_stereo_active: [0, 0, 29, 12]
+    player_stereo_inactive: [0, 12, 29, 24]
   nums_ex.bmp:
     resolution: [108, 13]
   playpaus.bmp:
     resolution: [42, 9]
   posbar.bmp:
     resolution: [307, 10]
-    posbar_bg: []
-    posbar_handle: []
-    posbar_handle_pressed: []
+    posbar_bg: [0, 0, 247, 10]
+    posbar_handle: [248, 0, 277, 10]
+    posbar_handle_pressed: [278, 0, 307, 10]
   shufrep.bmp:
     resolution: [92, 85]
-    shuf_off: []
-    shuf_on: []
-    rep_off: []
-    rep_on: []
-    eq_off: []
-    eq_on: []
-    pl_off: []
-    pl_on: []
+    player_shuf_off: [28, 0, 73, 14]
+    player_shuf_on: [28, 30, 73, 44]
+    player_rep_off: [0, 0, 27, 14]
+    player_rep_off_pressed: [0, 0, 27, 14]
+    player_rep_on: [0, 30, 27, 44]
+    player_rep_on_pressed: [0, 45, 27, 59]
+    player_eq_off: [0, 61, 22, 72]
+    player_eq_off_pressed: [46, 61, 68, 72]
+    player_eq_on: [0, 73, 23, 85]
+    player_eq_on_pressed: [46, 73, 68, 85]
+    player_pl_off: [23, 61, 46, 73]
+    player_pl_off_pressed: [69, 61, 92, 73]
+    player_pl_on: [23, 73, 46, 85]
+    player_pl_on_pressed: [69, 73, 92, 85]
   text.bmp:
     resolution: [155, 18]
     letter_res: [5, 6]
