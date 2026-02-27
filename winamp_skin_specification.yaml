@@ -194,38 +194,61 @@ blendamp:
     pl_scroll_bar_pressed:
       region: *pl_scroll_bar_region
       dest: "Pledit.bmp"
+
     player_titlebar_inactive:
       region: *player_titlebar_region
       dest: "titlebar.bmp"
     player_titlebar_menu:
       region: &player_titlebar_menu_region [6, 3, 15, 12]
       dest: "titlebar.bmp"
-    player_titlebar_menu_inactive:
+    player_titlebar_menu_pressed:
       region: *player_titlebar_menu_region
       dest: "titlebar.bmp"
     player_titlebar_exit:
       region: &player_titlebar_exit_region [264, 3, 273, 12]
       dest: "titlebar.bmp"
-    player_titlebar_exit_inactive:
+    player_titlebar_exit_pressed:
       region: *player_titlebar_exit_region
       dest: "titlebar.bmp"
     player_titlebar_minimize:
       region: &player_titlebar_minimize_region [244, 3, 253, 12]
       dest: "titlebar.bmp"
-    player_titlebar_minimize_inactive:
+    player_titlebar_minimize_pressed:
       region: *player_titlebar_minimize_region
       dest: "titlebar.bmp"
     player_titlebar_collapse:
       region: &player_titlebar_collapse_region [254, 3, 263, 12]
       dest: "titlebar.bmp"
-    player_titlebar_collapse_inactive:
+    player_titlebar_collapse_pressed:
       region: *player_titlebar_collapse_region
       dest: "titlebar.bmp"
     player_expand:
       region: *player_titlebar_collapse_region
       dest: "titlebar.bmp"
-    player_expand_inactive:
+    player_expand_pressed:
       region: *player_titlebar_collapse_region
+      dest: "titlebar.bmp"
+
+    player_menu_0:
+      region: &player_menu_0_region [10, 22, 18, 65] # Blank
+      dest: "titlebar.bmp"
+    player_menu_1:
+      region: *player_menu_0_region # O
+      dest: "titlebar.bmp"
+    player_menu_2:
+      region: *player_menu_0_region # A
+      dest: "titlebar.bmp"
+    player_menu_3:
+      region: *player_menu_0_region # I
+      dest: "titlebar.bmp"
+    player_menu_4:
+      region: *player_menu_0_region # D
+      dest: "titlebar.bmp"
+    player_menu_5:
+      region: *player_menu_0_region # V
+      dest: "titlebar.bmp"
+    player_menu_7:
+      region: *player_menu_0_region # Unhighlighted
       dest: "titlebar.bmp"
 
     player_buttons:
@@ -674,22 +697,33 @@ winamp:
     player_pl_on_pressed: [69, 73, 92, 85]
   text.bmp:
     resolution: [155, 18]
+
     letter_res: [5, 6]
   titlebar.bmp:
     resolution: [344, 87]
+
     player_titlebar: [27, 0, 302, 14]
     player_titlebar_inactive: [27, 15, 302, 29]
     player_titlebar_menu: [0, 0, 9, 9]
-    player_titlebar_menu_inactive: []
+    player_titlebar_menu_pressed: [0, 9, 9, 18]
     player_titlebar_exit: [18, 0, 27, 9]
-    player_titlebar_exit_inactive: []
+    player_titlebar_exit_pressed: [18, 9, 27, 18]
     player_titlebar_minimize: [9, 0, 18, 9]
-    player_titlebar_minimize_inactive: []
+    player_titlebar_minimize_pressed: [9, 9, 18, 18]
     player_titlebar_collapse: [0, 18, 9, 27]
-    player_titlebar_collapse_inactive: []
-    player_expand: []
-    player_expand_inactive: []
-  # Special case
+    player_titlebar_collapse_pressed: [9, 18, 18, 27]
+
+    player_expand: [0, 27, 9, 36]
+    player_expand_pressed: [9, 27, 18, 36]
+
+    player_menu_0: [312, 0, 320, 43] # Blank
+    player_menu_1: [304, 44, 312, 87] # O
+    player_menu_2: [312, 44, 320, 87] # A
+    player_menu_3: [320, 44, 328, 87] # I
+    player_menu_4: [328, 44, 336, 87] # D
+    player_menu_5: [336, 44, 344, 87] # V
+    player_menu_7: [304, 0, 312, 43] # Unhighlighted
+
   volume.bmp:
     resolution: [68, 433]
     vol_frame_res: [68, 13]
