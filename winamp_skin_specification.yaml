@@ -1,5 +1,11 @@
+sample:
+text
+
 blendamp:
-  background.png:
+  # Background, everything behind every button
+  # If there is alpha in any other layer, this this is the texture
+  # that will be composited underneath
+  00.png:
     main_background:
       region: [0, 0, 275, 116]
       dest: "main.bmp"
@@ -532,6 +538,12 @@ blendamp:
     TODO_unknown_indicators_1:
       region: *TODO_unknown_region
       dest: "playpaus.bmp"
+
+  # This is all of the buttons in their default states
+  01.png:
+
+  # Buttons, next state
+  02.png:
 
   text.png:
     text:
