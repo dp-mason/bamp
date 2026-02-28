@@ -517,6 +517,22 @@ blendamp:
       region: *player_pan_fader_bg_00
       dest: "balance.bmp"
 
+    play_status:
+      region: &play_status_region [24, 28, 35, 37]
+      dest: "playpaus.bmp"
+    pause_status:
+      region: *play_status_region
+      dest: "playpaus.bmp"
+    stop_status:
+      region: *play_status_region
+      dest: "playpaus.bmp"
+    TODO_unknown_indicators_0:
+      region: &TODO_unknown_region [24, 28, 27, 37]
+      dest: "playpaus.bmp"
+    TODO_unknown_indicators_1:
+      region: *TODO_unknown_region
+      dest: "playpaus.bmp"
+
   text.png:
     text:
       region: [0, 0, 155, 18]
@@ -653,7 +669,7 @@ winamp:
 
     # TODO: separate across separate layers
     eq_onauto: [10, 119, 68, 131]
-    eq_onauto_enabled: [68, 119, 127, 119]
+    eq_onauto_enabled: [68, 119, 127, 131]
     eq_onauto_pressed: [128, 119, 186, 131]
     eq_onauto_enabled_pressed: [187, 119, 245, 131]
 
@@ -682,6 +698,12 @@ winamp:
     nums: [0, 0, 108, 13]
   playpaus.bmp:
     resolution: [42, 9]
+    play_status: [1, 0, 9, 9]
+    pause_status: [9, 0, 18, 9]
+    stop_status: [18, 0, 27, 9]
+    TODO_unknown_indicators_0: [36, 0, 39, 9]
+    TODO_unknown_indicators_1: [39, 0, 42, 9]
+
   posbar.bmp:
     resolution: [307, 10]
     posbar_bg: [0, 0, 247, 10]
