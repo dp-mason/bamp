@@ -4,6 +4,8 @@ Seamlessly design classic WinAmp skins with Blender.
 
 ## TODO:
 
+- define blendamp source layers and turn them into collections and view layers in the blender project file, use indirect or holdout or somthing
+- add fallback option so that if a region is completely alpha it will pull from a different layer, this way the artist can decide not to do normal/pressed layers for every button and handle if they dont want to... actually this could just be done by starting with all the layers stacked and peeling away each one working backwards to the background
 - Add support for transparency (look as deus x skin and region.txt tool)
-- define blendamp source layers
-- look at what Ivory skin is doing to do non-standard sizes and button placements in audacious
+
+- FAR FUTURE: look at what Ivory skin is doing to do non-standard sizes and button placements in audacious
