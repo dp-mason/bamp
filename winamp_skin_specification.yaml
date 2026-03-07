@@ -342,6 +342,13 @@ blendamp:
       region: *player_pan_fader_bg_00
       dest: "balance.bmp"
 
+    player_stereo_inactive:
+      region: &player_stereo_region [239, 41, 268, 53]
+      dest: "monoster.bmp"
+    player_mono_inactive:
+      region: &player_mono_region [212, 41, 239, 53]
+      dest: "monoster.bmp"
+
   # placeholder
   90.png:
     posbar_handle:
@@ -472,15 +479,9 @@ blendamp:
       dest: "eqmain.bmp"
 
     player_mono_active:
-      region: &player_mono_region [212, 41, 239, 53]
-      dest: "monoster.bmp"
-    player_mono_inactive:
       region: *player_mono_region
       dest: "monoster.bmp"
     player_stereo_active:
-      region: &player_stereo_region [239, 41, 268, 53]
-      dest: "monoster.bmp"
-    player_stereo_inactive:
       region: *player_stereo_region
       dest: "monoster.bmp"
 
