@@ -1,9 +1,17 @@
 from PIL import Image
 from PIL.ImageFile import ImageFile as ImageFile
+from typing import List
 
 import numpy as np
 import yaml
 import os
+
+
+# takes a list of images and stacks them one on top of the other
+# with the first image in the list taking he back and the last being on top
+def composite_image_stack(images: List[Image.Image], region: tuple):
+    return images[0].crop(region)
+
 
 BLENDAMP_DIR = os.path.abspath("blendamp")
 WINAMP_DIR = os.path.abspath("./winamp_skin")
@@ -33,6 +41,8 @@ for filename, f_md in CONFIG["winamp"].items():
         winamp_img.save(full_output_path)
 
 # TODO: Create "region.txt" file to support transparency
+
+image_stack = []
 
 for file_name, mappings in CONFIG["blendamp"].items():
     im: ImageFile = Image.open(os.path.join(BLENDAMP_DIR, file_name))
