@@ -8,9 +8,6 @@ blendamp:
     main_background:
       region: [0, 0, 275, 116]
       dest: "main.bmp"
-    player_titlebar:
-      region: &player_titlebar_region [0, 0, 275, 14]
-      dest: "titlebar.bmp"
 
     eq_background:
       region: [0, 116, 275, 232]
@@ -55,34 +52,7 @@ blendamp:
     pl_repeated_right_sect:
       region: [255, 281, 275, 310]
       dest: "Pledit.bmp"
-    pl_scroll_bar:
-      region: &pl_scroll_bar_region [260, 292, 268, 310]
-      dest: "Pledit.bmp"
 
-    player_titlebar_menu:
-      region: &player_titlebar_menu_region [6, 3, 15, 12]
-      dest: "titlebar.bmp"
-    player_titlebar_exit:
-      region: &player_titlebar_exit_region [264, 3, 273, 12]
-      dest: "titlebar.bmp"
-    player_titlebar_minimize:
-      region: &player_titlebar_minimize_region [244, 3, 253, 12]
-      dest: "titlebar.bmp"
-    player_titlebar_collapse:
-      region: &player_titlebar_collapse_region [254, 3, 263, 12]
-      dest: "titlebar.bmp"
-    player_shuf_off:
-      region: &player_shuf_region [164, 89, 210, 104]
-      dest: "shufrep.bmp"
-    player_rep_off:
-      region: &player_rep_region [210, 89, 238, 104]
-      dest: "shufrep.bmp"
-    player_eq_off:
-      region: &player_eq_region [219, 58, 242, 70]
-      dest: "shufrep.bmp"
-    player_pl_off:
-      region: &player_pl_region [242, 58, 265, 70]
-      dest: "shufrep.bmp"
     play_status:
       region: &play_status_region [24, 28, 35, 37]
       dest: "playpaus.bmp"
@@ -93,86 +63,12 @@ blendamp:
   # Fader Backgrounds
   # Inactive Title Bars
   01.png:
-    eq_presets_pressed:
-      region: *eq_presets_region
-      dest: "eqmain.bmp"
-    pl_top_left_corner_inactive:
-      region: *pl_top_left_corner_region
-      dest: "Pledit.bmp"
-    pl_top_center_inactive:
-      region: *pl_top_center_region
-      dest: "Pledit.bmp"
-    pl_top_right_corner_inactive:
-      region: *pl_top_right_corner_region
-      dest: "Pledit.bmp"
-    pl_scroll_bar_pressed:
-      region: *pl_scroll_bar_region
-      dest: "Pledit.bmp"
-
-    player_titlebar_inactive:
-      region: *player_titlebar_region
-      dest: "titlebar.bmp"
-    player_titlebar_menu_pressed:
-      region: *player_titlebar_menu_region
-      dest: "titlebar.bmp"
-    player_titlebar_exit_pressed:
-      region: *player_titlebar_exit_region
-      dest: "titlebar.bmp"
-
-    player_titlebar_minimize_pressed:
-      region: *player_titlebar_minimize_region
-      dest: "titlebar.bmp"
-
-    player_titlebar_collapse_pressed:
-      region: *player_titlebar_collapse_region
-      dest: "titlebar.bmp"
-    player_expand:
-      region: *player_titlebar_collapse_region
-      dest: "titlebar.bmp"
-    player_expand_pressed:
-      region: *player_titlebar_collapse_region
-      dest: "titlebar.bmp"
-
-    player_shuf_on:
-      region: *player_shuf_region
-      dest: "shufrep.bmp"
-
-    player_rep_off_pressed:
-      region: *player_rep_region
-      dest: "shufrep.bmp"
-    player_rep_on:
-      region: *player_rep_region
-      dest: "shufrep.bmp"
-    player_rep_on_pressed:
-      region: *player_rep_region
-      dest: "shufrep.bmp"
-
-    player_eq_off_pressed:
-      region: *player_eq_region
-      dest: "shufrep.bmp"
-    player_eq_on:
-      region: *player_eq_region
-      dest: "shufrep.bmp"
-    player_eq_on_pressed:
-      region: *player_eq_region
-      dest: "shufrep.bmp"
-
     pause_status:
       region: *play_status_region
       dest: "playpaus.bmp"
     stop_status:
       region: *play_status_region
       dest: "playpaus.bmp"
-    player_pl_off_pressed:
-      region: *player_pl_region
-      dest: "shufrep.bmp"
-
-    player_pl_on:
-      region: *player_pl_region
-      dest: "shufrep.bmp"
-    player_pl_on_pressed:
-      region: *player_pl_region
-      dest: "shufrep.bmp"
 
     TODO_unknown_indicators_1:
       region: *TODO_unknown_region
@@ -180,33 +76,6 @@ blendamp:
 
     eq_titlebar_inactive:
       region: *eq_titlebar_region
-      dest: "eqmain.bmp"
-
-    player_mono_active:
-      region: &player_mono_region [212, 41, 239, 53]
-      dest: "monoster.bmp"
-    player_mono_inactive:
-      region: *player_mono_region
-      dest: "monoster.bmp"
-    player_stereo_active:
-      region: &player_stereo_region [239, 41, 268, 53]
-      dest: "monoster.bmp"
-    player_stereo_inactive:
-      region: *player_stereo_region
-      dest: "monoster.bmp"
-
-    # TODO: separate across separate layers
-    eq_onauto:
-      region: &eq_onauto_region [14, 134, 72, 146]
-      dest: "eqmain.bmp"
-    eq_onauto_enabled:
-      region: *eq_onauto_region
-      dest: "eqmain.bmp"
-    eq_onauto_pressed:
-      region: *eq_onauto_region
-      dest: "eqmain.bmp"
-    eq_onauto_enabled_pressed:
-      region: *eq_onauto_region
       dest: "eqmain.bmp"
 
     pl_repeated_top_sect_inactive:
@@ -473,11 +342,54 @@ blendamp:
       region: *player_pan_fader_bg_00
       dest: "balance.bmp"
 
-  # Buttons and Handles
+  # placeholder
   90.png:
     posbar_handle:
       region: &posbar_handle_region [233, 72, 262, 82]
       dest: "posbar.bmp"
+
+  # Buttons and Handles
+  # Buttons and Handles - Pressed
+  # Temporary home for every element that we  either want to be on top of everything
+  # or just fall back on to what is on the existing background
+  91.png:
+    player_titlebar_menu:
+      region: &player_titlebar_menu_region [6, 3, 15, 12]
+      dest: "titlebar.bmp"
+    player_titlebar_exit:
+      region: &player_titlebar_exit_region [264, 3, 273, 12]
+      dest: "titlebar.bmp"
+    player_titlebar_minimize:
+      region: &player_titlebar_minimize_region [244, 3, 253, 12]
+      dest: "titlebar.bmp"
+    player_titlebar_collapse:
+      region: &player_titlebar_collapse_region [254, 3, 263, 12]
+      dest: "titlebar.bmp"
+    player_shuf_off:
+      region: &player_shuf_region [164, 89, 210, 104]
+      dest: "shufrep.bmp"
+    player_rep_off:
+      region: &player_rep_region [210, 89, 238, 104]
+      dest: "shufrep.bmp"
+    player_eq_off:
+      region: &player_eq_region [219, 58, 242, 70]
+      dest: "shufrep.bmp"
+    player_pl_off:
+      region: &player_pl_region [242, 58, 265, 70]
+      dest: "shufrep.bmp"
+    player_pl_off_pressed:
+      region: *player_pl_region
+      dest: "shufrep.bmp"
+
+    player_pl_on:
+      region: *player_pl_region
+      dest: "shufrep.bmp"
+    player_pl_on_pressed:
+      region: *player_pl_region
+      dest: "shufrep.bmp"
+    player_titlebar:
+      region: &player_titlebar_region [0, 0, 275, 14]
+      dest: "titlebar.bmp"
 
     vol_handle:
       region: &vol_handle_region [158, 58, 172, 69]
@@ -529,8 +441,14 @@ blendamp:
       region: &eq_handle_region [22, 179, 33, 190]
       dest: "eqmain.bmp"
 
-  # Buttons and Handles - Pressed
-  91.png:
+    # 91.png:
+    pl_scroll_bar:
+      region: &pl_scroll_bar_region [260, 292, 268, 310]
+      dest: "Pledit.bmp"
+    pl_scroll_bar_pressed:
+      region: *pl_scroll_bar_region
+      dest: "Pledit.bmp"
+
     posbar_handle_pressed:
       region: *posbar_handle_region
       dest: "posbar.bmp"
@@ -552,6 +470,94 @@ blendamp:
     eq_exit_button_pressed:
       region: *eq_exit_button_region
       dest: "eqmain.bmp"
+
+    player_mono_active:
+      region: &player_mono_region [212, 41, 239, 53]
+      dest: "monoster.bmp"
+    player_mono_inactive:
+      region: *player_mono_region
+      dest: "monoster.bmp"
+    player_stereo_active:
+      region: &player_stereo_region [239, 41, 268, 53]
+      dest: "monoster.bmp"
+    player_stereo_inactive:
+      region: *player_stereo_region
+      dest: "monoster.bmp"
+
+    # TODO: separate across separate layers
+    eq_onauto:
+      region: &eq_onauto_region [14, 134, 72, 146]
+      dest: "eqmain.bmp"
+    eq_onauto_enabled:
+      region: *eq_onauto_region
+      dest: "eqmain.bmp"
+    eq_onauto_pressed:
+      region: *eq_onauto_region
+      dest: "eqmain.bmp"
+    eq_onauto_enabled_pressed:
+      region: *eq_onauto_region
+      dest: "eqmain.bmp"
+
+    eq_presets_pressed:
+      region: *eq_presets_region
+      dest: "eqmain.bmp"
+    pl_top_left_corner_inactive:
+      region: *pl_top_left_corner_region
+      dest: "Pledit.bmp"
+    pl_top_center_inactive:
+      region: *pl_top_center_region
+      dest: "Pledit.bmp"
+    pl_top_right_corner_inactive:
+      region: *pl_top_right_corner_region
+      dest: "Pledit.bmp"
+
+    player_titlebar_inactive:
+      region: *player_titlebar_region
+      dest: "titlebar.bmp"
+    player_titlebar_menu_pressed:
+      region: *player_titlebar_menu_region
+      dest: "titlebar.bmp"
+    player_titlebar_exit_pressed:
+      region: *player_titlebar_exit_region
+      dest: "titlebar.bmp"
+
+    player_titlebar_minimize_pressed:
+      region: *player_titlebar_minimize_region
+      dest: "titlebar.bmp"
+
+    player_titlebar_collapse_pressed:
+      region: *player_titlebar_collapse_region
+      dest: "titlebar.bmp"
+    player_expand:
+      region: *player_titlebar_collapse_region
+      dest: "titlebar.bmp"
+    player_expand_pressed:
+      region: *player_titlebar_collapse_region
+      dest: "titlebar.bmp"
+
+    player_shuf_on:
+      region: *player_shuf_region
+      dest: "shufrep.bmp"
+
+    player_rep_off_pressed:
+      region: *player_rep_region
+      dest: "shufrep.bmp"
+    player_rep_on:
+      region: *player_rep_region
+      dest: "shufrep.bmp"
+    player_rep_on_pressed:
+      region: *player_rep_region
+      dest: "shufrep.bmp"
+
+    player_eq_off_pressed:
+      region: *player_eq_region
+      dest: "shufrep.bmp"
+    player_eq_on:
+      region: *player_eq_region
+      dest: "shufrep.bmp"
+    player_eq_on_pressed:
+      region: *player_eq_region
+      dest: "shufrep.bmp"
 
   text.png:
     text:
