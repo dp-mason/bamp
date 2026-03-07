@@ -10,6 +10,7 @@ Seamlessly design classic WinAmp skins with Blender.
 - add PLEDIT.txt and viscolor.txt support, just make it another texture that the script can reference to generate those text files
   - maybe use a separate texture called "palette" with regions labeled in the actual texture where colors can be defined.. for stuff like the eq visualizer too instead of a one pixel wide column of pixels. this could prob fit on the texture used for text and it would make sense to put it there, since it covers everything else up
 - Add support for transparency (look as deus x skin and region.txt tool)
+- create a script that can reverse engineer winamp -> blendamp skin so that you can make a set of blendamp template layers from an existing winamp skin! Not only does this creat template layers, but it also creates a way to easily modify existing winamp skins by converting to blendamp and then back to winamp!!!
 
 
 - FAR FUTURE: look at what Ivory skin is doing to do non-standard sizes and button placements in audacious
