@@ -12,14 +12,8 @@ blendamp:
     eq_background:
       region: [0, 116, 275, 232]
       dest: "eqmain.bmp"
-    eq_titlebar:
-      region: &eq_titlebar_region [0, 116, 275, 130]
-      dest: "eqmain.bmp"
     eq_viz_bg:
       region: [86, 133, 199, 152]
-      dest: "eqmain.bmp"
-    eq_viz_spectrum:
-      region: [100, 133, 101, 152]
       dest: "eqmain.bmp"
     eq_viz_baseline:
       region: [86, 142, 199, 143]
@@ -39,9 +33,6 @@ blendamp:
       dest: "Pledit.bmp"
     pl_top_left_corner:
       region: &pl_top_left_corner_region [0, 232, 25, 252]
-      dest: "Pledit.bmp"
-    pl_top_right_corner:
-      region: &pl_top_right_corner_region [250, 232, 275, 252]
       dest: "Pledit.bmp"
     pl_repeated_top_sect:
       region: &pl_repeated_top_sect_region [25, 232, 50, 252]
@@ -73,10 +64,6 @@ blendamp:
     TODO_unknown_indicators_1:
       region: *TODO_unknown_region
       dest: "playpaus.bmp"
-
-    eq_titlebar_inactive:
-      region: *eq_titlebar_region
-      dest: "eqmain.bmp"
 
     pl_repeated_top_sect_inactive:
       region: *pl_repeated_top_sect_region
@@ -351,6 +338,15 @@ blendamp:
 
   # placeholder
   90.png:
+    pl_top_right_corner:
+      region: &pl_top_right_corner_region [250, 232, 275, 252]
+      dest: "Pledit.bmp"
+    eq_titlebar:
+      region: &eq_titlebar_region [0, 116, 275, 130]
+      dest: "eqmain.bmp"
+    eq_titlebar_inactive:
+      region: *eq_titlebar_region
+      dest: "eqmain.bmp"
     posbar_handle:
       region: &posbar_handle_region [233, 72, 262, 82]
       dest: "posbar.bmp"
@@ -561,6 +557,9 @@ blendamp:
       dest: "shufrep.bmp"
 
   text.png:
+    eq_viz_spectrum:
+      region: [100, 133, 101, 152]
+      dest: "eqmain.bmp"
     text:
       region: [0, 0, 155, 18]
       dest: "text.bmp"
