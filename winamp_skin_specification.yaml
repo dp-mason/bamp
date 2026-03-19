@@ -354,6 +354,15 @@ blendamp:
     eq_collapsed_inactive:
       region: *eq_titlebar_region
       dest: "eq_ex.bmp"
+    eq_exit_button_pressed:
+      region: [264, 119, 273, 128]
+      dest: "eq_ex.bmp"
+    eq_expand_button_pressed:
+      region: &eq_collapse_button_region [254, 119, 263, 128]
+      dest: "eq_ex.bmp"
+    eq_collapse_button_pressed:
+      region: *eq_collapse_button_region
+      dest: "eq_ex.bmp"
 
     posbar_handle:
       region: &posbar_handle_region [233, 72, 262, 82]
@@ -412,6 +421,9 @@ blendamp:
     eq_exit_button:
       region: &eq_exit_button_region [264, 119, 273, 128]
       dest: "eqmain.bmp"
+    eq_collapsed_exit_button:
+      region: *eq_exit_button_region
+      dest: "eq_ex.bmp"
     pl_exit_button_pressed:
       region: [264, 235, 273, 244]
       dest: "Pledit.bmp"
@@ -664,6 +676,10 @@ winamp:
     resolution: [275, 82]
     eq_collapsed: [0, 0, 275, 14]
     eq_collapsed_inactive: [0, 15, 275, 29]
+    eq_exit_button_pressed: [11, 47, 20, 56]
+    eq_expand_button_pressed: [1, 47, 10, 56]
+    eq_collapse_button_pressed: [1, 38, 10, 47]
+    eq_collapsed_exit_button: [11, 38, 20, 47]
   eqmain.bmp:
     resolution: [275, 315]
     eq_background: [0, 0, 275, 116]
