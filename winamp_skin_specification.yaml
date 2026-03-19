@@ -485,7 +485,7 @@ blendamp:
 
     # TODO: separate across separate layers
     eq_onauto:
-      region: &eq_onauto_region [14, 134, 72, 148]
+      region: &eq_onauto_region [14, 134, 72, 146]
       dest: "eqmain.bmp"
     eq_onauto_enabled:
       region: *eq_onauto_region
@@ -703,7 +703,7 @@ winamp:
 
     # TODO: separate across separate layers
     eq_onauto: [10, 119, 68, 131]
-    eq_onauto_enabled: [68, 119, 127, 131]
+    eq_onauto_enabled: [69, 119, 128, 131]
     eq_onauto_pressed: [128, 119, 186, 131]
     eq_onauto_enabled_pressed: [187, 119, 245, 131]
 
