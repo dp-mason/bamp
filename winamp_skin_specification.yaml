@@ -18,9 +18,6 @@ blendamp:
     eq_viz_baseline:
       region: [86, 142, 199, 143]
       dest: "eqmain.bmp"
-    eq_presets:
-      region: &eq_presets_region [217, 134, 261, 146]
-      dest: "eqmain.bmp"
 
     pl_top_center:
       region: &pl_top_center_region [87, 232, 187, 252]
@@ -341,16 +338,24 @@ blendamp:
     pl_top_right_corner:
       region: &pl_top_right_corner_region [250, 232, 275, 252]
       dest: "Pledit.bmp"
+
+    eq_presets:
+      region: &eq_presets_region [217, 134, 261, 146]
+      dest: "eqmain.bmp"
     eq_titlebar:
       region: &eq_titlebar_region [0, 116, 275, 130]
       dest: "eqmain.bmp"
     eq_titlebar_inactive:
       region: *eq_titlebar_region
       dest: "eqmain.bmp"
+
     posbar_handle:
       region: &posbar_handle_region [233, 72, 262, 82]
       dest: "posbar.bmp"
 
+    pl_scroll_bar:
+      region: &pl_scroll_bar_region [260, 292, 268, 310]
+      dest: "Pledit.bmp"
   # Buttons and Handles
   # Buttons and Handles - Pressed
   # Temporary home for every element that we  either want to be on top of everything
@@ -445,9 +450,6 @@ blendamp:
       dest: "eqmain.bmp"
 
     # 91.png:
-    pl_scroll_bar:
-      region: &pl_scroll_bar_region [260, 292, 268, 310]
-      dest: "Pledit.bmp"
     pl_scroll_bar_pressed:
       region: *pl_scroll_bar_region
       dest: "Pledit.bmp"
@@ -483,7 +485,7 @@ blendamp:
 
     # TODO: separate across separate layers
     eq_onauto:
-      region: &eq_onauto_region [14, 134, 72, 146]
+      region: &eq_onauto_region [14, 134, 72, 148]
       dest: "eqmain.bmp"
     eq_onauto_enabled:
       region: *eq_onauto_region
@@ -509,6 +511,12 @@ blendamp:
       dest: "Pledit.bmp"
 
     player_titlebar_inactive:
+      region: *player_titlebar_region
+      dest: "titlebar.bmp"
+    player_titlebar_condensed:
+      region: *player_titlebar_region
+      dest: "titlebar.bmp"
+    player_titlebar_condensed_inactive:
       region: *player_titlebar_region
       dest: "titlebar.bmp"
     player_titlebar_menu_pressed:
@@ -600,8 +608,8 @@ winamp:
     pl_collapse_button_pressed: [62, 42, 71, 51]
     pl_repeated_top_sect: [127, 0, 152, 20]
     pl_repeated_top_sect_inactive: [127, 21, 152, 41]
-    pl_repeated_bottom_sect: []
-    expanded_b_sect: []
+    pl_repeated_bottom_sect: [179, 0, 204, 38]
+    expanded_bottom_sect: [205, 0, 280, 38]
     pl_repeated_left_sect: [0, 42, 12, 71]
     pl_repeated_right_sect: [31, 42, 51, 71]
     pl_scroll_bar: [52, 53, 60, 71]
@@ -706,7 +714,7 @@ winamp:
     eq_viz_baseline: [0, 314, 113, 315]
 
     eq_presets: [224, 164, 268, 176]
-    eq_presets_pressed: [224, 177, 268, 189]
+    eq_presets_pressed: [224, 176, 268, 188]
 
   main.bmp:
     resolution: [275, 116]
@@ -759,6 +767,8 @@ winamp:
 
     player_titlebar: [27, 0, 302, 14]
     player_titlebar_inactive: [27, 15, 302, 29]
+    player_titlebar_condensed: [27, 29, 302, 43]
+    player_titlebar_condensed_inactive: [27, 42, 302, 56]
     player_titlebar_menu: [0, 0, 9, 9]
     player_titlebar_menu_pressed: [0, 9, 9, 18]
     player_titlebar_exit: [18, 0, 27, 9]
