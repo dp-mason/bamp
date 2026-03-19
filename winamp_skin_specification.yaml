@@ -339,6 +339,26 @@ blendamp:
       region: &pl_top_right_corner_region [250, 232, 275, 252]
       dest: "Pledit.bmp"
 
+    pl_top_left_corner_collapsed:
+      region: [0, 232, 25, 246]
+      dest: "Pledit.bmp"
+
+    pl_top_right_corner_collapsed:
+      region: &pl_top_right_corner_collapsed_region [225, 232, 275, 246]
+      dest: "Pledit.bmp"
+    pl_top_right_corner_collapsed_inactive:
+      region: *pl_top_right_corner_collapsed_region
+      dest: "Pledit.bmp"
+    pl_collapsed_bar_repeated:
+      region: [25, 232, 50, 246]
+      dest: "Pledit.bmp"
+    pl_collapse_expand_button_pressed:
+      region: [254, 235, 263, 244]
+      dest: "Pledit.bmp"
+    pl_scroll_bar:
+      region: &pl_scroll_bar_region [260, 292, 268, 310]
+      dest: "Pledit.bmp"
+
     eq_presets:
       region: &eq_presets_region [217, 134, 261, 146]
       dest: "eqmain.bmp"
@@ -368,9 +388,6 @@ blendamp:
       region: &posbar_handle_region [233, 72, 262, 82]
       dest: "posbar.bmp"
 
-    pl_scroll_bar:
-      region: &pl_scroll_bar_region [260, 292, 268, 310]
-      dest: "Pledit.bmp"
   # Buttons and Handles
   # Buttons and Handles - Pressed
   # Temporary home for every element that we  either want to be on top of everything
@@ -632,6 +649,11 @@ winamp:
     pl_repeated_right_sect: [31, 42, 51, 71]
     pl_scroll_bar: [52, 53, 60, 71]
     pl_scroll_bar_pressed: [61, 53, 69, 71]
+    pl_top_left_corner_collapsed: [72, 42, 97, 56]
+    pl_top_right_corner_collapsed: [99, 42, 149, 56]
+    pl_top_right_corner_collapsed_inactive: [99, 57, 149, 71]
+    pl_collapsed_bar_repeated: [72, 57, 97, 71]
+    pl_collapse_expand_button_pressed: [150, 42, 159, 51]
   balance.bmp:
     resolution: [68, 433]
 
