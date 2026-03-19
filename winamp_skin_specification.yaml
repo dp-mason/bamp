@@ -348,6 +348,12 @@ blendamp:
     eq_titlebar_inactive:
       region: *eq_titlebar_region
       dest: "eqmain.bmp"
+    eq_collapsed:
+      region: *eq_titlebar_region
+      dest: "eq_ex.bmp"
+    eq_collapsed_inactive:
+      region: *eq_titlebar_region
+      dest: "eq_ex.bmp"
 
     posbar_handle:
       region: &posbar_handle_region [233, 72, 262, 82]
@@ -656,6 +662,8 @@ winamp:
     player_eject_button_pressed: [114, 16, 135, 32]
   eq_ex.bmp:
     resolution: [275, 82]
+    eq_collapsed: [0, 0, 275, 14]
+    eq_collapsed_inactive: [0, 15, 275, 29]
   eqmain.bmp:
     resolution: [275, 315]
     eq_background: [0, 0, 275, 116]
@@ -826,7 +834,6 @@ winamp:
 # AVS.bmp: 97 x 188 x 24,
 # balance.bmp: 68 x 433 x 24,
 # cbuttons.bmp: 136 x 36 x 24,
-# eq_ex.bmp: 275 x 82 x 24,
 # eqmain.bmp: 275 x 315 x 24,
 # main.bmp: 275 x 116 x 24,
 # mb.bmp: 242 x 119 x 24,
