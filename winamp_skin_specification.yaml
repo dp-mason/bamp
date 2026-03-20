@@ -388,6 +388,25 @@ blendamp:
       region: &posbar_handle_region [233, 72, 262, 82]
       dest: "posbar.bmp"
 
+    vol_handle:
+      region: &vol_handle_region [158, 58, 172, 69]
+      dest: "volume.bmp"
+
+    player_pan_handle:
+      region: &player_pan_handle_region [189, 58, 203, 69]
+      dest: "balance.bmp"
+
+    eq_handle:
+      region: &eq_handle_region [22, 179, 33, 190]
+      dest: "eqmain.bmp"
+
+    eq_onauto:
+      region: &eq_onauto_region [14, 134, 72, 146]
+      dest: "eqmain.bmp"
+    eq_onauto_enabled:
+      region: *eq_onauto_region
+      dest: "eqmain.bmp"
+
   # Buttons and Handles
   # Buttons and Handles - Pressed
   # Temporary home for every element that we  either want to be on top of everything
@@ -431,10 +450,6 @@ blendamp:
       region: &player_titlebar_region [0, 0, 275, 14]
       dest: "titlebar.bmp"
 
-    vol_handle:
-      region: &vol_handle_region [158, 58, 172, 69]
-      dest: "volume.bmp"
-
     eq_exit_button:
       region: &eq_exit_button_region [264, 119, 273, 128]
       dest: "eqmain.bmp"
@@ -453,10 +468,6 @@ blendamp:
     player_eject_button:
       region: &player_eject_button_region [136, 89, 158, 105]
       dest: "cbuttons.bmp"
-
-    player_pan_handle:
-      region: &player_pan_handle_region [189, 58, 203, 69]
-      dest: "balance.bmp"
 
     player_menu_0:
       region: &player_menu_0_region [10, 22, 18, 65] # Blank
@@ -479,10 +490,6 @@ blendamp:
     player_menu_7:
       region: *player_menu_0_region # Unhighlighted
       dest: "titlebar.bmp"
-
-    eq_handle:
-      region: &eq_handle_region [22, 179, 33, 190]
-      dest: "eqmain.bmp"
 
     # 91.png:
     pl_scroll_bar_pressed:
@@ -519,12 +526,6 @@ blendamp:
       dest: "monoster.bmp"
 
     # TODO: separate across separate layers
-    eq_onauto:
-      region: &eq_onauto_region [14, 134, 72, 146]
-      dest: "eqmain.bmp"
-    eq_onauto_enabled:
-      region: *eq_onauto_region
-      dest: "eqmain.bmp"
     eq_onauto_pressed:
       region: *eq_onauto_region
       dest: "eqmain.bmp"
@@ -657,8 +658,8 @@ winamp:
   balance.bmp:
     resolution: [68, 433]
 
-    player_pan_handle: [0, 422, 14, 433]
-    player_pan_handle_pressed: [15, 422, 29, 433]
+    player_pan_handle: [15, 422, 29, 433]
+    player_pan_handle_pressed: [0, 422, 14, 433]
 
     player_pan_fader_bg_0: [9, 0, 47, 13]
     player_pan_fader_bg_1: [9, 15, 47, 28]
@@ -839,8 +840,8 @@ winamp:
     resolution: [68, 433]
     vol_frame_res: [68, 13]
     vertical_gap: 2
-    vol_handle: [0, 422, 14, 433]
-    vol_handle_pressed: [15, 422, 29, 433]
+    vol_handle: [15, 422, 29, 433]
+    vol_handle_pressed: [0, 422, 14, 433]
     vol_fader_background_00: [0, 0, 68, 12]
     vol_fader_background_01: [0, 15, 68, 27]
     vol_fader_background_02: [0, 30, 68, 42]
