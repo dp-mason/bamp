@@ -40,8 +40,8 @@ for file_key, elems_dict in MAPPINGS["blendamp"].items():
                 target_regions, (region[0], region[1], area, f"{file_key} : {element}")
             )
 
-for reg in target_regions:
-    print(reg)
+for idx in range(0, len(target_regions)):
+    print(f"{idx}:", target_regions[idx])
 
-with open("NEW_winamp_skin_specification.yaml", "w") as newfile:
-    yaml.dump(MAPPINGS, newfile, default_flow_style=False)
+# with open("NEW_winamp_skin_specification.yaml", "w") as newfile:
+#     yaml.dump(MAPPINGS, newfile, default_flow_style=False)
