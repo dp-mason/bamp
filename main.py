@@ -102,7 +102,8 @@ def blendamp_to_winamp():
             # havent designed every single element
             im.alpha_composite(Image.open(curr_abs_fp))
 
-            im.save(os.path.join(WINAMP_DIR, bamp_file_name))
+            # TODO: this is used to output the current composited image, add as option for debug or other purposes
+            # im.save(os.path.join(WINAMP_DIR, "COMPOSITED_"+bamp_file_name))
 
         for mapname, mapdata in mappings.items():
             # TODO: turn this loop body into a function that takes a source and dest image file paths and regions
