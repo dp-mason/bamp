@@ -1,0 +1,1779 @@
+blendamp:
+  00.png:
+    TODO_unknown_indicators_0:
+      dest: playpaus.bmp
+      region: &id028
+      - 24
+      - 28
+      - 27
+      - 37
+    eq_background:
+      dest: eqmain.bmp
+      region:
+      - 0
+      - 116
+      - 275
+      - 232
+    eq_viz_baseline:
+      dest: eqmain.bmp
+      region:
+      - 86
+      - 142
+      - 199
+      - 143
+    eq_viz_bg:
+      dest: eqmain.bmp
+      region:
+      - 86
+      - 133
+      - 199
+      - 152
+    main_background:
+      dest: main.bmp
+      region:
+      - 0
+      - 0
+      - 275
+      - 116
+    pl_bottom_left_menu:
+      dest: Pledit.bmp
+      region:
+      - 0
+      - 310
+      - 125
+      - 348
+    pl_bottom_right_menu:
+      dest: Pledit.bmp
+      region:
+      - 125
+      - 310
+      - 275
+      - 348
+    pl_repeated_left_sect:
+      dest: Pledit.bmp
+      region:
+      - 0
+      - 281
+      - 12
+      - 310
+    pl_repeated_right_sect:
+      dest: Pledit.bmp
+      region:
+      - 255
+      - 281
+      - 275
+      - 310
+    pl_repeated_top_sect:
+      dest: Pledit.bmp
+      region: &id030
+      - 25
+      - 232
+      - 50
+      - 252
+    pl_top_center:
+      dest: Pledit.bmp
+      region: &id010
+      - 87
+      - 232
+      - 187
+      - 252
+    pl_top_left_corner:
+      dest: Pledit.bmp
+      region: &id011
+      - 0
+      - 232
+      - 25
+      - 252
+  01.png:
+    eq_collapse_button_pressed:
+      dest: eq_ex.bmp
+      region: &id002
+      - 254
+      - 119
+      - 263
+      - 128
+    eq_collapsed:
+      dest: eq_ex.bmp
+      region: &id001
+      - 0
+      - 116
+      - 275
+      - 130
+    eq_collapsed_inactive:
+      dest: eq_ex.bmp
+      region: *id001
+    eq_exit_button_pressed:
+      dest: eq_ex.bmp
+      region:
+      - 264
+      - 119
+      - 273
+      - 128
+    eq_expand_button_pressed:
+      dest: eq_ex.bmp
+      region: *id002
+    eq_handle:
+      dest: eqmain.bmp
+      region: &id006
+      - 22
+      - 179
+      - 33
+      - 190
+    eq_onauto:
+      dest: eqmain.bmp
+      region: &id003
+      - 14
+      - 134
+      - 72
+      - 146
+    eq_onauto_enabled:
+      dest: eqmain.bmp
+      region: *id003
+    eq_presets:
+      dest: eqmain.bmp
+      region: &id007
+      - 217
+      - 134
+      - 261
+      - 146
+    eq_titlebar:
+      dest: eqmain.bmp
+      region: *id001
+    eq_titlebar_inactive:
+      dest: eqmain.bmp
+      region: *id001
+    pl_collapse_expand_button_pressed:
+      dest: Pledit.bmp
+      region:
+      - 254
+      - 235
+      - 263
+      - 244
+    pl_collapsed_bar_repeated:
+      dest: Pledit.bmp
+      region:
+      - 25
+      - 232
+      - 50
+      - 246
+    pl_scroll_bar:
+      dest: Pledit.bmp
+      region: &id009
+      - 260
+      - 292
+      - 268
+      - 310
+    pl_top_left_corner_collapsed:
+      dest: Pledit.bmp
+      region:
+      - 0
+      - 232
+      - 25
+      - 246
+    pl_top_right_corner:
+      dest: Pledit.bmp
+      region: &id012
+      - 250
+      - 232
+      - 275
+      - 252
+    pl_top_right_corner_collapsed:
+      dest: Pledit.bmp
+      region: &id004
+      - 225
+      - 232
+      - 275
+      - 246
+    pl_top_right_corner_collapsed_inactive:
+      dest: Pledit.bmp
+      region: *id004
+    play_status:
+      dest: playpaus.bmp
+      region: &id008
+      - 24
+      - 28
+      - 35
+      - 37
+    player_buttons:
+      dest: cbuttons.bmp
+      region: &id013
+      - 16
+      - 88
+      - 130
+      - 106
+    player_eject_button:
+      dest: cbuttons.bmp
+      region: &id014
+      - 136
+      - 89
+      - 158
+      - 105
+    player_eq_off:
+      dest: shufrep.bmp
+      region: &id015
+      - 219
+      - 58
+      - 242
+      - 70
+    player_mono_inactive:
+      dest: monoster.bmp
+      region: &id016
+      - 212
+      - 41
+      - 239
+      - 53
+    player_pan_handle:
+      dest: balance.bmp
+      region: &id017
+      - 189
+      - 58
+      - 203
+      - 69
+    player_pl_off:
+      dest: shufrep.bmp
+      region: &id018
+      - 242
+      - 58
+      - 265
+      - 70
+    player_rep_off:
+      dest: shufrep.bmp
+      region: &id019
+      - 210
+      - 89
+      - 238
+      - 104
+    player_shuf_off:
+      dest: shufrep.bmp
+      region: &id020
+      - 164
+      - 89
+      - 210
+      - 104
+    player_titlebar:
+      dest: titlebar.bmp
+      region: &id021
+      - 0
+      - 0
+      - 275
+      - 14
+    posbar_handle:
+      dest: posbar.bmp
+      region: &id022
+      - 233
+      - 72
+      - 262
+      - 82
+    vol_handle:
+      dest: volume.bmp
+      region: &id023
+      - 158
+      - 58
+      - 172
+      - 69
+  02.png:
+    eq_collapsed_exit_button:
+      dest: eq_ex.bmp
+      region: &id005
+      - 264
+      - 119
+      - 273
+      - 128
+    eq_exit_button:
+      dest: eqmain.bmp
+      region: *id005
+    eq_exit_button_pressed:
+      dest: eqmain.bmp
+      region: *id005
+    eq_handle_pressed:
+      dest: eqmain.bmp
+      region: *id006
+    eq_onauto_enabled_pressed:
+      dest: eqmain.bmp
+      region: *id003
+    eq_onauto_pressed:
+      dest: eqmain.bmp
+      region: *id003
+    eq_presets_pressed:
+      dest: eqmain.bmp
+      region: *id007
+    pause_status:
+      dest: playpaus.bmp
+      region: *id008
+    pl_collapse_button_pressed:
+      dest: Pledit.bmp
+      region:
+      - 254
+      - 235
+      - 263
+      - 244
+    pl_exit_button_pressed:
+      dest: Pledit.bmp
+      region:
+      - 264
+      - 235
+      - 273
+      - 244
+    pl_scroll_bar_pressed:
+      dest: Pledit.bmp
+      region: *id009
+    pl_top_center_inactive:
+      dest: Pledit.bmp
+      region: *id010
+    pl_top_left_corner_inactive:
+      dest: Pledit.bmp
+      region: *id011
+    pl_top_right_corner_inactive:
+      dest: Pledit.bmp
+      region: *id012
+    player_buttons_pressed:
+      dest: cbuttons.bmp
+      region: *id013
+    player_eject_button_pressed:
+      dest: cbuttons.bmp
+      region: *id014
+    player_eq_off_pressed:
+      dest: shufrep.bmp
+      region: *id015
+    player_mono_active:
+      dest: monoster.bmp
+      region: *id016
+    player_pan_handle_pressed:
+      dest: balance.bmp
+      region: *id017
+    player_pl_off_pressed:
+      dest: shufrep.bmp
+      region: *id018
+    player_rep_off_pressed:
+      dest: shufrep.bmp
+      region: *id019
+    player_shuf_on:
+      dest: shufrep.bmp
+      region: *id020
+    player_stereo_active:
+      dest: monoster.bmp
+      region: &id033
+      - 239
+      - 41
+      - 268
+      - 53
+    player_titlebar_inactive:
+      dest: titlebar.bmp
+      region: *id021
+    posbar_handle_pressed:
+      dest: posbar.bmp
+      region: *id022
+    vol_handle_pressed:
+      dest: volume.bmp
+      region: *id023
+  03.png:
+    player_eq_on:
+      dest: shufrep.bmp
+      region: *id015
+    player_pl_on:
+      dest: shufrep.bmp
+      region: *id018
+    player_rep_on:
+      dest: shufrep.bmp
+      region: *id019
+    player_titlebar_condensed:
+      dest: titlebar.bmp
+      region: *id021
+    stop_status:
+      dest: playpaus.bmp
+      region: *id008
+  04.png:
+    player_eq_on_pressed:
+      dest: shufrep.bmp
+      region: *id015
+    player_pl_on_pressed:
+      dest: shufrep.bmp
+      region: *id018
+    player_rep_on_pressed:
+      dest: shufrep.bmp
+      region: *id019
+    player_titlebar_condensed_inactive:
+      dest: titlebar.bmp
+      region: *id021
+  05.png:
+    player_titlebar_collapse:
+      dest: titlebar.bmp
+      region: &id024
+      - 254
+      - 3
+      - 263
+      - 12
+    player_titlebar_exit:
+      dest: titlebar.bmp
+      region: &id025
+      - 264
+      - 3
+      - 273
+      - 12
+    player_titlebar_menu:
+      dest: titlebar.bmp
+      region: &id026
+      - 6
+      - 3
+      - 15
+      - 12
+    player_titlebar_minimize:
+      dest: titlebar.bmp
+      region: &id027
+      - 244
+      - 3
+      - 253
+      - 12
+  06.png:
+    player_titlebar_collapse_pressed:
+      dest: titlebar.bmp
+      region: *id024
+    player_titlebar_exit_pressed:
+      dest: titlebar.bmp
+      region: *id025
+    player_titlebar_menu_pressed:
+      dest: titlebar.bmp
+      region: *id026
+    player_titlebar_minimize_pressed:
+      dest: titlebar.bmp
+      region: *id027
+  07.png:
+    player_expand:
+      dest: titlebar.bmp
+      region: *id024
+  08.png:
+    player_expand_pressed:
+      dest: titlebar.bmp
+      region: *id024
+  70.png:
+    TODO_unknown_indicators_1:
+      dest: playpaus.bmp
+      region: *id028
+    eq_fader_background_00:
+      dest: eqmain.bmp
+      region: &id029
+      - 21
+      - 154
+      - 35
+      - 217
+    eq_fader_background_01:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_02:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_03:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_04:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_05:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_06:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_07:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_08:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_09:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_10:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_11:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_12:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_13:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_14:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_15:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_16:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_17:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_18:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_19:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_20:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_21:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_22:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_23:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_24:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_25:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_26:
+      dest: eqmain.bmp
+      region: *id029
+    eq_fader_background_27:
+      dest: eqmain.bmp
+      region: *id029
+    pl_repeated_top_sect_inactive:
+      dest: Pledit.bmp
+      region: *id030
+    player_menu_0:
+      dest: titlebar.bmp
+      region: &id031
+      - 10
+      - 22
+      - 18
+      - 65
+    player_menu_1:
+      dest: titlebar.bmp
+      region: *id031
+    player_menu_2:
+      dest: titlebar.bmp
+      region: *id031
+    player_menu_3:
+      dest: titlebar.bmp
+      region: *id031
+    player_menu_4:
+      dest: titlebar.bmp
+      region: *id031
+    player_menu_5:
+      dest: titlebar.bmp
+      region: *id031
+    player_menu_7:
+      dest: titlebar.bmp
+      region: *id031
+    player_pan_fader_bg_0:
+      dest: balance.bmp
+      region: &id032
+      - 177
+      - 57
+      - 215
+      - 70
+    player_pan_fader_bg_1:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_10:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_11:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_12:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_13:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_14:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_15:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_16:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_17:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_18:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_19:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_2:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_20:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_21:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_22:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_23:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_24:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_25:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_26:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_27:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_3:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_4:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_5:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_6:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_7:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_8:
+      dest: balance.bmp
+      region: *id032
+    player_pan_fader_bg_9:
+      dest: balance.bmp
+      region: *id032
+    player_stereo_inactive:
+      dest: monoster.bmp
+      region: *id033
+    posbar_bg:
+      dest: posbar.bmp
+      region:
+      - 16
+      - 72
+      - 264
+      - 82
+    vol_fader_background_00:
+      dest: volume.bmp
+      region: &id034
+      - 107
+      - 57
+      - 175
+      - 70
+    vol_fader_background_01:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_02:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_03:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_04:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_05:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_06:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_07:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_08:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_09:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_10:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_11:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_12:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_13:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_14:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_15:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_16:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_17:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_18:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_19:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_20:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_21:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_22:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_23:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_24:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_25:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_26:
+      dest: volume.bmp
+      region: *id034
+    vol_fader_background_27:
+      dest: volume.bmp
+      region: *id034
+  text.png:
+    eq_viz_spectrum:
+      dest: eqmain.bmp
+      region:
+      - 100
+      - 133
+      - 101
+      - 152
+    nums:
+      dest: nums_ex.bmp
+      region:
+      - 0
+      - 19
+      - 108
+      - 32
+    text:
+      dest: text.bmp
+      region:
+      - 0
+      - 0
+      - 155
+      - 18
+winamp:
+  AVS.bmp:
+    resolution:
+    - 97
+    - 188
+  Pledit.bmp:
+    expanded_bottom_sect:
+    - 205
+    - 0
+    - 280
+    - 38
+    pl_bottom_left_menu:
+    - 0
+    - 72
+    - 125
+    - 110
+    pl_bottom_right_menu:
+    - 126
+    - 72
+    - 275
+    - 110
+    pl_collapse_button_pressed:
+    - 62
+    - 42
+    - 71
+    - 51
+    pl_collapse_expand_button_pressed:
+    - 150
+    - 42
+    - 159
+    - 51
+    pl_collapsed_bar_repeated:
+    - 72
+    - 57
+    - 97
+    - 71
+    pl_exit_button_pressed:
+    - 52
+    - 42
+    - 61
+    - 51
+    pl_repeated_bottom_sect:
+    - 179
+    - 0
+    - 204
+    - 38
+    pl_repeated_left_sect:
+    - 0
+    - 42
+    - 12
+    - 71
+    pl_repeated_right_sect:
+    - 31
+    - 42
+    - 51
+    - 71
+    pl_repeated_top_sect:
+    - 127
+    - 0
+    - 152
+    - 20
+    pl_repeated_top_sect_inactive:
+    - 127
+    - 21
+    - 152
+    - 41
+    pl_scroll_bar:
+    - 52
+    - 53
+    - 60
+    - 71
+    pl_scroll_bar_pressed:
+    - 61
+    - 53
+    - 69
+    - 71
+    pl_top_center:
+    - 26
+    - 0
+    - 126
+    - 20
+    pl_top_center_inactive:
+    - 26
+    - 21
+    - 126
+    - 41
+    pl_top_left_corner:
+    - 0
+    - 0
+    - 25
+    - 20
+    pl_top_left_corner_collapsed:
+    - 72
+    - 42
+    - 97
+    - 56
+    pl_top_left_corner_inactive:
+    - 0
+    - 21
+    - 25
+    - 41
+    pl_top_right_corner:
+    - 153
+    - 0
+    - 178
+    - 20
+    pl_top_right_corner_collapsed:
+    - 99
+    - 42
+    - 149
+    - 56
+    pl_top_right_corner_collapsed_inactive:
+    - 99
+    - 57
+    - 149
+    - 71
+    pl_top_right_corner_inactive:
+    - 153
+    - 21
+    - 178
+    - 41
+    resolution:
+    - 280
+    - 186
+  balance.bmp:
+    player_pan_fader_bg_0:
+    - 9
+    - 0
+    - 47
+    - 13
+    player_pan_fader_bg_1:
+    - 9
+    - 15
+    - 47
+    - 28
+    player_pan_fader_bg_10:
+    - 9
+    - 150
+    - 47
+    - 163
+    player_pan_fader_bg_11:
+    - 9
+    - 165
+    - 47
+    - 178
+    player_pan_fader_bg_12:
+    - 9
+    - 180
+    - 47
+    - 193
+    player_pan_fader_bg_13:
+    - 9
+    - 195
+    - 47
+    - 208
+    player_pan_fader_bg_14:
+    - 9
+    - 210
+    - 47
+    - 223
+    player_pan_fader_bg_15:
+    - 9
+    - 225
+    - 47
+    - 238
+    player_pan_fader_bg_16:
+    - 9
+    - 240
+    - 47
+    - 253
+    player_pan_fader_bg_17:
+    - 9
+    - 255
+    - 47
+    - 268
+    player_pan_fader_bg_18:
+    - 9
+    - 270
+    - 47
+    - 283
+    player_pan_fader_bg_19:
+    - 9
+    - 285
+    - 47
+    - 298
+    player_pan_fader_bg_2:
+    - 9
+    - 30
+    - 47
+    - 43
+    player_pan_fader_bg_20:
+    - 9
+    - 300
+    - 47
+    - 313
+    player_pan_fader_bg_21:
+    - 9
+    - 315
+    - 47
+    - 328
+    player_pan_fader_bg_22:
+    - 9
+    - 330
+    - 47
+    - 343
+    player_pan_fader_bg_23:
+    - 9
+    - 345
+    - 47
+    - 358
+    player_pan_fader_bg_24:
+    - 9
+    - 360
+    - 47
+    - 373
+    player_pan_fader_bg_25:
+    - 9
+    - 375
+    - 47
+    - 388
+    player_pan_fader_bg_26:
+    - 9
+    - 390
+    - 47
+    - 403
+    player_pan_fader_bg_27:
+    - 9
+    - 405
+    - 47
+    - 418
+    player_pan_fader_bg_3:
+    - 9
+    - 45
+    - 47
+    - 58
+    player_pan_fader_bg_4:
+    - 9
+    - 60
+    - 47
+    - 73
+    player_pan_fader_bg_5:
+    - 9
+    - 75
+    - 47
+    - 88
+    player_pan_fader_bg_6:
+    - 9
+    - 90
+    - 47
+    - 103
+    player_pan_fader_bg_7:
+    - 9
+    - 105
+    - 47
+    - 118
+    player_pan_fader_bg_8:
+    - 9
+    - 120
+    - 47
+    - 133
+    player_pan_fader_bg_9:
+    - 9
+    - 135
+    - 47
+    - 148
+    player_pan_handle:
+    - 15
+    - 422
+    - 29
+    - 433
+    player_pan_handle_pressed:
+    - 0
+    - 422
+    - 14
+    - 433
+    resolution:
+    - 68
+    - 433
+  cbuttons.bmp:
+    player_buttons:
+    - 0
+    - 0
+    - 114
+    - 18
+    player_buttons_pressed:
+    - 0
+    - 18
+    - 114
+    - 35
+    player_eject_button:
+    - 114
+    - 0
+    - 135
+    - 16
+    player_eject_button_pressed:
+    - 114
+    - 16
+    - 135
+    - 32
+    resolution:
+    - 136
+    - 36
+  eq_ex.bmp:
+    eq_collapse_button_pressed:
+    - 1
+    - 38
+    - 10
+    - 47
+    eq_collapsed:
+    - 0
+    - 0
+    - 275
+    - 14
+    eq_collapsed_exit_button:
+    - 11
+    - 38
+    - 20
+    - 47
+    eq_collapsed_inactive:
+    - 0
+    - 15
+    - 275
+    - 29
+    eq_exit_button_pressed:
+    - 11
+    - 47
+    - 20
+    - 56
+    eq_expand_button_pressed:
+    - 1
+    - 47
+    - 10
+    - 56
+    resolution:
+    - 275
+    - 82
+  eqmain.bmp:
+    eq_background:
+    - 0
+    - 0
+    - 275
+    - 116
+    eq_exit_button:
+    - 0
+    - 116
+    - 9
+    - 125
+    eq_exit_button_pressed:
+    - 0
+    - 125
+    - 9
+    - 134
+    eq_fader_background_00:
+    - 13
+    - 164
+    - 27
+    - 227
+    eq_fader_background_01:
+    - 28
+    - 164
+    - 42
+    - 227
+    eq_fader_background_02:
+    - 43
+    - 164
+    - 57
+    - 227
+    eq_fader_background_03:
+    - 58
+    - 164
+    - 72
+    - 227
+    eq_fader_background_04:
+    - 73
+    - 164
+    - 87
+    - 227
+    eq_fader_background_05:
+    - 88
+    - 164
+    - 102
+    - 227
+    eq_fader_background_06:
+    - 103
+    - 164
+    - 117
+    - 227
+    eq_fader_background_07:
+    - 118
+    - 164
+    - 132
+    - 227
+    eq_fader_background_08:
+    - 133
+    - 164
+    - 147
+    - 227
+    eq_fader_background_09:
+    - 148
+    - 164
+    - 162
+    - 227
+    eq_fader_background_10:
+    - 163
+    - 164
+    - 177
+    - 227
+    eq_fader_background_11:
+    - 178
+    - 164
+    - 192
+    - 227
+    eq_fader_background_12:
+    - 193
+    - 164
+    - 207
+    - 227
+    eq_fader_background_13:
+    - 208
+    - 164
+    - 222
+    - 227
+    eq_fader_background_14:
+    - 13
+    - 229
+    - 27
+    - 292
+    eq_fader_background_15:
+    - 28
+    - 229
+    - 42
+    - 292
+    eq_fader_background_16:
+    - 43
+    - 229
+    - 57
+    - 292
+    eq_fader_background_17:
+    - 58
+    - 229
+    - 72
+    - 292
+    eq_fader_background_18:
+    - 73
+    - 229
+    - 87
+    - 292
+    eq_fader_background_19:
+    - 88
+    - 229
+    - 102
+    - 292
+    eq_fader_background_20:
+    - 103
+    - 229
+    - 117
+    - 292
+    eq_fader_background_21:
+    - 118
+    - 229
+    - 132
+    - 292
+    eq_fader_background_22:
+    - 133
+    - 229
+    - 147
+    - 292
+    eq_fader_background_23:
+    - 148
+    - 229
+    - 162
+    - 292
+    eq_fader_background_24:
+    - 163
+    - 229
+    - 177
+    - 292
+    eq_fader_background_25:
+    - 178
+    - 229
+    - 192
+    - 292
+    eq_fader_background_26:
+    - 193
+    - 229
+    - 207
+    - 292
+    eq_fader_background_27:
+    - 208
+    - 229
+    - 222
+    - 292
+    eq_handle:
+    - 0
+    - 164
+    - 11
+    - 175
+    eq_handle_pressed:
+    - 0
+    - 176
+    - 11
+    - 187
+    eq_onauto:
+    - 10
+    - 119
+    - 68
+    - 131
+    eq_onauto_enabled:
+    - 69
+    - 119
+    - 128
+    - 131
+    eq_onauto_enabled_pressed:
+    - 187
+    - 119
+    - 245
+    - 131
+    eq_onauto_pressed:
+    - 128
+    - 119
+    - 186
+    - 131
+    eq_presets:
+    - 224
+    - 164
+    - 268
+    - 176
+    eq_presets_pressed:
+    - 224
+    - 176
+    - 268
+    - 188
+    eq_titlebar:
+    - 0
+    - 134
+    - 275
+    - 148
+    eq_titlebar_inactive:
+    - 0
+    - 149
+    - 275
+    - 163
+    eq_viz_baseline:
+    - 0
+    - 314
+    - 113
+    - 315
+    eq_viz_bg:
+    - 0
+    - 294
+    - 113
+    - 313
+    eq_viz_spectrum:
+    - 115
+    - 294
+    - 116
+    - 313
+    resolution:
+    - 275
+    - 315
+  main.bmp:
+    main_background:
+    - 0
+    - 0
+    - 275
+    - 116
+    resolution:
+    - 275
+    - 116
+  mb.bmp:
+    resolution:
+    - 242
+    - 119
+  monoster.bmp:
+    player_mono_active:
+    - 29
+    - 0
+    - 56
+    - 12
+    player_mono_inactive:
+    - 29
+    - 12
+    - 56
+    - 24
+    player_stereo_active:
+    - 0
+    - 0
+    - 29
+    - 12
+    player_stereo_inactive:
+    - 0
+    - 12
+    - 29
+    - 24
+    resolution:
+    - 58
+    - 24
+  nums_ex.bmp:
+    nums:
+    - 0
+    - 0
+    - 108
+    - 13
+    resolution:
+    - 108
+    - 13
+  playpaus.bmp:
+    TODO_unknown_indicators_0:
+    - 36
+    - 0
+    - 39
+    - 9
+    TODO_unknown_indicators_1:
+    - 39
+    - 0
+    - 42
+    - 9
+    pause_status:
+    - 9
+    - 0
+    - 18
+    - 9
+    play_status:
+    - 1
+    - 0
+    - 9
+    - 9
+    resolution:
+    - 42
+    - 9
+    stop_status:
+    - 18
+    - 0
+    - 27
+    - 9
+  posbar.bmp:
+    posbar_bg:
+    - 0
+    - 0
+    - 247
+    - 10
+    posbar_handle:
+    - 248
+    - 0
+    - 277
+    - 10
+    posbar_handle_pressed:
+    - 278
+    - 0
+    - 307
+    - 10
+    resolution:
+    - 307
+    - 10
+  shufrep.bmp:
+    player_eq_off:
+    - 0
+    - 61
+    - 22
+    - 72
+    player_eq_off_pressed:
+    - 46
+    - 61
+    - 68
+    - 72
+    player_eq_on:
+    - 0
+    - 73
+    - 23
+    - 85
+    player_eq_on_pressed:
+    - 46
+    - 73
+    - 68
+    - 85
+    player_pl_off:
+    - 23
+    - 61
+    - 46
+    - 73
+    player_pl_off_pressed:
+    - 69
+    - 61
+    - 92
+    - 73
+    player_pl_on:
+    - 23
+    - 73
+    - 46
+    - 85
+    player_pl_on_pressed:
+    - 69
+    - 73
+    - 92
+    - 85
+    player_rep_off:
+    - 0
+    - 0
+    - 27
+    - 14
+    player_rep_off_pressed:
+    - 0
+    - 0
+    - 27
+    - 14
+    player_rep_on:
+    - 0
+    - 30
+    - 27
+    - 44
+    player_rep_on_pressed:
+    - 0
+    - 45
+    - 27
+    - 59
+    player_shuf_off:
+    - 28
+    - 0
+    - 73
+    - 14
+    player_shuf_on:
+    - 28
+    - 30
+    - 73
+    - 44
+    resolution:
+    - 92
+    - 85
+  text.bmp:
+    resolution:
+    - 155
+    - 18
+    text:
+    - 0
+    - 0
+    - 155
+    - 18
+  titlebar.bmp:
+    player_expand:
+    - 0
+    - 27
+    - 9
+    - 36
+    player_expand_pressed:
+    - 9
+    - 27
+    - 18
+    - 36
+    player_menu_0:
+    - 312
+    - 0
+    - 320
+    - 43
+    player_menu_1:
+    - 304
+    - 44
+    - 312
+    - 87
+    player_menu_2:
+    - 312
+    - 44
+    - 320
+    - 87
+    player_menu_3:
+    - 320
+    - 44
+    - 328
+    - 87
+    player_menu_4:
+    - 328
+    - 44
+    - 336
+    - 87
+    player_menu_5:
+    - 336
+    - 44
+    - 344
+    - 87
+    player_menu_7:
+    - 304
+    - 0
+    - 312
+    - 43
+    player_titlebar:
+    - 27
+    - 0
+    - 302
+    - 14
+    player_titlebar_collapse:
+    - 0
+    - 18
+    - 9
+    - 27
+    player_titlebar_collapse_pressed:
+    - 9
+    - 18
+    - 18
+    - 27
+    player_titlebar_condensed:
+    - 27
+    - 29
+    - 302
+    - 43
+    player_titlebar_condensed_inactive:
+    - 27
+    - 42
+    - 302
+    - 56
+    player_titlebar_exit:
+    - 18
+    - 0
+    - 27
+    - 9
+    player_titlebar_exit_pressed:
+    - 18
+    - 9
+    - 27
+    - 18
+    player_titlebar_inactive:
+    - 27
+    - 15
+    - 302
+    - 29
+    player_titlebar_menu:
+    - 0
+    - 0
+    - 9
+    - 9
+    player_titlebar_menu_pressed:
+    - 0
+    - 9
+    - 9
+    - 18
+    player_titlebar_minimize:
+    - 9
+    - 0
+    - 18
+    - 9
+    player_titlebar_minimize_pressed:
+    - 9
+    - 9
+    - 18
+    - 18
+    resolution:
+    - 344
+    - 87
+  volume.bmp:
+    resolution:
+    - 68
+    - 433
+    vertical_gap: 2
+    vol_fader_background_00:
+    - 0
+    - 0
+    - 68
+    - 12
+    vol_fader_background_01:
+    - 0
+    - 15
+    - 68
+    - 27
+    vol_fader_background_02:
+    - 0
+    - 30
+    - 68
+    - 42
+    vol_fader_background_03:
+    - 0
+    - 45
+    - 68
+    - 57
+    vol_fader_background_04:
+    - 0
+    - 60
+    - 68
+    - 72
+    vol_fader_background_05:
+    - 0
+    - 75
+    - 68
+    - 87
+    vol_fader_background_06:
+    - 0
+    - 90
+    - 68
+    - 102
+    vol_fader_background_07:
+    - 0
+    - 105
+    - 68
+    - 117
+    vol_fader_background_08:
+    - 0
+    - 120
+    - 68
+    - 132
+    vol_fader_background_09:
+    - 0
+    - 135
+    - 68
+    - 147
+    vol_fader_background_10:
+    - 0
+    - 150
+    - 68
+    - 162
+    vol_fader_background_11:
+    - 0
+    - 165
+    - 68
+    - 177
+    vol_fader_background_12:
+    - 0
+    - 180
+    - 68
+    - 192
+    vol_fader_background_13:
+    - 0
+    - 195
+    - 68
+    - 207
+    vol_fader_background_14:
+    - 0
+    - 210
+    - 68
+    - 222
+    vol_fader_background_15:
+    - 0
+    - 225
+    - 68
+    - 237
+    vol_fader_background_16:
+    - 0
+    - 240
+    - 68
+    - 252
+    vol_fader_background_17:
+    - 0
+    - 255
+    - 68
+    - 267
+    vol_fader_background_18:
+    - 0
+    - 270
+    - 68
+    - 282
+    vol_fader_background_19:
+    - 0
+    - 285
+    - 68
+    - 297
+    vol_fader_background_20:
+    - 0
+    - 300
+    - 68
+    - 312
+    vol_fader_background_21:
+    - 0
+    - 315
+    - 68
+    - 327
+    vol_fader_background_22:
+    - 0
+    - 330
+    - 68
+    - 342
+    vol_fader_background_23:
+    - 0
+    - 345
+    - 68
+    - 357
+    vol_fader_background_24:
+    - 0
+    - 360
+    - 68
+    - 372
+    vol_fader_background_25:
+    - 0
+    - 375
+    - 68
+    - 387
+    vol_fader_background_26:
+    - 0
+    - 390
+    - 68
+    - 402
+    vol_fader_background_27:
+    - 0
+    - 405
+    - 68
+    - 417
+    vol_frame_res:
+    - 68
+    - 13
+    vol_handle:
+    - 15
+    - 422
+    - 29
+    - 433
+    vol_handle_pressed:
+    - 0
+    - 422
+    - 14
+    - 433

@@ -12,12 +12,6 @@ blendamp:
     eq_background:
       region: [0, 116, 275, 232]
       dest: "eqmain.bmp"
-    eq_viz_bg:
-      region: [86, 133, 199, 152]
-      dest: "eqmain.bmp"
-    eq_viz_baseline:
-      region: [86, 142, 199, 143]
-      dest: "eqmain.bmp"
 
     pl_top_center:
       region: &pl_top_center_region [87, 232, 187, 252]
@@ -31,6 +25,9 @@ blendamp:
     pl_top_left_corner:
       region: &pl_top_left_corner_region [0, 232, 25, 252]
       dest: "Pledit.bmp"
+    pl_top_right_corner:
+      region: &pl_top_right_corner_region [250, 232, 275, 252]
+      dest: "Pledit.bmp"
     pl_repeated_top_sect:
       region: &pl_repeated_top_sect_region [25, 232, 50, 252]
       dest: "Pledit.bmp"
@@ -41,20 +38,8 @@ blendamp:
       region: [255, 281, 275, 310]
       dest: "Pledit.bmp"
 
-    TODO_unknown_indicators_0:
-      region: &TODO_unknown_region [24, 28, 27, 37]
-      dest: "playpaus.bmp"
-
   # Animations
   70.png:
-    TODO_unknown_indicators_1:
-      region: *TODO_unknown_region
-      dest: "playpaus.bmp"
-
-    pl_repeated_top_sect_inactive:
-      region: *pl_repeated_top_sect_region
-      dest: "Pledit.bmp"
-
     posbar_bg:
       region: [16, 72, 264, 82]
       dest: "posbar.bmp"
@@ -343,28 +328,20 @@ blendamp:
 
   # placeholder
   01.png:
-    pl_top_right_corner:
-      region: &pl_top_right_corner_region [250, 232, 275, 252]
-      dest: "Pledit.bmp"
-
-    pl_top_left_corner_collapsed:
-      region: [0, 232, 25, 246]
-      dest: "Pledit.bmp"
-
-    pl_top_right_corner_collapsed:
-      region: &pl_top_right_corner_collapsed_region [225, 232, 275, 246]
-      dest: "Pledit.bmp"
-    pl_top_right_corner_collapsed_inactive:
-      region: *pl_top_right_corner_collapsed_region
-      dest: "Pledit.bmp"
-    pl_collapsed_bar_repeated:
-      region: [25, 232, 50, 246]
-      dest: "Pledit.bmp"
-    pl_collapse_expand_button_pressed:
-      region: [254, 235, 263, 244]
-      dest: "Pledit.bmp"
     pl_scroll_bar:
       region: &pl_scroll_bar_region [260, 292, 268, 310]
+      dest: "Pledit.bmp"
+    pl_top_left_corner_inactive:
+      region: *pl_top_left_corner_region
+      dest: "Pledit.bmp"
+    pl_top_right_corner_inactive:
+      region: *pl_top_right_corner_region
+      dest: "Pledit.bmp"
+    pl_repeated_top_sect_inactive:
+      region: *pl_repeated_top_sect_region
+      dest: "Pledit.bmp"
+    pl_top_center_inactive:
+      region: *pl_top_center_region
       dest: "Pledit.bmp"
 
     eq_presets:
@@ -373,24 +350,9 @@ blendamp:
     eq_titlebar:
       region: &eq_titlebar_region [0, 116, 275, 130]
       dest: "eqmain.bmp"
-    eq_titlebar_inactive:
-      region: *eq_titlebar_region
+    eq_viz_bg:
+      region: [86, 133, 199, 152]
       dest: "eqmain.bmp"
-    eq_collapsed:
-      region: *eq_titlebar_region
-      dest: "eq_ex.bmp"
-    eq_collapsed_inactive:
-      region: *eq_titlebar_region
-      dest: "eq_ex.bmp"
-    eq_exit_button_pressed:
-      region: [264, 119, 273, 128]
-      dest: "eq_ex.bmp"
-    eq_expand_button_pressed:
-      region: &eq_collapse_button_region [254, 119, 263, 128]
-      dest: "eq_ex.bmp"
-    eq_collapse_button_pressed:
-      region: *eq_collapse_button_region
-      dest: "eq_ex.bmp"
 
     posbar_handle:
       region: &posbar_handle_region [233, 72, 262, 82]
@@ -438,9 +400,6 @@ blendamp:
     eq_onauto:
       region: &eq_onauto_region [14, 134, 72, 146]
       dest: "eqmain.bmp"
-    eq_onauto_enabled:
-      region: *eq_onauto_region
-      dest: "eqmain.bmp"
 
   # Buttons and Handles
   # Buttons and Handles - Pressed
@@ -451,17 +410,17 @@ blendamp:
       region: *player_pl_region
       dest: "shufrep.bmp"
 
-    eq_exit_button:
-      region: &eq_exit_button_region [264, 119, 273, 128]
+    eq_titlebar_inactive:
+      region: *eq_titlebar_region
       dest: "eqmain.bmp"
-    eq_collapsed_exit_button:
-      region: *eq_exit_button_region
-      dest: "eq_ex.bmp"
-    pl_exit_button_pressed:
-      region: [264, 235, 273, 244]
+    pl_top_left_corner_collapsed:
+      region: [0, 232, 25, 246]
       dest: "Pledit.bmp"
-    pl_collapse_button_pressed:
-      region: [254, 235, 263, 244]
+    pl_collapsed_bar_repeated:
+      region: [25, 232, 50, 246]
+      dest: "Pledit.bmp"
+    pl_top_right_corner_collapsed:
+      region: &pl_top_right_corner_collapsed_region [225, 232, 275, 246]
       dest: "Pledit.bmp"
 
     # 91.png:
@@ -472,9 +431,6 @@ blendamp:
     posbar_handle_pressed:
       region: *posbar_handle_region
       dest: "posbar.bmp"
-    eq_handle_pressed:
-      region: *eq_handle_region
-      dest: "eqmain.bmp"
     player_pan_handle_pressed:
       region: *player_pan_handle_region
       dest: "balance.bmp"
@@ -487,56 +443,40 @@ blendamp:
     player_buttons_pressed:
       region: *player_buttons_region
       dest: "cbuttons.bmp"
-    eq_exit_button_pressed:
-      region: *eq_exit_button_region
-      dest: "eqmain.bmp"
-
     player_mono_active:
       region: *player_mono_region
       dest: "monoster.bmp"
     player_stereo_active:
       region: *player_stereo_region
       dest: "monoster.bmp"
-    pause_status:
-      region: *play_status_region
-      dest: "playpaus.bmp"
-
-    # TODO: separate across separate layers
-    eq_onauto_pressed:
-      region: *eq_onauto_region
-      dest: "eqmain.bmp"
-    eq_onauto_enabled_pressed:
-      region: *eq_onauto_region
-      dest: "eqmain.bmp"
-
-    eq_presets_pressed:
-      region: *eq_presets_region
-      dest: "eqmain.bmp"
-    pl_top_left_corner_inactive:
-      region: *pl_top_left_corner_region
-      dest: "Pledit.bmp"
-    pl_top_center_inactive:
-      region: *pl_top_center_region
-      dest: "Pledit.bmp"
-    pl_top_right_corner_inactive:
-      region: *pl_top_right_corner_region
-      dest: "Pledit.bmp"
-
     player_titlebar_inactive:
       region: *player_titlebar_region
       dest: "titlebar.bmp"
-
     player_shuf_on:
       region: *player_shuf_region
       dest: "shufrep.bmp"
-
     player_rep_off_pressed:
       region: *player_rep_region
       dest: "shufrep.bmp"
-
     player_eq_off_pressed:
       region: *player_eq_region
       dest: "shufrep.bmp"
+    stop_status:
+      region: *play_status_region
+      dest: "playpaus.bmp"
+
+    eq_onauto_pressed:
+      region: *eq_onauto_region
+      dest: "eqmain.bmp"
+    eq_presets_pressed:
+      region: *eq_presets_region
+      dest: "eqmain.bmp"
+    eq_viz_baseline:
+      region: [86, 142, 199, 143]
+      dest: "eqmain.bmp"
+    eq_handle_pressed:
+      region: *eq_handle_region
+      dest: "eqmain.bmp"
 
   03.png:
     player_titlebar_condensed:
@@ -551,9 +491,20 @@ blendamp:
     player_rep_on:
       region: *player_rep_region
       dest: "shufrep.bmp"
-    stop_status:
+    pause_status:
       region: *play_status_region
       dest: "playpaus.bmp"
+
+    eq_collapsed:
+      region: *eq_titlebar_region
+      dest: "eq_ex.bmp"
+    eq_onauto_enabled:
+      region: *eq_onauto_region
+      dest: "eqmain.bmp"
+
+    pl_top_right_corner_collapsed_inactive:
+      region: *pl_top_right_corner_collapsed_region
+      dest: "Pledit.bmp"
   04.png:
     player_titlebar_condensed_inactive:
       region: *player_titlebar_region
@@ -567,6 +518,23 @@ blendamp:
     player_rep_on_pressed:
       region: *player_rep_region
       dest: "shufrep.bmp"
+    TODO_unknown_indicators_0:
+      region: &TODO_unknown_region [24, 28, 27, 37]
+      dest: "playpaus.bmp"
+
+    eq_collapsed_inactive:
+      region: *eq_titlebar_region
+      dest: "eq_ex.bmp"
+    eq_onauto_enabled_pressed:
+      region: *eq_onauto_region
+      dest: "eqmain.bmp"
+
+    pl_exit_button_pressed:
+      region: [264, 235, 273, 244]
+      dest: "Pledit.bmp"
+    pl_collapse_button_pressed:
+      region: [254, 235, 263, 244]
+      dest: "Pledit.bmp"
   05.png:
     player_titlebar_exit:
       region: &player_titlebar_exit_region [264, 3, 273, 12]
@@ -580,6 +548,20 @@ blendamp:
     player_titlebar_minimize:
       region: &player_titlebar_minimize_region [244, 3, 253, 12]
       dest: "titlebar.bmp"
+    TODO_unknown_indicators_1:
+      region: *TODO_unknown_region
+      dest: "playpaus.bmp"
+
+    eq_exit_button:
+      region: &eq_exit_button_region [264, 119, 273, 128]
+      dest: "eqmain.bmp"
+    eq_expand_button_pressed:
+      region: &eq_collapse_button_region [254, 119, 263, 128]
+      dest: "eq_ex.bmp"
+
+    pl_collapse_expand_button_pressed:
+      region: [254, 235, 263, 244]
+      dest: "Pledit.bmp"
   06.png:
     player_titlebar_collapse_pressed:
       region: *player_titlebar_collapse_region
@@ -593,10 +575,21 @@ blendamp:
     player_titlebar_exit_pressed:
       region: *player_titlebar_exit_region
       dest: "titlebar.bmp"
+
+    eq_exit_button_pressed:
+      region: *eq_exit_button_region
+      dest: "eqmain.bmp"
+    eq_collapse_button_pressed:
+      region: *eq_collapse_button_region
+      dest: "eq_ex.bmp"
   07.png:
     player_expand:
       region: *player_titlebar_collapse_region
       dest: "titlebar.bmp"
+
+    eq_collapsed_exit_button:
+      region: *eq_exit_button_region
+      dest: "eq_ex.bmp"
   08.png:
     player_expand_pressed:
       region: *player_titlebar_collapse_region

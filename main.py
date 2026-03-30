@@ -52,6 +52,7 @@ def create_placeholder_image(img_path: str, res: tuple[int, int]):
 def blendamp_to_winamp():
 
     # clear WINAMP_DIR
+    # TODO: ask whether to delete, and add flag that overrides question
     if os.path.exists(WINAMP_DIR):
         for fn in os.listdir(WINAMP_DIR):
             if fn.endswith(".bmp") or fn.endswith(".png"):
@@ -118,7 +119,12 @@ def blendamp_to_winamp():
 
 def winamp_to_blendamp():
     print("winamp_to_blendamp is ACTIVE")
-    # Reverse the flow of the pairing dictionary
+
+    # Clear the blendamp diectory
+    # TODO: ask whether to delete, and add flag that overrides question
+    for map_fn in os.listdir(BLENDAMP_DIR):
+        if map_fn.endswith(".png"):
+            os.remove(os.path.join(BLENDAMP_DIR, map_fn))
 
     # Open and read the YAML file
     with open("winamp_skin_specification.yaml", "r") as file:
