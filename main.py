@@ -43,9 +43,15 @@ def paste_region_to_file(
     return
 
 
-def create_placeholder_image(img_path: str, res: tuple[int, int]):
+def create_placeholder_image(img_path: str, res: tuple[int, int], mode: str = "RGBA"):
     # create an new image and fill with magenta, which is the transparent color
-    winamp_img = Image.new("RGB", res, (255, 0, 255))
+    if mode == "RGBA":
+        winamp_img = Image.new("RGBA", res, (0, 0, 0, 0))
+    elif mode == "RGB":
+        winamp_img = Image.new("RGB", res, (255, 0, 255))
+    else:
+        os.error('Please supply "RGB" or "RGBA" as the mode')
+        exit(1)
     winamp_img.save(img_path)
 
 
@@ -71,7 +77,7 @@ def blendamp_to_winamp():
         if not os.path.exists(full_output_path):
             # get the resolution of this file from the CONFIG
             new_map_res = tuple(CONFIG["winamp"][filename]["resolution"])
-            create_placeholder_image(full_output_path, new_map_res)
+            create_placeholder_image(full_output_path, new_map_res, "RGB")
 
     im = None
 
@@ -133,7 +139,7 @@ def winamp_to_blendamp():
     for bamp_fn, mappings in CONFIG["blendamp"].items():
         # Create placeholder blendamp file
         full_blendamp_path: str = os.path.join(BLENDAMP_DIR, bamp_fn)
-        create_placeholder_image(full_blendamp_path, BLENDAMP_RES)
+        create_placeholder_image(full_blendamp_path, BLENDAMP_RES, "RGBA")
 
         for mapname, mapdata in mappings.items():
             winamp_file_name = mapdata["dest"]
