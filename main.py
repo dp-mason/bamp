@@ -1,6 +1,6 @@
 from PIL import Image
 from PIL.ImageFile import ImageFile as ImageFile
-from typing import List
+from typing import List, Tuple
 
 import numpy as np
 import yaml
@@ -10,7 +10,12 @@ import click
 
 # TODO: Create "region.txt" file to support transparency
 
+BLENDAMP_DIR = os.path.abspath("blendamp")
+BLENDAMP_RES = (275, 348)
+WINAMP_DIR = os.path.abspath("./winamp_skin")
 
+
+# TODO: Unused. Either call this function or delete it
 # takes a list of images and stacks them one on top of the other
 # with the first image in the list taking he back and the last being on top
 def composite_image_stack(image_filepaths: List[str]):
@@ -22,9 +27,29 @@ def composite_image_stack(image_filepaths: List[str]):
     return img
 
 
+# TODO: incomplete sketch
+def paste_region_to_file(
+    src: Image.Image,
+    src_region: tuple[float, float, float, float],
+    dest_output_path: str,
+    dest_region: tuple[int, int, int, int],
+):
+    out_img = Image.open(dest_output_path)
+    subsct_img = src.crop(src_region)
+
+    out_img.paste(subsct_img, dest_region[0:2])
+
+    out_img.save(dest_output_path, out_img.format)
+    return
+
+
+def create_placeholder_image(img_path: str, res: tuple[int, int]):
+    # create an new image and fill with magenta, which is the transparent color
+    winamp_img = Image.new("RGB", res, (255, 0, 255))
+    winamp_img.save(img_path)
+
+
 def blendamp_to_winamp():
-    BLENDAMP_DIR = os.path.abspath("blendamp")
-    WINAMP_DIR = os.path.abspath("./winamp_skin")
 
     # clear WINAMP_DIR
     if os.path.exists(WINAMP_DIR):
@@ -45,9 +70,7 @@ def blendamp_to_winamp():
         if not os.path.exists(full_output_path):
             # get the resolution of this file from the CONFIG
             new_map_res = tuple(CONFIG["winamp"][filename]["resolution"])
-            # create an new image and fill with magenta, which is the transparent color
-            winamp_img = Image.new("RGB", new_map_res, (255, 0, 255))
-            winamp_img.save(full_output_path)
+            create_placeholder_image(full_output_path, new_map_res)
 
     im = None
 
@@ -75,27 +98,22 @@ def blendamp_to_winamp():
             im.save(os.path.join(WINAMP_DIR, bamp_file_name))
 
         for mapname, mapdata in mappings.items():
+            # TODO: turn this loop body into a function that takes a source and dest image file paths and regions
             # capture the subsection of the image that represents a specific element
-            subsct_img = im.crop(tuple(mapdata["region"]))
 
             # check if destination winamp map exists
             winamp_file_name = mapdata["dest"]
             full_output_path: str = os.path.join(WINAMP_DIR, winamp_file_name)
+            input_region = tuple(mapdata["region"])
+            output_region = tuple(CONFIG["winamp"][winamp_file_name][mapname][0:2])
 
-            winamp_img = None
-
-            winamp_img = Image.open(full_output_path)
-
-            target_region = tuple(CONFIG["winamp"][winamp_file_name][mapname][0:2])
             try:
-                winamp_img.paste(subsct_img, target_region)
+                paste_region_to_file(im, input_region, full_output_path, output_region)
             except Exception as e:
                 os.error(
                     f"Error occurred while remapping {mapname} to {winamp_file_name}:{mapname} using"
-                    f"target region: {target_region}.\n\n{e}"
+                    f"target region: {output_region}.\n\n{e}"
                 )
-
-            winamp_img.save(full_output_path, "bmp")
 
 
 def winamp_to_blendamp():
@@ -107,18 +125,31 @@ def winamp_to_blendamp():
         CONFIG: dict = yaml.safe_load(file)
 
     for bamp_fn, mappings in CONFIG["blendamp"].items():
+        # Create placeholder blendamp file
+        full_blendamp_path: str = os.path.join(BLENDAMP_DIR, bamp_fn)
+        create_placeholder_image(full_blendamp_path, BLENDAMP_RES)
+
         for mapname, mapdata in mappings.items():
             winamp_file_name = mapdata["dest"]
-            tmp_region = CONFIG["winamp"][winamp_file_name][mapname]
-            CONFIG["winamp"][winamp_file_name][mapname] = {}
-            tmp_region = CONFIG["winamp"][winamp_file_name][mapname]["region"] = (
-                tmp_region
-            )
-            tmp_region = CONFIG["winamp"][winamp_file_name][mapname]["bamp_file"] = (
-                bamp_fn
-            )
+            full_winamp_path: str = os.path.join(WINAMP_DIR, winamp_file_name)
+            input_region = tuple(CONFIG["winamp"][winamp_file_name][mapname])
 
-            print(f"{mapname}\n\t", CONFIG["winamp"][winamp_file_name][mapname])
+            im = Image.open(full_winamp_path)
+            im_arr = np.array(im)
+            im.close()
+            im = Image.fromarray(im_arr).convert("RGB")
+
+            output_region = tuple(mapdata["region"])
+
+            try:
+                paste_region_to_file(
+                    im, input_region, full_blendamp_path, output_region
+                )
+            except Exception as e:
+                os.error(
+                    f"Error occurred while remapping {full_winamp_path}:{mapname} to {full_blendamp_path}:{mapname} using"
+                    f"target region: {output_region}.\n\n{e}"
+                )
 
     # Clear the to_blendamp diectory
     return
