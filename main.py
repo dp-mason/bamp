@@ -10,9 +10,7 @@ import click
 
 # TODO: Create "region.txt" file to support transparency
 
-BLENDAMP_DIR = os.path.abspath("blendamp")
 BLENDAMP_RES = (275, 348)
-WINAMP_DIR = os.path.abspath("./winamp_skin")
 
 
 # TODO: Unused. Either call this function or delete it
@@ -55,16 +53,16 @@ def create_placeholder_image(img_path: str, res: tuple[int, int], mode: str = "R
     winamp_img.save(img_path)
 
 
-def blendamp_to_winamp():
+def blendamp_to_winamp(winamp_dir, blendamp_dir):
 
-    # clear WINAMP_DIR
+    # clear winamp_dir
     # TODO: ask whether to delete, and add flag that overrides question
-    if os.path.exists(WINAMP_DIR):
-        for fn in os.listdir(WINAMP_DIR):
+    if os.path.exists(winamp_dir):
+        for fn in os.listdir(winamp_dir):
             if fn.endswith(".bmp") or fn.endswith(".png"):
-                os.remove(os.path.join(WINAMP_DIR, fn))
+                os.remove(os.path.join(winamp_dir, fn))
     else:
-        os.makedirs(WINAMP_DIR)
+        os.makedirs(winamp_dir)
 
     # Open and read the YAML file
     with open("winamp_skin_specification.yaml", "r") as file:
@@ -72,7 +70,7 @@ def blendamp_to_winamp():
 
     # Create empty placeholder winamp files
     for filename, f_md in CONFIG["winamp"].items():
-        full_output_path: str = os.path.join(WINAMP_DIR, filename)
+        full_output_path: str = os.path.join(winamp_dir, filename)
 
         if not os.path.exists(full_output_path):
             # get the resolution of this file from the CONFIG
@@ -82,7 +80,7 @@ def blendamp_to_winamp():
     im = None
 
     for bamp_file_name, mappings in CONFIG["blendamp"].items():
-        curr_abs_fp = os.path.join(BLENDAMP_DIR, bamp_file_name)
+        curr_abs_fp = os.path.join(blendamp_dir, bamp_file_name)
 
         if im is None:
             im = Image.open(curr_abs_fp)
@@ -103,7 +101,7 @@ def blendamp_to_winamp():
             im.alpha_composite(Image.open(curr_abs_fp))
 
             # TODO: this is used to output the current composited image, add as option for debug or other purposes
-            # im.save(os.path.join(WINAMP_DIR, "COMPOSITED_"+bamp_file_name))
+            # im.save(os.path.join(winamp_dir, "COMPOSITED_"+bamp_file_name))
 
         for mapname, mapdata in mappings.items():
             # TODO: turn this loop body into a function that takes a source and dest image file paths and regions
@@ -111,7 +109,7 @@ def blendamp_to_winamp():
 
             # check if destination winamp map exists
             winamp_file_name = mapdata["dest"]
-            full_output_path: str = os.path.join(WINAMP_DIR, winamp_file_name)
+            full_output_path: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(mapdata["region"])
             output_region = tuple(CONFIG["winamp"][winamp_file_name][mapname][0:2])
 
@@ -124,14 +122,14 @@ def blendamp_to_winamp():
                 )
 
 
-def winamp_to_blendamp():
+def winamp_to_blendamp(winamp_dir, blendamp_dir):
     print("winamp_to_blendamp is ACTIVE")
 
     # Clear the blendamp diectory
     # TODO: ask whether to delete, and add flag that overrides question
-    for map_fn in os.listdir(BLENDAMP_DIR):
+    for map_fn in os.listdir(blendamp_dir):
         if map_fn.endswith(".png"):
-            os.remove(os.path.join(BLENDAMP_DIR, map_fn))
+            os.remove(os.path.join(blendamp_dir, map_fn))
 
     # Open and read the YAML file
     with open("winamp_skin_specification.yaml", "r") as file:
@@ -139,12 +137,12 @@ def winamp_to_blendamp():
 
     for bamp_fn, mappings in CONFIG["blendamp"].items():
         # Create placeholder blendamp file
-        full_blendamp_path: str = os.path.join(BLENDAMP_DIR, bamp_fn)
+        full_blendamp_path: str = os.path.join(blendamp_dir, bamp_fn)
         create_placeholder_image(full_blendamp_path, BLENDAMP_RES, "RGBA")
 
         for mapname, mapdata in mappings.items():
             winamp_file_name = mapdata["dest"]
-            full_winamp_path: str = os.path.join(WINAMP_DIR, winamp_file_name)
+            full_winamp_path: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(CONFIG["winamp"][winamp_file_name][mapname])
 
             im = Image.open(full_winamp_path)
@@ -170,12 +168,14 @@ def winamp_to_blendamp():
 
 @click.command()
 @click.option("--to-winamp/--to-blendamp", default=True)
-def main(to_winamp):
+@click.option("--winamp-dir", default="winamp_skin")
+@click.option("--blendamp-dir", default="blendamp")
+def main(to_winamp, winamp_dir, blendamp_dir):
     print("Main")
     if to_winamp:
-        blendamp_to_winamp()
+        blendamp_to_winamp(winamp_dir, blendamp_dir)
     else:
-        winamp_to_blendamp()
+        winamp_to_blendamp(winamp_dir, blendamp_dir)
 
 
 if __name__ == "__main__":

@@ -164,7 +164,7 @@ blendamp:
     player_titlebar_inactive:
       region: *player_titlebar_region
       dest: "titlebar.bmp"
-    player_shuf_on:
+    player_shuf_off_pressed:
       region: *player_shuf_region
       dest: "shufrep.bmp"
     player_rep_off_pressed:
@@ -206,6 +206,9 @@ blendamp:
     player_mono_inactive:
       region: &player_mono_region [212, 41, 239, 53]
       dest: "monoster.bmp"
+    player_shuf_on:
+      region: *player_shuf_region
+      dest: "shufrep.bmp"
     pause_status:
       region: *play_status_region
       dest: "playpaus.bmp"
@@ -236,6 +239,9 @@ blendamp:
     player_mono_active:
       region: *player_mono_region
       dest: "monoster.bmp"
+    player_shuf_on_pressed:
+      region: *player_shuf_region
+      dest: "shufrep.bmp"
     TODO_unknown_indicators_0:
       region: &TODO_unknown_region [24, 28, 27, 37]
       dest: "playpaus.bmp"
@@ -651,7 +657,7 @@ winamp:
     pl_top_center: [26, 0, 126, 20]
     pl_top_center_inactive: [26, 21, 126, 41]
     pl_bottom_left_menu: [0, 72, 125, 110]
-    pl_bottom_right_menu: [126, 72, 275, 110]
+    pl_bottom_right_menu: [126, 72, 276, 110]
     pl_top_left_corner: [0, 0, 25, 20]
     pl_top_left_corner_inactive: [0, 21, 25, 41]
     pl_top_right_corner: [153, 0, 178, 20]
@@ -808,12 +814,14 @@ winamp:
     posbar_handle_pressed: [278, 0, 307, 10]
   shufrep.bmp:
     resolution: [92, 85]
-    player_shuf_off: [28, 0, 73, 14]
-    player_shuf_on: [28, 30, 73, 44]
-    player_rep_off: [0, 0, 27, 14]
-    player_rep_off_pressed: [0, 0, 27, 14]
-    player_rep_on: [0, 30, 27, 44]
-    player_rep_on_pressed: [0, 45, 27, 59]
+    player_shuf_off: [28, 0, 74, 15]
+    player_shuf_off_pressed: [28, 15, 74, 30]
+    player_shuf_on: [28, 30, 74, 45]
+    player_shuf_on_pressed: [28, 45, 74, 60]
+    player_rep_off: [0, 0, 27, 15]
+    player_rep_off_pressed: [0, 15, 28, 30]
+    player_rep_on: [0, 30, 28, 45]
+    player_rep_on_pressed: [0, 45, 28, 60]
     player_eq_off: [0, 61, 22, 72]
     player_eq_off_pressed: [46, 61, 68, 72]
     player_eq_on: [0, 73, 23, 85]

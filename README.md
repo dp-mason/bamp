@@ -9,6 +9,7 @@ Seamlessly design classic WinAmp skins with Blender.
   - playlist editor bottom right off by one?
   - player posbar is brighter in the round trip skin?
   - default player indicator missing/pink
+  - extended bottom section missing win->blend
 
 
 - define blendamp source layers and turn them into collections and view layers in the blender project file, use indirect or holdout or somthing
