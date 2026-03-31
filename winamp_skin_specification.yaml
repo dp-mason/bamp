@@ -11,6 +11,12 @@ blendamp:
     posbar_bg:
       region: [16, 72, 264, 82]
       dest: "posbar.bmp"
+    status_left_border:
+      region: [24, 28, 26, 37]
+      dest: "playpaus.bmp"
+    status_left_border_2:
+      region: [26, 28, 28, 37]
+      dest: "playpaus.bmp"
 
     eq_background:
       region: [0, 116, 275, 232]
@@ -275,12 +281,21 @@ blendamp:
     TODO_unknown_indicators_1:
       region: *TODO_unknown_region
       dest: "playpaus.bmp"
+    player_collapsed_posbar:
+      region: [226, 4, 243, 11]
+      dest: "titlebar.bmp"
 
     eq_exit_button:
       region: &eq_exit_button_region [264, 119, 273, 128]
       dest: "eqmain.bmp"
     eq_expand_button_pressed:
       region: &eq_collapse_button_region [254, 119, 263, 128]
+      dest: "eq_ex.bmp"
+    eq_collapsed_volume_handle_0:
+      region: &eq_collapsed_volume_handle_region [85, 120, 88, 127]
+      dest: "eq_ex.bmp"
+    eq_collapsed_pan_handle_0:
+      region: &eq_collapsed_pan_handle_region [167, 120, 170, 127]
       dest: "eq_ex.bmp"
 
     pl_collapse_expand_button_pressed:
@@ -299,12 +314,21 @@ blendamp:
     player_titlebar_exit_pressed:
       region: *player_titlebar_exit_region
       dest: "titlebar.bmp"
+    player_collapsed_posbar_handle_0:
+      region: &player_collapsed_posbar_handle_region [233, 4, 236, 11]
+      dest: "titlebar.bmp"
 
     eq_exit_button_pressed:
       region: *eq_exit_button_region
       dest: "eqmain.bmp"
     eq_collapse_button_pressed:
       region: *eq_collapse_button_region
+      dest: "eq_ex.bmp"
+    eq_collapsed_volume_handle_1:
+      region: *eq_collapsed_volume_handle_region
+      dest: "eq_ex.bmp"
+    eq_collapsed_pan_handle_1:
+      region: *eq_collapsed_pan_handle_region
       dest: "eq_ex.bmp"
   07.png:
     player_expand:
@@ -314,9 +338,22 @@ blendamp:
     eq_collapsed_exit_button:
       region: *eq_exit_button_region
       dest: "eq_ex.bmp"
+    eq_collapsed_volume_handle_2:
+      region: *eq_collapsed_volume_handle_region
+      dest: "eq_ex.bmp"
+    eq_collapsed_pan_handle_2:
+      region: *eq_collapsed_pan_handle_region
+      dest: "eq_ex.bmp"
   08.png:
     player_expand_pressed:
       region: *player_titlebar_collapse_region
+      dest: "titlebar.bmp"
+    player_collapsed_posbar_handle_1:
+      region: *player_collapsed_posbar_handle_region
+      dest: "titlebar.bmp"
+  09.png:
+    player_collapsed_posbar_handle_2:
+      region: *player_collapsed_posbar_handle_region
       dest: "titlebar.bmp"
 
   # Animations
@@ -725,6 +762,14 @@ winamp:
     eq_expand_button_pressed: [1, 47, 10, 56]
     eq_collapse_button_pressed: [1, 38, 10, 47]
     eq_collapsed_exit_button: [11, 38, 20, 47]
+
+    eq_collapsed_volume_handle_0: [1, 30, 4, 37]
+    eq_collapsed_volume_handle_1: [4, 30, 7, 37]
+    eq_collapsed_volume_handle_2: [7, 30, 10, 37]
+
+    eq_collapsed_pan_handle_0: [11, 30, 14, 37]
+    eq_collapsed_pan_handle_1: [14, 30, 17, 37]
+    eq_collapsed_pan_handle_2: [17, 30, 20, 37]
   eqmain.bmp:
     resolution: [275, 315]
     eq_background: [0, 0, 275, 116]
@@ -806,10 +851,12 @@ winamp:
     stop_status: [18, 0, 27, 9]
     TODO_unknown_indicators_0: [36, 0, 39, 9]
     TODO_unknown_indicators_1: [39, 0, 42, 9]
+    status_left_border: [27, 0, 29, 9]
+    status_left_border_2: [18, 0, 20, 9]
 
   posbar.bmp:
     resolution: [307, 10]
-    posbar_bg: [0, 0, 247, 10]
+    posbar_bg: [0, 0, 248, 10]
     posbar_handle: [248, 0, 277, 10]
     posbar_handle_pressed: [278, 0, 307, 10]
   shufrep.bmp:
@@ -860,40 +907,45 @@ winamp:
     player_menu_5: [336, 44, 344, 87] # V
     player_menu_6: [304, 0, 312, 43] # Unhighlighted
 
+    player_collapsed_posbar: [0, 36, 17, 43]
+    player_collapsed_posbar_handle_0: [17, 36, 20, 43]
+    player_collapsed_posbar_handle_1: [20, 36, 23, 43]
+    player_collapsed_posbar_handle_2: [23, 36, 26, 43]
+
   volume.bmp:
     resolution: [68, 433]
     vol_frame_res: [68, 13]
     vertical_gap: 2
     vol_handle: [15, 422, 29, 433]
     vol_handle_pressed: [0, 422, 14, 433]
-    vol_fader_background_00: [0, 0, 68, 12]
-    vol_fader_background_01: [0, 15, 68, 27]
-    vol_fader_background_02: [0, 30, 68, 42]
-    vol_fader_background_03: [0, 45, 68, 57]
-    vol_fader_background_04: [0, 60, 68, 72]
-    vol_fader_background_05: [0, 75, 68, 87]
-    vol_fader_background_06: [0, 90, 68, 102]
-    vol_fader_background_07: [0, 105, 68, 117]
-    vol_fader_background_08: [0, 120, 68, 132]
-    vol_fader_background_09: [0, 135, 68, 147]
-    vol_fader_background_10: [0, 150, 68, 162]
-    vol_fader_background_11: [0, 165, 68, 177]
-    vol_fader_background_12: [0, 180, 68, 192]
-    vol_fader_background_13: [0, 195, 68, 207]
-    vol_fader_background_14: [0, 210, 68, 222]
-    vol_fader_background_15: [0, 225, 68, 237]
-    vol_fader_background_16: [0, 240, 68, 252]
-    vol_fader_background_17: [0, 255, 68, 267]
-    vol_fader_background_18: [0, 270, 68, 282]
-    vol_fader_background_19: [0, 285, 68, 297]
-    vol_fader_background_20: [0, 300, 68, 312]
-    vol_fader_background_21: [0, 315, 68, 327]
-    vol_fader_background_22: [0, 330, 68, 342]
-    vol_fader_background_23: [0, 345, 68, 357]
-    vol_fader_background_24: [0, 360, 68, 372]
-    vol_fader_background_25: [0, 375, 68, 387]
-    vol_fader_background_26: [0, 390, 68, 402]
-    vol_fader_background_27: [0, 405, 68, 417]
+    vol_fader_background_00: [0, 0, 68, 13]
+    vol_fader_background_01: [0, 15, 68, 28]
+    vol_fader_background_02: [0, 30, 68, 43]
+    vol_fader_background_03: [0, 45, 68, 58]
+    vol_fader_background_04: [0, 60, 68, 73]
+    vol_fader_background_05: [0, 75, 68, 88]
+    vol_fader_background_06: [0, 90, 68, 103]
+    vol_fader_background_07: [0, 105, 68, 118]
+    vol_fader_background_08: [0, 120, 68, 133]
+    vol_fader_background_09: [0, 135, 68, 148]
+    vol_fader_background_10: [0, 150, 68, 163]
+    vol_fader_background_11: [0, 165, 68, 178]
+    vol_fader_background_12: [0, 180, 68, 193]
+    vol_fader_background_13: [0, 195, 68, 208]
+    vol_fader_background_14: [0, 210, 68, 223]
+    vol_fader_background_15: [0, 225, 68, 238]
+    vol_fader_background_16: [0, 240, 68, 253]
+    vol_fader_background_17: [0, 255, 68, 268]
+    vol_fader_background_18: [0, 270, 68, 283]
+    vol_fader_background_19: [0, 285, 68, 298]
+    vol_fader_background_20: [0, 300, 68, 313]
+    vol_fader_background_21: [0, 315, 68, 328]
+    vol_fader_background_22: [0, 330, 68, 343]
+    vol_fader_background_23: [0, 345, 68, 358]
+    vol_fader_background_24: [0, 360, 68, 373]
+    vol_fader_background_25: [0, 375, 68, 388]
+    vol_fader_background_26: [0, 390, 68, 403]
+    vol_fader_background_27: [0, 405, 68, 418]
 # AVS.bmp: 97 x 188 x 24,
 # balance.bmp: 68 x 433 x 24,
 # cbuttons.bmp: 136 x 36 x 24,

@@ -5,10 +5,8 @@ Seamlessly design classic WinAmp skins with Blender.
 ## TODO:
 - add option to define input and output directories from the CLI
 - address small inconsistencies between the original winamp skin and the (winamp->blendamp->winamp) round trip skin:
-  - shuf repeat buttons off by one?
-  - playlist editor bottom right off by one?
   - player posbar is brighter in the round trip skin?
-  - default player indicator missing/pink
+  - (PLAYPAUS.BMP IS SUPER BORKED) default player indicator missing/pink
   - extended bottom section missing win->blend
 
 
