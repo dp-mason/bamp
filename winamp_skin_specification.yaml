@@ -818,7 +818,7 @@ winamp:
     player_shuf_off_pressed: [28, 15, 74, 30]
     player_shuf_on: [28, 30, 74, 45]
     player_shuf_on_pressed: [28, 45, 74, 60]
-    player_rep_off: [0, 0, 27, 15]
+    player_rep_off: [0, 0, 28, 15]
     player_rep_off_pressed: [0, 15, 28, 30]
     player_rep_on: [0, 30, 28, 45]
     player_rep_on_pressed: [0, 45, 28, 60]
