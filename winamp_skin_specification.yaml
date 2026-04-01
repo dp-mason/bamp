@@ -47,6 +47,309 @@ blendamp:
       region: [255, 281, 275, 310]
       dest: "Pledit.bmp"
 
+  # Animations
+  70.png:
+    eq_fader_background_00:
+      region: &eq_fader_background_00 [21, 154, 35, 217]
+      dest: "eqmain.bmp"
+    vol_fader_background_00:
+      region: &volume_fader_background_00 [107, 57, 175, 70]
+      dest: "volume.bmp"
+    player_pan_fader_bg_0:
+      region: &player_pan_fader_bg_00 [177, 57, 215, 70]
+      dest: "balance.bmp"
+    player_menu_0:
+      region: &player_menu_0_region [10, 22, 18, 65] # Blank, O, A, I, D, V, Unhighlighted
+      dest: "titlebar.bmp"
+  71.png:
+    eq_fader_background_01:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_01:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_1:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_menu_1: # O
+      region: *player_menu_0_region
+      dest: "titlebar.bmp"
+  72.png:
+    eq_fader_background_02:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_02:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_2:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_menu_2: # A
+      region: *player_menu_0_region
+      dest: "titlebar.bmp"
+  73.png:
+    eq_fader_background_03:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_03:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_3:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_menu_3: # I
+      region: *player_menu_0_region
+      dest: "titlebar.bmp"
+  74.png:
+    eq_fader_background_04:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_04:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_4:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_menu_4: # D
+      region: *player_menu_0_region
+      dest: "titlebar.bmp"
+  75.png:
+    eq_fader_background_05:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_05:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_5:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_menu_5: # V
+      region: *player_menu_0_region
+      dest: "titlebar.bmp"
+  76.png:
+    eq_fader_background_06:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_06:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_6:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+    player_menu_6: # Unhighlighted
+      region: *player_menu_0_region
+      dest: "titlebar.bmp"
+  77.png:
+    eq_fader_background_07:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_07:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_7:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  78.png:
+    eq_fader_background_08:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_08:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_8:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  79.png:
+    eq_fader_background_09:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_09:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_9:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  80.png:
+    eq_fader_background_10:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_10:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_10:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  81.png:
+    eq_fader_background_11:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_11:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_11:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  82.png:
+    eq_fader_background_12:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_12:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_12:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  83.png:
+    eq_fader_background_13:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_13:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_13:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  84.png:
+    eq_fader_background_14:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_14:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_14:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  85.png:
+    eq_fader_background_15:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_15:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_15:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  86.png:
+    eq_fader_background_16:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_16:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_16:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  87.png:
+    eq_fader_background_17:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_17:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_17:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  88.png:
+    eq_fader_background_18:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_18:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_18:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  89.png:
+    eq_fader_background_19:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_19:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_19:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  90.png:
+    eq_fader_background_20:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_20:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_20:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  91.png:
+    eq_fader_background_21:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_21:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_21:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  92.png:
+    eq_fader_background_22:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_22:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_22:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  93.png:
+    eq_fader_background_23:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_23:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_23:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  94.png:
+    eq_fader_background_24:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_24:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_24:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  95.png:
+    eq_fader_background_25:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_25:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_25:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  96.png:
+    eq_fader_background_26:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_26:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_26:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+  97.png:
+    eq_fader_background_27:
+      region: *eq_fader_background_00
+      dest: "eqmain.bmp"
+    vol_fader_background_27:
+      region: *volume_fader_background_00
+      dest: "volume.bmp"
+    player_pan_fader_bg_27:
+      region: *player_pan_fader_bg_00
+      dest: "balance.bmp"
+
   # placeholder
   01.png:
     pl_scroll_bar:
@@ -355,309 +658,6 @@ blendamp:
     player_collapsed_posbar_handle_2:
       region: *player_collapsed_posbar_handle_region
       dest: "titlebar.bmp"
-
-  # Animations
-  70.png:
-    eq_fader_background_00:
-      region: &eq_fader_background_00 [21, 154, 35, 217]
-      dest: "eqmain.bmp"
-    vol_fader_background_00:
-      region: &volume_fader_background_00 [107, 57, 175, 70]
-      dest: "volume.bmp"
-    player_pan_fader_bg_0:
-      region: &player_pan_fader_bg_00 [177, 57, 215, 70]
-      dest: "balance.bmp"
-    player_menu_0:
-      region: &player_menu_0_region [10, 22, 18, 65] # Blank, O, A, I, D, V, Unhighlighted
-      dest: "titlebar.bmp"
-  71.png:
-    eq_fader_background_01:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_01:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_1:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-    player_menu_1: # O
-      region: *player_menu_0_region
-      dest: "titlebar.bmp"
-  72.png:
-    eq_fader_background_02:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_02:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_2:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-    player_menu_2: # A
-      region: *player_menu_0_region
-      dest: "titlebar.bmp"
-  73.png:
-    eq_fader_background_03:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_03:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_3:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-    player_menu_3: # I
-      region: *player_menu_0_region
-      dest: "titlebar.bmp"
-  74.png:
-    eq_fader_background_04:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_04:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_4:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-    player_menu_4: # D
-      region: *player_menu_0_region
-      dest: "titlebar.bmp"
-  75.png:
-    eq_fader_background_05:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_05:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_5:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-    player_menu_5: # V
-      region: *player_menu_0_region
-      dest: "titlebar.bmp"
-  76.png:
-    eq_fader_background_06:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_06:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_6:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-    player_menu_6: # Unhighlighted
-      region: *player_menu_0_region
-      dest: "titlebar.bmp"
-  77.png:
-    eq_fader_background_07:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_07:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_7:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  78.png:
-    eq_fader_background_08:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_08:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_8:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  79.png:
-    eq_fader_background_09:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_09:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_9:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  80.png:
-    eq_fader_background_10:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_10:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_10:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  81.png:
-    eq_fader_background_11:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_11:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_11:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  82.png:
-    eq_fader_background_12:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_12:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_12:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  83.png:
-    eq_fader_background_13:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_13:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_13:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  84.png:
-    eq_fader_background_14:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_14:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_14:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  85.png:
-    eq_fader_background_15:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_15:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_15:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  86.png:
-    eq_fader_background_16:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_16:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_16:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  87.png:
-    eq_fader_background_17:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_17:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_17:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  88.png:
-    eq_fader_background_18:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_18:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_18:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  89.png:
-    eq_fader_background_19:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_19:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_19:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  90.png:
-    eq_fader_background_20:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_20:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_20:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  91.png:
-    eq_fader_background_21:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_21:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_21:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  92.png:
-    eq_fader_background_22:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_22:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_22:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  93.png:
-    eq_fader_background_23:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_23:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_23:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  94.png:
-    eq_fader_background_24:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_24:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_24:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  95.png:
-    eq_fader_background_25:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_25:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_25:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  96.png:
-    eq_fader_background_26:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_26:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_26:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
-  97.png:
-    eq_fader_background_27:
-      region: *eq_fader_background_00
-      dest: "eqmain.bmp"
-    vol_fader_background_27:
-      region: *volume_fader_background_00
-      dest: "volume.bmp"
-    player_pan_fader_bg_27:
-      region: *player_pan_fader_bg_00
-      dest: "balance.bmp"
 
   text.png:
     eq_viz_spectrum:

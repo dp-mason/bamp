@@ -1,10 +1,11 @@
 from PIL import Image
 from PIL.ImageFile import ImageFile as ImageFile
-from typing import List, Tuple
+from typing import List
 
 import numpy as np
 import yaml
 import os
+import sys
 
 import click
 
@@ -43,26 +44,35 @@ def paste_region_to_file(
 
 def create_placeholder_image(img_path: str, res: tuple[int, int], mode: str = "RGBA"):
     # create an new image and fill with magenta, which is the transparent color
-    if mode == "RGBA":
-        winamp_img = Image.new("RGBA", res, (0, 0, 0, 0))
-    elif mode == "RGB":
-        winamp_img = Image.new("RGB", res, (255, 0, 255))
-    else:
-        os.error('Please supply "RGB" or "RGBA" as the mode')
-        exit(1)
+    match mode:
+        case "RGBA":
+            winamp_img = Image.new("RGBA", res, (0, 0, 0, 0))
+        case "RGB":
+            winamp_img = Image.new("RGB", res, (255, 0, 255))
+        case _:
+            sys.exit('Please supply "RGB" or "RGBA" as the mode')
+
     winamp_img.save(img_path)
 
 
-def blendamp_to_winamp(winamp_dir, blendamp_dir):
+def blendamp_to_winamp(
+    winamp_dir, blendamp_dir, save_comps=False, delete_existing=False
+):
 
     # clear winamp_dir
     # TODO: ask whether to delete, and add flag that overrides question
-    if os.path.exists(winamp_dir):
+    if not os.path.exists(winamp_dir):
+        os.makedirs(winamp_dir)
+    elif (
+        delete_existing
+        or input(f"Delete Existing Winamp Skin at {winamp_dir}?: ").lower().strip()
+        == "y"
+    ):
         for fn in os.listdir(winamp_dir):
             if fn.endswith(".bmp") or fn.endswith(".png"):
                 os.remove(os.path.join(winamp_dir, fn))
     else:
-        os.makedirs(winamp_dir)
+        sys.exit(f"Non-empty directory exists at path {winamp_dir}")
 
     # Open and read the YAML file
     with open("winamp_skin_specification.yaml", "r") as file:
@@ -100,8 +110,8 @@ def blendamp_to_winamp(winamp_dir, blendamp_dir):
             # havent designed every single element
             im.alpha_composite(Image.open(curr_abs_fp))
 
-            # TODO: this is used to output the current composited image, add as option for debug or other purposes
-            # im.save(os.path.join(winamp_dir, "COMPOSITED_"+bamp_file_name))
+            if save_comps:
+                im.save(os.path.join(winamp_dir, "COMPOSITED_" + bamp_file_name))
 
         for mapname, mapdata in mappings.items():
             # TODO: turn this loop body into a function that takes a source and dest image file paths and regions
@@ -116,20 +126,28 @@ def blendamp_to_winamp(winamp_dir, blendamp_dir):
             try:
                 paste_region_to_file(im, input_region, full_output_path, output_region)
             except Exception as e:
-                os.error(
+                sys.exit(
                     f"Error occurred while remapping {mapname} to {winamp_file_name}:{mapname} using"
                     f"target region: {output_region}.\n\n{e}"
                 )
 
 
-def winamp_to_blendamp(winamp_dir, blendamp_dir):
+def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
     print("winamp_to_blendamp is ACTIVE")
 
-    # Clear the blendamp diectory
-    # TODO: ask whether to delete, and add flag that overrides question
-    for map_fn in os.listdir(blendamp_dir):
-        if map_fn.endswith(".png"):
-            os.remove(os.path.join(blendamp_dir, map_fn))
+    if not os.path.exists(blendamp_dir):
+        os.makedirs(blendamp_dir)
+    elif (
+        delete_existing
+        or input(f"Delete Existing Blendamp Skin at {blendamp_dir}?: ").lower().strip()
+        == "y"
+    ):
+        # Clear the blendamp diectory
+        for map_fn in os.listdir(blendamp_dir):
+            if map_fn.endswith(".png"):
+                os.remove(os.path.join(blendamp_dir, map_fn))
+    else:
+        sys.exit(f"Non-empty directory exists at path {blendamp_dir}")
 
     # Open and read the YAML file
     with open("winamp_skin_specification.yaml", "r") as file:
@@ -157,7 +175,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir):
                     im, input_region, full_blendamp_path, output_region
                 )
             except Exception as e:
-                os.error(
+                sys.exit(
                     f"Error occurred while remapping {full_winamp_path}:{mapname} to {full_blendamp_path}:{mapname} using"
                     f"target region: {output_region}.\n\n{e}"
                 )
@@ -170,12 +188,14 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir):
 @click.option("--to-winamp/--to-blendamp", default=True)
 @click.option("--winamp-dir", default="winamp_skin")
 @click.option("--blendamp-dir", default="blendamp")
-def main(to_winamp, winamp_dir, blendamp_dir):
+@click.option("--save-comps", is_flag=True, default=False)
+@click.option("--delete-existing", is_flag=True, default=False)
+def main(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
     print("Main")
     if to_winamp:
-        blendamp_to_winamp(winamp_dir, blendamp_dir)
+        blendamp_to_winamp(winamp_dir, blendamp_dir, save_comps, delete_existing)
     else:
-        winamp_to_blendamp(winamp_dir, blendamp_dir)
+        winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing)
 
 
 if __name__ == "__main__":
