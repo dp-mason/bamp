@@ -12,3 +12,6 @@ blendamp_skin/
 quickie.py
 print_anim_section.py
 *.zip
+__pycache__/
+build/
+blendamp.egg-info/

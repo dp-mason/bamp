@@ -13,6 +13,8 @@ readme = "README.md"
 keywords = ["winamp"]
 classifiers = ["Programming Language :: Python"]
 
+[tool.setuptools]
+py-modules = ["blendamp_helper", "blendamp"]
 
 # [project.urls]
 # Homepage = "https://example.com"
