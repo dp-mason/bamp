@@ -6,6 +6,8 @@ import numpy as np
 import yaml
 import os
 import sys
+import zipfile
+import shutil
 
 import click
 
@@ -133,8 +135,6 @@ def blendamp_to_winamp(
 
 
 def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
-    print("winamp_to_blendamp is ACTIVE")
-
     if not os.path.exists(blendamp_dir):
         os.makedirs(blendamp_dir)
     elif (
@@ -191,11 +191,34 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
 @click.option("--save-comps", is_flag=True, default=False)
 @click.option("--delete-existing", is_flag=True, default=False)
 def main(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
-    print("Main")
-    if to_winamp:
-        blendamp_to_winamp(winamp_dir, blendamp_dir, save_comps, delete_existing)
+
+    src_path: str = blendamp_dir if to_winamp else winamp_dir
+    dest_path: str = winamp_dir if to_winamp else blendamp_dir
+
+    if dest_path.endswith(".zip"):
+        zip_output = True
+        dest_path = dest_path[0:-4]
     else:
-        winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing)
+        zip_output = False
+
+    # Open a zip archive if it has been passed as the source
+    # No zip bomb checks are made at this stage, sanitize
+    if src_path.endswith(".zip"):
+        if not zipfile.is_zipfile(src_path):
+            sys.exit(f"Bad zip file: {src_path}")
+        shutil.unpack_archive(src_path, src_path[0:-4])
+        # Remove .zip extension
+        src_path = src_path[0:-4]
+
+    if to_winamp:
+        blendamp_to_winamp(dest_path, src_path, save_comps, delete_existing)
+    else:
+        winamp_to_blendamp(src_path, dest_path, delete_existing)
+
+    if zip_output:
+        shutil.make_archive(
+            os.path.basename(dest_path), "zip", os.path.abspath(dest_path)
+        )
 
 
 if __name__ == "__main__":
