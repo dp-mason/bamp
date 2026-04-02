@@ -6,14 +6,11 @@ import numpy as np
 import yaml
 import os
 import sys
-import zipfile
 import shutil
 
 import click
 
 # TODO: Create "region.txt" file to support transparency
-
-BLENDAMP_RES = (275, 348)
 
 
 # TODO: Unused. Either call this function or delete it
@@ -156,7 +153,9 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
     for bamp_fn, mappings in CONFIG["blendamp"].items():
         # Create placeholder blendamp file
         full_blendamp_path: str = os.path.join(blendamp_dir, bamp_fn)
-        create_placeholder_image(full_blendamp_path, BLENDAMP_RES, "RGBA")
+        create_placeholder_image(
+            full_blendamp_path, tuple(CONFIG["BLENDAMP_RESOLUTION"]), "RGBA"
+        )
 
         for mapname, mapdata in mappings.items():
             winamp_file_name = mapdata["dest"]
@@ -190,7 +189,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
 @click.option("--blendamp-dir", default="blendamp")
 @click.option("--save-comps", is_flag=True, default=False)
 @click.option("--delete-existing", is_flag=True, default=False)
-def main(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
+def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
 
     src_path: str = blendamp_dir if to_winamp else winamp_dir
     dest_path: str = winamp_dir if to_winamp else blendamp_dir
@@ -222,4 +221,4 @@ def main(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
 
 
 if __name__ == "__main__":
-    main()
+    convert()

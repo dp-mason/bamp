@@ -1,3 +1,5 @@
+BLENDAMP_RESOLUTION: [275, 348]
+
 blendamp:
   # Background, everything behind every button
   # If there is alpha in any other layer, this this is the texture
