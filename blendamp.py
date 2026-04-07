@@ -9,6 +9,7 @@ import sys
 import shutil
 
 import click
+from zipfile import is_zipfile
 
 # TODO: Create "region.txt" file to support transparency
 
@@ -183,12 +184,6 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
     return
 
 
-@click.command()
-@click.option("--to-winamp/--to-blendamp", default=True)
-@click.option("--winamp-dir", default="winamp_skin")
-@click.option("--blendamp-dir", default="blendamp")
-@click.option("--save-comps", is_flag=True, default=False)
-@click.option("--delete-existing", is_flag=True, default=False)
 def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
 
     src_path: str = blendamp_dir if to_winamp else winamp_dir
@@ -201,9 +196,9 @@ def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
         zip_output = False
 
     # Open a zip archive if it has been passed as the source
-    # No zip bomb checks are made at this stage, sanitize
+    # No zip bomb checks are made at this stage, sanitize before calling this function
     if src_path.endswith(".zip"):
-        if not zipfile.is_zipfile(src_path):
+        if not is_zipfile(src_path):
             sys.exit(f"Bad zip file: {src_path}")
         shutil.unpack_archive(src_path, src_path[0:-4])
         # Remove .zip extension
@@ -220,5 +215,16 @@ def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
         )
 
 
+@click.command()
+@click.option("--to-winamp/--to-blendamp", default=True)
+@click.option("--winamp-dir", default="winamp_skin")
+@click.option("--blendamp-dir", default="blendamp")
+@click.option("--save-comps", is_flag=True, default=False)
+@click.option("--delete-existing", is_flag=True, default=False)
+def cli_convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
+    convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing)
+    return
+
+
 if __name__ == "__main__":
-    convert()
+    cli_convert()
