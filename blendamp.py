@@ -198,8 +198,8 @@ def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
     # Open a zip archive if it has been passed as the source
     # No zip bomb checks are made at this stage, sanitize before calling this function
     if src_path.endswith(".zip"):
-        if not is_zipfile(src_path):
-            sys.exit(f"Bad zip file: {src_path}")
+        # if not is_zipfile(src_path):
+        #     sys.exit(f"Bad zip file: {src_path}")
         shutil.unpack_archive(src_path, src_path[0:-4])
         # Remove .zip extension
         src_path = src_path[0:-4]
@@ -213,6 +213,8 @@ def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
         shutil.make_archive(
             os.path.basename(dest_path), "zip", os.path.abspath(dest_path)
         )
+
+    return
 
 
 @click.command()
