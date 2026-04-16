@@ -184,6 +184,48 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
     return
 
 
+def sanitize_archive_input(src_path, to_winamp) -> str:
+    if src_path.endswith(".wsz"):
+        # rename .wsz -> .zip
+        src_renamed = f"{src_path[:-4]}.zip"
+        os.rename(src_path, src_renamed)
+        src_path = src_renamed
+
+    new_dirpath = src_path[0:-4]  # remove .zip
+    shutil.unpack_archive(src_path, new_dirpath)
+
+    # check if directory is a winamp skin
+
+    # Open and read the YAML file
+    with open("winamp_skin_specification.yaml", "r") as file:
+        CONFIG: dict = {}
+        if to_winamp:
+            CONFIG = (yaml.safe_load(file))["blendamp"]
+        else:
+            CONFIG = (yaml.safe_load(file))["winamp"]
+
+    dirfiles = os.listdir(new_dirpath)
+    # if zip file unpacks to a single nested directory switch to that directory
+    if len(dirfiles) == 1 and os.path.isdir(os.path.join(new_dirpath, dirfiles[0])):
+        new_dirpath = os.path.join(new_dirpath, dirfiles[0])
+        dirfiles = os.listdir(new_dirpath)
+
+    for filename in CONFIG.keys():
+        if filename in dirfiles:
+            continue
+        elif filename.lower() in dirfiles:
+            os.rename(
+                os.path.join(new_dirpath, filename.lower()),
+                os.path.join(new_dirpath, filename),
+            )
+        else:
+            sys.exit(
+                f"Winamp/Blendamp skin is missing expected file: {filename}\n\n{new_dirpath}\n{dirfiles}"
+            )
+
+    return new_dirpath
+
+
 def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
 
     src_path: str = blendamp_dir if to_winamp else winamp_dir
@@ -197,12 +239,8 @@ def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
 
     # Open a zip archive if it has been passed as the source
     # No zip bomb checks are made at this stage, sanitize before calling this function
-    if src_path.endswith(".zip"):
-        # if not is_zipfile(src_path):
-        #     sys.exit(f"Bad zip file: {src_path}")
-        shutil.unpack_archive(src_path, src_path[0:-4])
-        # Remove .zip extension
-        src_path = src_path[0:-4]
+    if src_path[-4:] in [".zip", ".wsz"]:
+        src_path = sanitize_archive_input(src_path, to_winamp)
 
     if to_winamp:
         blendamp_to_winamp(dest_path, src_path, save_comps, delete_existing)
