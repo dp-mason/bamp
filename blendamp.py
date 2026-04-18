@@ -42,17 +42,14 @@ def paste_region_to_file(
     return
 
 
-def create_placeholder_image(img_path: str, res: tuple[int, int], mode: str = "RGBA"):
-    # create an new image and fill with magenta, which is the transparent color
-    match mode:
-        case "RGBA":
-            winamp_img = Image.new("RGBA", res, (0, 0, 0, 0))
-        case "RGB":
-            winamp_img = Image.new("RGB", res, (255, 0, 255))
-        case _:
-            sys.exit('Please supply "RGB" or "RGBA" as the mode')
-
-    winamp_img.save(img_path)
+def create_placeholder_image(img_path: str, res: tuple[int, int], winamp_file: bool):
+    if winamp_file:
+        # create an new image and fill with magenta
+        winamp_img = Image.new("RGB", res, (255, 0, 255))
+        winamp_img.save(img_path, "bmp")
+    else:
+        winamp_img = Image.new("RGBA", res, (0, 0, 0, 0))
+        winamp_img.save(img_path, "png")
 
 
 def blendamp_to_winamp(
@@ -85,7 +82,7 @@ def blendamp_to_winamp(
         if not os.path.exists(full_output_path):
             # get the resolution of this file from the CONFIG
             new_map_res = tuple(CONFIG["winamp"][filename]["resolution"])
-            create_placeholder_image(full_output_path, new_map_res, "RGB")
+            create_placeholder_image(full_output_path, new_map_res, winamp_file=True)
 
     im = None
 
@@ -93,7 +90,7 @@ def blendamp_to_winamp(
         curr_abs_fp = os.path.join(blendamp_dir, bamp_file_name)
 
         if im is None:
-            im = Image.open(curr_abs_fp)
+            im = (Image.open(curr_abs_fp)).convert("RGBA")
             im_arr = np.array(im)
 
             # set all partial transparency to maximum opacity
@@ -155,7 +152,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
         # Create placeholder blendamp file
         full_blendamp_path: str = os.path.join(blendamp_dir, bamp_fn)
         create_placeholder_image(
-            full_blendamp_path, tuple(CONFIG["BLENDAMP_RESOLUTION"]), "RGBA"
+            full_blendamp_path, tuple(CONFIG["BLENDAMP_RESOLUTION"]), winamp_file=False
         )
 
         for mapname, mapdata in mappings.items():
@@ -163,7 +160,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
             full_winamp_path: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(CONFIG["winamp"][winamp_file_name][mapname])
 
-            im = Image.open(full_winamp_path)
+            im = (Image.open(full_winamp_path)).convert("RGB")
             im_arr = np.array(im)
             im.close()
             im = Image.fromarray(im_arr).convert("RGB")
