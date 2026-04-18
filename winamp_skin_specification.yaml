@@ -26,28 +26,28 @@ blendamp:
 
     pl_top_center:
       region: &pl_top_center_region [87, 232, 187, 252]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_bottom_left_menu:
       region: [0, 310, 125, 348]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_bottom_right_menu:
       region: [125, 310, 275, 348]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_top_left_corner:
       region: &pl_top_left_corner_region [0, 232, 25, 252]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_top_right_corner:
       region: &pl_top_right_corner_region [250, 232, 275, 252]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_repeated_top_sect:
       region: &pl_repeated_top_sect_region [25, 232, 50, 252]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_repeated_left_sect:
       region: [0, 281, 12, 310]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_repeated_right_sect:
       region: [255, 281, 275, 310]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
 
   # Animations
   70.png:
@@ -356,19 +356,19 @@ blendamp:
   01.png:
     pl_scroll_bar:
       region: &pl_scroll_bar_region [260, 292, 268, 310]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_top_left_corner_inactive:
       region: *pl_top_left_corner_region
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_top_right_corner_inactive:
       region: *pl_top_right_corner_region
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_repeated_top_sect_inactive:
       region: *pl_repeated_top_sect_region
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_top_center_inactive:
       region: *pl_top_center_region
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
 
     eq_presets:
       region: &eq_presets_region [217, 134, 261, 146]
@@ -444,18 +444,18 @@ blendamp:
       dest: "eqmain.bmp"
     pl_top_left_corner_collapsed:
       region: [0, 232, 25, 246]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_collapsed_bar_repeated:
       region: [25, 232, 50, 246]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_top_right_corner_collapsed:
       region: &pl_top_right_corner_collapsed_region [225, 232, 275, 246]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
 
     # 91.png:
     pl_scroll_bar_pressed:
       region: *pl_scroll_bar_region
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
 
     posbar_handle_pressed:
       region: *posbar_handle_region
@@ -533,7 +533,7 @@ blendamp:
 
     pl_top_right_corner_collapsed_inactive:
       region: *pl_top_right_corner_collapsed_region
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
   04.png:
     player_titlebar_condensed_inactive:
       region: *player_titlebar_region
@@ -566,10 +566,10 @@ blendamp:
 
     pl_exit_button_pressed:
       region: [264, 235, 273, 244]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
     pl_collapse_button_pressed:
       region: [254, 235, 263, 244]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
   05.png:
     player_titlebar_exit:
       region: &player_titlebar_exit_region [264, 3, 273, 12]
@@ -605,7 +605,7 @@ blendamp:
 
     pl_collapse_expand_button_pressed:
       region: [254, 235, 263, 244]
-      dest: "Pledit.bmp"
+      dest: "pledit.bmp"
   06.png:
     player_titlebar_collapse_pressed:
       region: *player_titlebar_collapse_region
@@ -689,9 +689,9 @@ blendamp:
   #   main_player_header: []
 
 winamp:
-  AVS.bmp:
+  avs.bmp:
     resolution: [97, 188]
-  Pledit.bmp:
+  pledit.bmp:
     resolution: [280, 186]
     pl_top_center: [26, 0, 126, 20]
     pl_top_center_inactive: [26, 21, 126, 41]
@@ -948,7 +948,7 @@ winamp:
     vol_fader_background_25: [0, 375, 68, 388]
     vol_fader_background_26: [0, 390, 68, 403]
     vol_fader_background_27: [0, 405, 68, 418]
-# AVS.bmp: 97 x 188 x 24,
+# avs.bmp: 97 x 188 x 24,
 # balance.bmp: 68 x 433 x 24,
 # cbuttons.bmp: 136 x 36 x 24,
 # eqmain.bmp: 275 x 315 x 24,
@@ -957,7 +957,7 @@ winamp:
 # monoster.bmp: 58 x 24 x 24, i
 # nums_ex.bmp: 108 x 13 x 24,
 # playpaus.bmp: 42 x 9 x 24, im
-# Pledit.bmp: 280 x 186 x 24,
+# pledit.bmp: 280 x 186 x 24,
 # posbar.bmp: 307 x 10 x 24,
 # shufrep.bmp: 92 x 85 x 24, i
 # text.bmp: 155 x 18 x 24,

@@ -184,7 +184,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
     return
 
 
-def sanitize_archive_input(src_path, to_winamp) -> str:
+def unpack_archive_input(src_path, to_winamp) -> str:
     if src_path.endswith(".wsz"):
         # rename .wsz -> .zip
         src_renamed = f"{src_path[:-4]}.zip"
@@ -194,36 +194,40 @@ def sanitize_archive_input(src_path, to_winamp) -> str:
     new_dirpath = src_path[0:-4]  # remove .zip
     shutil.unpack_archive(src_path, new_dirpath)
 
+    return new_dirpath
+
+
+def sanitize_winamp_input(src_path) -> str:
     # check if directory is a winamp skin
 
     # Open and read the YAML file
     with open("winamp_skin_specification.yaml", "r") as file:
-        CONFIG: dict = {}
-        if to_winamp:
-            CONFIG = (yaml.safe_load(file))["blendamp"]
-        else:
-            CONFIG = (yaml.safe_load(file))["winamp"]
+        CONFIG = (yaml.safe_load(file))["winamp"]
 
-    dirfiles = os.listdir(new_dirpath)
-    # if zip file unpacks to a single nested directory switch to that directory
-    if len(dirfiles) == 1 and os.path.isdir(os.path.join(new_dirpath, dirfiles[0])):
-        new_dirpath = os.path.join(new_dirpath, dirfiles[0])
-        dirfiles = os.listdir(new_dirpath)
+    dirfiles = os.listdir(src_path)
+
+    # if there is a single nested directory inside the provided directory, switch to it
+    if len(dirfiles) == 1 and os.path.isdir(os.path.join(src_path, dirfiles[0])):
+        src_path = os.path.join(src_path, dirfiles[0])
+        dirfiles = os.listdir(src_path)
+
+    # lowercase all filenames
+    for fn in dirfiles:
+        if fn != fn.lower():
+            os.rename(
+                os.path.join(src_path, fn),
+                os.path.join(src_path, fn.lower()),
+            )
+
+    dirfiles = os.listdir(src_path)
 
     for filename in CONFIG.keys():
-        if filename in dirfiles:
-            continue
-        elif filename.lower() in dirfiles:
-            os.rename(
-                os.path.join(new_dirpath, filename.lower()),
-                os.path.join(new_dirpath, filename),
-            )
-        else:
+        if filename not in dirfiles:
             sys.exit(
-                f"Winamp/Blendamp skin is missing expected file: {filename}\n\n{new_dirpath}\n{dirfiles}"
+                f"Winamp/Blendamp skin is missing expected file: {filename}\n\n{src_path}\n{dirfiles}"
             )
 
-    return new_dirpath
+    return src_path
 
 
 def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
@@ -238,9 +242,12 @@ def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
         zip_output = False
 
     # Open a zip archive if it has been passed as the source
-    # No zip bomb checks are made at this stage, sanitize before calling this function
+    # No zip bomb checks are made at this stage, handle before calling this function
     if src_path[-4:] in [".zip", ".wsz"]:
-        src_path = sanitize_archive_input(src_path, to_winamp)
+        src_path = unpack_archive_input(src_path, to_winamp)
+
+    if not to_winamp:
+        src_path = sanitize_winamp_input(src_path)
 
     if to_winamp:
         blendamp_to_winamp(dest_path, src_path, save_comps, delete_existing)
