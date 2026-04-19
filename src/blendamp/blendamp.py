@@ -1,3 +1,4 @@
+from os.path import basename
 from PIL import Image
 from PIL.ImageFile import ImageFile as ImageFile
 from typing import List
@@ -12,6 +13,8 @@ import click
 from zipfile import is_zipfile
 
 from importlib import resources
+
+from pathlib import Path
 
 # Open and read the YAML file
 winamp_spec = resources.open_text("blendamp", "winamp_skin_specification.yaml")
@@ -252,9 +255,9 @@ def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
         winamp_to_blendamp(src_path, dest_path, delete_existing)
 
     if zip_output:
-        shutil.make_archive(
-            os.path.basename(dest_path), "zip", os.path.abspath(dest_path)
-        )
+        base_name = os.path.basename(dest_path)
+        shutil.make_archive(base_name, "zip", os.path.abspath(dest_path))
+        shutil.move(f"{base_name}.zip", Path(os.path.abspath(dest_path)).parent)
 
     return
 
