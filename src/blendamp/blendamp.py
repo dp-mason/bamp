@@ -11,6 +11,13 @@ import shutil
 import click
 from zipfile import is_zipfile
 
+from importlib import resources
+
+# Open and read the YAML file
+winamp_spec = resources.open_text("blendamp", "winamp_skin_specification.yaml")
+WINAMP_SPEC: dict = yaml.safe_load(winamp_spec)
+winamp_spec.close()
+
 # TODO: Create "region.txt" file to support transparency
 
 
@@ -71,22 +78,18 @@ def blendamp_to_winamp(
     else:
         sys.exit(f"Non-empty directory exists at path {winamp_dir}")
 
-    # Open and read the YAML file
-    with open("winamp_skin_specification.yaml", "r") as file:
-        CONFIG: dict = yaml.safe_load(file)
-
     # Create empty placeholder winamp files
-    for filename, f_md in CONFIG["winamp"].items():
+    for filename, f_md in WINAMP_SPEC["winamp"].items():
         full_output_path: str = os.path.join(winamp_dir, filename)
 
         if not os.path.exists(full_output_path):
-            # get the resolution of this file from the CONFIG
-            new_map_res = tuple(CONFIG["winamp"][filename]["resolution"])
+            # get the resolution of this file from the WINAMP_SPEC
+            new_map_res = tuple(WINAMP_SPEC["winamp"][filename]["resolution"])
             create_placeholder_image(full_output_path, new_map_res, winamp_file=True)
 
     im = None
 
-    for bamp_file_name, mappings in CONFIG["blendamp"].items():
+    for bamp_file_name, mappings in WINAMP_SPEC["blendamp"].items():
         curr_abs_fp = os.path.join(blendamp_dir, bamp_file_name)
 
         if im is None:
@@ -118,7 +121,7 @@ def blendamp_to_winamp(
             winamp_file_name = mapdata["dest"]
             full_output_path: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(mapdata["region"])
-            output_region = tuple(CONFIG["winamp"][winamp_file_name][mapname][0:2])
+            output_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname][0:2])
 
             try:
                 paste_region_to_file(im, input_region, full_output_path, output_region)
@@ -144,21 +147,19 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
     else:
         sys.exit(f"Non-empty directory exists at path {blendamp_dir}")
 
-    # Open and read the YAML file
-    with open("winamp_skin_specification.yaml", "r") as file:
-        CONFIG: dict = yaml.safe_load(file)
-
-    for bamp_fn, mappings in CONFIG["blendamp"].items():
+    for bamp_fn, mappings in WINAMP_SPEC["blendamp"].items():
         # Create placeholder blendamp file
         full_blendamp_path: str = os.path.join(blendamp_dir, bamp_fn)
         create_placeholder_image(
-            full_blendamp_path, tuple(CONFIG["BLENDAMP_RESOLUTION"]), winamp_file=False
+            full_blendamp_path,
+            tuple(WINAMP_SPEC["BLENDAMP_RESOLUTION"]),
+            winamp_file=False,
         )
 
         for mapname, mapdata in mappings.items():
             winamp_file_name = mapdata["dest"]
             full_winamp_path: str = os.path.join(winamp_dir, winamp_file_name)
-            input_region = tuple(CONFIG["winamp"][winamp_file_name][mapname])
+            input_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname])
 
             im = (Image.open(full_winamp_path)).convert("RGB")
             im_arr = np.array(im)
@@ -197,9 +198,8 @@ def unpack_archive_input(src_path, to_winamp) -> str:
 def sanitize_winamp_input(src_path) -> str:
     # check if directory is a winamp skin
 
-    # Open and read the YAML file
-    with open("winamp_skin_specification.yaml", "r") as file:
-        CONFIG = (yaml.safe_load(file))["winamp"]
+    # Get the list of all winamp files
+    WINAMP_FILES = (WINAMP_SPEC["winamp"]).keys()
 
     dirfiles = os.listdir(src_path)
 
@@ -218,7 +218,7 @@ def sanitize_winamp_input(src_path) -> str:
 
     dirfiles = os.listdir(src_path)
 
-    for filename in CONFIG.keys():
+    for filename in WINAMP_FILES:
         if filename not in dirfiles:
             sys.exit(
                 f"Winamp/Blendamp skin is missing expected file: {filename}\n\n{src_path}\n{dirfiles}"
