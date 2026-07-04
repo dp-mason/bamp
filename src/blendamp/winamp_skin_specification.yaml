@@ -670,7 +670,7 @@ blendamp:
       dest: "text.bmp"
     nums:
       region: [0, 19, 108, 32]
-      dest: "nums_ex.bmp"
+      dest: "nums.bmp"
   # In the blendamp parameter layers, there is a layer for each individual frame used in the ui
   # Ex. A volume bar with 28 different backgrounds based on volume level will appear
   # in the same region across 28 sequential layers to make animation design easier
@@ -691,6 +691,7 @@ blendamp:
 winamp:
   avs.bmp:
     resolution: [97, 188]
+    ignore: true
   pledit.bmp:
     resolution: [280, 186]
     pl_top_center: [26, 0, 126, 20]
@@ -843,7 +844,8 @@ winamp:
     player_mono_inactive: [29, 12, 56, 24]
     player_stereo_active: [0, 0, 29, 12]
     player_stereo_inactive: [0, 12, 29, 24]
-  nums_ex.bmp:
+  nums.bmp:
+    alt_names: ["nums_ex.bmp", "numbers.bmp"]
     resolution: [108, 13]
     nums: [0, 0, 108, 13]
   playpaus.bmp:

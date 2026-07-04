@@ -1,3 +1,4 @@
+from logging import warn
 from os.path import basename
 from PIL import Image
 from PIL.ImageFile import ImageFile as ImageFile
@@ -164,9 +165,16 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
             full_winamp_path: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname])
 
-            im = (Image.open(full_winamp_path)).convert("RGB")
-            im_arr = np.array(im)
-            im.close()
+            im = Image.open(full_winamp_path, "r")
+
+            # Try to catch corrupted bmp files
+            try:
+                im_arr = np.array(im)
+                im.close()
+            except ValueError as e:
+                print(f"BMP decode failed for {full_winamp_path}:\n\t{e}")
+                return None
+
             im = Image.fromarray(im_arr).convert("RGB")
 
             output_region = tuple(mapdata["region"])
@@ -198,6 +206,18 @@ def unpack_archive_input(src_path, to_winamp) -> str:
     return new_dirpath
 
 
+def standardize_file_name(src_path: str, standard_fname: str, alt_fnames: List[str]):
+    src_dir_files = os.listdir(src_path)
+
+    for alt_fn in alt_fnames:
+        if alt_fn not in src_dir_files:
+            continue
+        os.rename(
+            os.path.join(src_path, alt_fn), os.path.join(src_path, standard_fname)
+        )
+        return
+
+
 def sanitize_winamp_input(src_path) -> str:
     # check if directory is a winamp skin
 
@@ -221,11 +241,18 @@ def sanitize_winamp_input(src_path) -> str:
 
     dirfiles = os.listdir(src_path)
 
+    # Verify that all files are present, standardize any alternate names
     for filename in WINAMP_FILES:
         if filename not in dirfiles:
-            sys.exit(
-                f"Winamp/Blendamp skin is missing expected file: {filename}\n\n{src_path}\n{dirfiles}"
-            )
+            FILE_SPEC_INFO = WINAMP_SPEC["winamp"][filename]
+            if "ignore" in FILE_SPEC_INFO.keys() and FILE_SPEC_INFO["ignore"]:
+                continue
+            elif "alt_names" in FILE_SPEC_INFO.keys():
+                standardize_file_name(src_path, filename, FILE_SPEC_INFO["alt_names"])
+            else:
+                sys.exit(
+                    f"Winamp/Blendamp skin is missing expected file or alternate name not specified: {filename}\n\n{src_path}\n{dirfiles}",
+                )
 
     return src_path
 
