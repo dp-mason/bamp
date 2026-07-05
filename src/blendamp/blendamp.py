@@ -77,7 +77,7 @@ def blendamp_to_winamp(
         == "y"
     ):
         for fn in os.listdir(winamp_dir):
-            if fn.endswith(".bmp") or fn.endswith(".png"):
+            if fn.lower()[-4:] in [".bmp", ".png", ".txt"]:
                 os.remove(os.path.join(winamp_dir, fn))
     else:
         sys.exit(f"Non-empty directory exists at path {winamp_dir}")
@@ -146,7 +146,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
     ):
         # Clear the blendamp diectory
         for map_fn in os.listdir(blendamp_dir):
-            if map_fn.endswith(".png"):
+            if map_fn.lower()[-4:] in [".png", ".txt"]:
                 os.remove(os.path.join(blendamp_dir, map_fn))
     else:
         sys.exit(f"Non-empty directory exists at path {blendamp_dir}")
@@ -314,13 +314,17 @@ def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
     else:
         winamp_to_blendamp(src_path, dest_path, delete_existing)
 
-    # move extraneous files to output so they are not lost
-    for curr_path in extra_files:
-        dest = os.path.join(dest_path, os.path.basename(curr_path))
-        if os.path.isdir(curr_path):
-            shutil.copytree(curr_path, dest)
-        else:
-            shutil.copyfile(curr_path, dest)
+    # move extraneous files to the destination directory under reserved subdir
+    if len(extra_files) > 0:
+        dest_extra = os.path.join(dest_path, "extra")
+        # allow extraneous files to accumulate in "extra"
+        os.makedirs(dest_extra, exist_ok=True)
+        for curr_path in extra_files:
+            curr_dest = os.path.join(dest_extra, os.path.basename(curr_path))
+            if os.path.isdir(curr_path):
+                shutil.copytree(curr_path, curr_dest)
+            else:
+                shutil.copyfile(curr_path, curr_dest)
 
     if zip_output:
         base_name = os.path.basename(dest_path)
