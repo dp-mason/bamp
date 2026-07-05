@@ -2,7 +2,7 @@ from logging import warn
 from os.path import basename
 from PIL import Image
 from PIL.ImageFile import ImageFile as ImageFile
-from typing import List
+from typing import List, Tuple
 
 import numpy as np
 import yaml
@@ -218,7 +218,7 @@ def standardize_file_name(src_path: str, standard_fname: str, alt_fnames: List[s
         return
 
 
-def sanitize_winamp_input(src_path) -> str:
+def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
     # check if directory is a winamp skin
 
     # Get the list of all winamp files
@@ -226,9 +226,26 @@ def sanitize_winamp_input(src_path) -> str:
 
     dirfiles = os.listdir(src_path)
 
-    # if there is a single nested directory inside the provided directory, switch to it
-    if len(dirfiles) == 1 and os.path.isdir(os.path.join(src_path, dirfiles[0])):
-        src_path = os.path.join(src_path, dirfiles[0])
+    extra_files = []
+
+    if "main.bmp" not in [df.lower() for df in dirfiles]:
+        new_src_path = None
+
+        # check if there is a nested dir where the actual winamp skin resides
+        for fn in dirfiles:
+            curr_fp = os.path.join(src_path, fn)
+            if os.path.isdir(curr_fp) and "main.bmp" in [
+                df.lower() for df in os.listdir(curr_fp)
+            ]:
+                # dir with all the winamp files has been found
+                new_src_path = os.path.join(src_path, fn)
+            else:
+                extra_files.append(curr_fp)
+        if new_src_path is None:
+            sys.exit(
+                "Unable to find winamp src dir in first level of directory structure"
+            )
+        src_path = new_src_path
         dirfiles = os.listdir(src_path)
 
     # lowercase all filenames
@@ -239,6 +256,7 @@ def sanitize_winamp_input(src_path) -> str:
                 os.path.join(src_path, fn.lower()),
             )
 
+    # reassign dirfiles with all the lowered file names
     dirfiles = os.listdir(src_path)
 
     # Verify that all files are present, standardize any alternate names
@@ -254,7 +272,7 @@ def sanitize_winamp_input(src_path) -> str:
                     f"Winamp/Blendamp skin is missing expected file or alternate name not specified: {filename}\n\n{src_path}\n{dirfiles}",
                 )
 
-    return src_path
+    return src_path, extra_files
 
 
 def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
@@ -273,13 +291,23 @@ def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
     if src_path[-4:] in [".zip", ".wsz"]:
         src_path = unpack_archive_input(src_path, to_winamp)
 
+    extra_files = []
+    # process winamp input if converting to blendamp
     if not to_winamp:
-        src_path = sanitize_winamp_input(src_path)
+        src_path, extra_files = sanitize_winamp_input(src_path)
 
     if to_winamp:
         blendamp_to_winamp(dest_path, src_path, save_comps, delete_existing)
     else:
         winamp_to_blendamp(src_path, dest_path, delete_existing)
+
+    # move extraneous files to output so they are not lost
+    for curr_path in extra_files:
+        dest = os.path.join(dest_path, os.path.basename(curr_path))
+        if os.path.isdir(curr_path):
+            shutil.copytree(curr_path, dest)
+        else:
+            shutil.copyfile(curr_path, dest)
 
     if zip_output:
         base_name = os.path.basename(dest_path)
