@@ -215,13 +215,15 @@ def standardize_file_name(src_path: str, standard_fname: str, alt_fnames: List[s
         os.rename(
             os.path.join(src_path, alt_fn), os.path.join(src_path, standard_fname)
         )
-        return
+        return True
+
+    return False
 
 
 def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
     # check if directory is a winamp skin
 
-    # Get the list of all winamp files
+    # Get the list of all files that make up a winamp skin
     WINAMP_FILES = (WINAMP_SPEC["winamp"]).keys()
 
     dirfiles = os.listdir(src_path)
@@ -248,25 +250,36 @@ def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
         src_path = new_src_path
         dirfiles = os.listdir(src_path)
 
-    # lowercase all filenames
-    for fn in dirfiles:
-        if fn != fn.lower():
+    for fname in dirfiles:
+        fname_lower = fname.lower()
+        if fname_lower.endswith(".bmp") or fname_lower.endswith(".cur"):
             os.rename(
-                os.path.join(src_path, fn),
-                os.path.join(src_path, fn.lower()),
+                os.path.join(src_path, fname), os.path.join(src_path, fname_lower)
             )
+        else:
+            extra_files.append(os.path.join(src_path, fname))
 
-    # reassign dirfiles with all the lowered file names
+    # Update dirfiles list with lowered filenames
     dirfiles = os.listdir(src_path)
 
-    # Verify that all files are present, standardize any alternate names
+    # Verify that all files needed in the specification are present
+    # standardize any alternate names
+    # lowercase all filenames for files that are not extraneous
+    # add all extraneous files to extra_files
     for filename in WINAMP_FILES:
-        if filename not in dirfiles:
+        if filename in dirfiles:
+            continue
+        else:
             FILE_SPEC_INFO = WINAMP_SPEC["winamp"][filename]
             if "ignore" in FILE_SPEC_INFO.keys() and FILE_SPEC_INFO["ignore"]:
                 continue
             elif "alt_names" in FILE_SPEC_INFO.keys():
-                standardize_file_name(src_path, filename, FILE_SPEC_INFO["alt_names"])
+                if not standardize_file_name(
+                    src_path, filename, FILE_SPEC_INFO["alt_names"]
+                ):
+                    sys.exit(
+                        f"Alt names specified for {filename}, but none were identified in winamp files:\n\t{dirfiles}"
+                    )
             else:
                 sys.exit(
                     f"Winamp/Blendamp skin is missing expected file or alternate name not specified: {filename}\n\n{src_path}\n{dirfiles}",
