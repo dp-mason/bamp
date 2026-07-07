@@ -59,8 +59,8 @@ def create_placeholder_image(img_path: str, res: tuple[int, int], winamp_file: b
         winamp_img = Image.new("RGB", res, (255, 0, 255))
         winamp_img.save(img_path, "bmp")
     else:
-        winamp_img = Image.new("RGBA", res, (0, 0, 0, 0))
-        winamp_img.save(img_path, "png")
+        blendamp_img = Image.new("RGBA", res, (0, 0, 0, 0))
+        blendamp_img.save(img_path, "png")
 
 
 def blendamp_to_winamp(
@@ -134,6 +134,14 @@ def blendamp_to_winamp(
                     f"Error occurred while remapping {mapname} to {winamp_file_name}:{mapname} using"
                     f"target region: {output_region}.\n\n{e}"
                 )
+
+
+def viscolor_to_blendamp(path_to_vc: str):
+    return
+
+
+def viscolor_to_winamp(path_to_layer: str):
+    return
 
 
 def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
