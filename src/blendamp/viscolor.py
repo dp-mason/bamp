@@ -4,16 +4,13 @@ import click
 import blendamp
 
 
-def convert_pledit(pledit_path: str):
+def convert_pledit(pledit_path: str, im: Image.Image):
     viscolor_lines = None
     with open(pledit_path, "r") as pledit_f:
         pledit_lines = pledit_f.readlines()
 
-    impath = os.path.join(os.curdir, "test_viscolor.png")
-
-    im = blendamp.Image.open(impath, "r")
-
     text_sect = False
+    pledit_colors = {}
     # build dictionary from the "[text]" section of pledit file
     for pledit_ln in pledit_lines:
         pledit_ln = pledit_ln.strip()
@@ -24,9 +21,20 @@ def convert_pledit(pledit_path: str):
             continue
         elif not text_sect:
             continue
-        
+
         if "=" in pledit_ln:
             # build dictionary entry for this color
+            keyval = [s.strip() for s in pledit_ln.split("=")[:2]]
+
+            if keyval[0].lower() == "font":
+                continue
+
+            hexc = (keyval[1]).lstrip("#")
+
+            # convert hex pairs to rgb values
+            rgb_color = tuple(int(hexc[i : i + 2], 16) for i in (0, 2, 4))
+
+            pledit_colors[keyval[0]] = rgb_color
         else:
             if text_sect and "[" in pledit_ln:
                 # text section is over, break
@@ -34,15 +42,24 @@ def convert_pledit(pledit_path: str):
             else:
                 # skip empty and irrelevant lines
                 continue
-            
+
+    # paste to output file according to key order
+    row = 0
+    for _, color in pledit_colors.items():
+        color_image = Image.fromarray(
+            blendamp.np.full((8, 8, 3), color, dtype=blendamp.np.uint8)
+        )
+        im.paste(color_image, (12, 8 * row, 12 + 8, 8 * row + 8))
+
+        row += 1
 
 
 @click.command()
 @click.option("--viscolor-path", default="None")
 @click.option("--pledit-path", default="None")
-def viscolor_convert(winamp_path: str = "None"):
+def viscolor_convert(viscolor_path: str = "None", pledit_path: str = "None"):
     viscolor_lines = None
-    with open(winamp_path, "r") as viscolor_f:
+    with open(viscolor_path, "r") as viscolor_f:
         viscolor_lines = viscolor_f.readlines()
 
     impath = os.path.join(os.curdir, "test_viscolor.png")
@@ -64,9 +81,12 @@ def viscolor_convert(winamp_path: str = "None"):
         )
 
         im.paste(color_image, (0, 8 * row, 8, 8 * row + 8))
-        im.save(impath)
 
         row += 1
+
+    convert_pledit(pledit_path, im)
+
+    im.save(impath)
 
     return
 
