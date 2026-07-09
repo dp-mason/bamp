@@ -1,4 +1,8 @@
 BLENDAMP_RESOLUTION: [275, 348]
+text_extras:
+  COLOR_SAMPLE_SIZE: 8
+  VISCOLOR_START: [0, 35]
+  PLEDIT_START: [137, 35]
 
 blendamp:
   # Background, everything behind every button
@@ -671,6 +675,7 @@ blendamp:
     nums:
       region: [0, 19, 108, 32]
       dest: "nums.bmp"
+
   # In the blendamp parameter layers, there is a layer for each individual frame used in the ui
   # Ex. A volume bar with 28 different backgrounds based on volume level will appear
   # in the same region across 28 sequential layers to make animation design easier

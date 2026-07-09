@@ -1,11 +1,16 @@
 import os
 from PIL import Image
 import click
-import blendamp
+from typing import Tuple
+import numpy as np
+
+from .utils import create_placeholder_image
 
 
-def convert_pledit(pledit_path: str, im: Image.Image):
-    viscolor_lines = None
+def add_pledit_data(
+    pledit_path: str, im: Image.Image, start_pos: Tuple[int, int], sample_size: int
+):
+    pledit_lines = None
     with open(pledit_path, "r") as pledit_f:
         pledit_lines = pledit_f.readlines()
 
@@ -47,25 +52,23 @@ def convert_pledit(pledit_path: str, im: Image.Image):
     row = 0
     for _, color in pledit_colors.items():
         color_image = Image.fromarray(
-            blendamp.np.full((8, 8, 3), color, dtype=blendamp.np.uint8)
+            np.full((sample_size, sample_size, 3), color, dtype=np.uint8)
         )
-        im.paste(color_image, (12, 8 * row, 12 + 8, 8 * row + 8))
+        sample_start = (
+            start_pos[0],
+            start_pos[1] + sample_size * row,
+        )
+        im.paste(color_image, sample_start)
 
         row += 1
 
 
-@click.command()
-@click.option("--viscolor-path", default="None")
-@click.option("--pledit-path", default="None")
-def viscolor_convert(viscolor_path: str = "None", pledit_path: str = "None"):
+def add_viscolor_data(
+    viscolor_path: str, im: Image.Image, start_pos: Tuple[int, int], sample_size: int
+):
     viscolor_lines = None
     with open(viscolor_path, "r") as viscolor_f:
         viscolor_lines = viscolor_f.readlines()
-
-    impath = os.path.join(os.curdir, "test_viscolor.png")
-
-    blendamp.create_placeholder_image(impath, (275, 348), False)
-    im = blendamp.Image.open(impath, "r")
 
     row = 0
     for visline in viscolor_lines:
@@ -76,20 +79,35 @@ def viscolor_convert(viscolor_path: str = "None", pledit_path: str = "None"):
         visline = visline.strip()
         rgb = [int(strval.strip()) for strval in visline.split(",")]
 
-        color_image = Image.fromarray(
-            blendamp.np.full((8, 8, 3), rgb[:3], dtype=blendamp.np.uint8)
-        )
+        color_image = Image.fromarray(np.full((8, 8, 3), rgb[:3], dtype=np.uint8))
 
-        im.paste(color_image, (0, 8 * row, 8, 8 * row + 8))
+        im.paste(color_image, (start_pos[0], start_pos[1] + row * sample_size))
 
         row += 1
 
-    convert_pledit(pledit_path, im)
 
-    im.save(impath)
-
-    return
-
-
-if __name__ == "__main__":
-    viscolor_convert()
+# OLD CLI TEST
+# @click.command()
+# @click.option("--viscolor-path", default="None")
+# @click.option("--pledit-path", default="None")
+# def viscolor_convert(viscolor_path: str = "None", pledit_path: str = "None"):
+#
+#     impath = os.path.join(os.curdir, "test_viscolor.png")
+#
+#     create_placeholder_image(impath, (275, 348), False)
+#     im = blendamp.Image.open(impath, "r")
+#
+#     sample_size = blendamp.WINAMP_SPEC["blendamp"]["text.png"]["COLOR_SAMPLE_SIZE"]
+#     pledit_start_pos = blendamp.WINAMP_SPEC["blendamp"]["text.png"]["PLEDIT_START"]
+#     viscolor_start_pos = blendamp.WINAMP_SPEC["blendamp"]["text.png"]["VISCOLOR_START"]
+#
+#     add_viscolor_data(viscolor_path, im, viscolor_start_pos, sample_size)
+#     add_pledit_data(pledit_path, im, pledit_start_pos, sample_size)
+#
+#     im.save(impath)
+#
+#     return
+#
+#
+# if __name__ == "__main__":
+#     viscolor_convert()

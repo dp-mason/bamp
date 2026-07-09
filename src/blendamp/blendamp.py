@@ -1,21 +1,19 @@
-from logging import warn
-from os.path import basename
-from PIL import Image
-from PIL.ImageFile import ImageFile as ImageFile
-from typing import List, Tuple
-
 import numpy as np
 import yaml
 import os
 import sys
 import shutil
 
-import click
-from zipfile import is_zipfile
+from PIL import Image
+from PIL.ImageFile import ImageFile as ImageFile
+from typing import List, Tuple
 
 from importlib import resources
-
 from pathlib import Path
+
+from .viscolor import add_pledit_data, add_viscolor_data
+
+from .utils import create_placeholder_image
 
 # Open and read the YAML file
 winamp_spec = resources.open_text("blendamp", "winamp_skin_specification.yaml")
@@ -51,16 +49,6 @@ def paste_region_to_file(
 
     out_img.save(dest_output_path, out_img.format)
     return
-
-
-def create_placeholder_image(img_path: str, res: tuple[int, int], winamp_file: bool):
-    if winamp_file:
-        # create an new image and fill with magenta
-        winamp_img = Image.new("RGB", res, (255, 0, 255))
-        winamp_img.save(img_path, "bmp")
-    else:
-        blendamp_img = Image.new("RGBA", res, (0, 0, 0, 0))
-        blendamp_img.save(img_path, "png")
 
 
 def blendamp_to_winamp(
@@ -196,6 +184,25 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
                     f"Error occurred while remapping {full_winamp_path}:{mapname} to {full_blendamp_path}:{mapname} using"
                     f"target region: {output_region}.\n\n{e}"
                 )
+
+        if bamp_fn == "text.png":
+            sample_size = WINAMP_SPEC["text_extras"]["COLOR_SAMPLE_SIZE"]
+            pledit_start_pos = WINAMP_SPEC["text_extras"]["PLEDIT_START"]
+            viscolor_start_pos = WINAMP_SPEC["text_extras"]["VISCOLOR_START"]
+            img = Image.open(full_blendamp_path)
+            add_pledit_data(
+                os.path.join(winamp_dir, "pledit.txt"),
+                img,
+                pledit_start_pos,
+                sample_size,
+            )
+            add_viscolor_data(
+                os.path.join(winamp_dir, "viscolor.txt"),
+                img,
+                viscolor_start_pos,
+                sample_size,
+            )
+            img.save(full_blendamp_path)
 
     # Clear the to_blendamp diectory
     return
@@ -340,18 +347,3 @@ def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
         shutil.move(f"{base_name}.zip", Path(os.path.abspath(dest_path)).parent)
 
     return
-
-
-@click.command()
-@click.option("--to-winamp/--to-blendamp", default=True)
-@click.option("--winamp-dir", default="winamp_skin")
-@click.option("--blendamp-dir", default="blendamp")
-@click.option("--save-comps", is_flag=True, default=False)
-@click.option("--delete-existing", is_flag=True, default=False)
-def cli_convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
-    convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing)
-    return
-
-
-if __name__ == "__main__":
-    cli_convert()

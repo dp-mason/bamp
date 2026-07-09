@@ -22,6 +22,8 @@ include-package-data = true
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[project.scripts]
+convert = "blendamp.cli:cli_convert"
 # [project.urls]
 # Homepage = "https://example.com"
 # Documentation = "https://readthedocs.org"

@@ -1,0 +1,11 @@
+from PIL import Image
+
+
+def create_placeholder_image(img_path: str, res: tuple[int, int], winamp_file: bool):
+    if winamp_file:
+        # create an new image and fill with magenta
+        winamp_img = Image.new("RGB", res, (255, 0, 255))
+        winamp_img.save(img_path, "bmp")
+    else:
+        blendamp_img = Image.new("RGBA", res, (0, 0, 0, 0))
+        blendamp_img.save(img_path, "png")
