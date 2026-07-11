@@ -1,5 +1,40 @@
 import click
-from .blendamp import convert
+from . import blendamp
+from . import viscolor
+from .utils import create_placeholder_image
+import logging
+import os
+
+bamp_cli_log = logging.Logger("bamp_cli_log", level=logging.DEBUG)
+
+
+def cli_textcolor_convert(
+    viscolor_path: str | None = None, pledit_path: str | None = None
+):
+
+    impath = os.path.join(os.curdir, "test_viscolor.png")
+
+    create_placeholder_image(impath, (275, 348), False)
+    im = blendamp.Image.open(impath, "r")
+
+    sample_size = blendamp.WINAMP_SPEC["text_extras"]["COLOR_SAMPLE_SIZE"]
+    pledit_start_pos = blendamp.WINAMP_SPEC["text_extras"]["PLEDIT_START"]
+    viscolor_start_pos = blendamp.WINAMP_SPEC["text_extras"]["VISCOLOR_START"]
+
+    if viscolor_path is not None:
+        viscolor.add_viscolor_data(viscolor_path, im, viscolor_start_pos, sample_size)
+    if pledit_path is not None:
+        viscolor.add_pledit_data(pledit_path, im, pledit_start_pos, sample_size)
+
+    im.save(impath)
+
+    return
+
+
+#
+#
+# if __name__ == "__main__":
+#     viscolor_convert()
 
 
 @click.command()
@@ -8,8 +43,25 @@ from .blendamp import convert
 @click.option("--blendamp-dir", default="blendamp")
 @click.option("--save-comps", is_flag=True, default=False)
 @click.option("--delete-existing", is_flag=True, default=False)
-def cli_convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
-    convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing)
+@click.option("--viscolor-path", default=None)
+@click.option("--pledit-path", default=None)
+def cli_convert(
+    to_winamp,
+    winamp_dir,
+    blendamp_dir,
+    save_comps,
+    delete_existing,
+    viscolor_path: str,
+    pledit_path: str,
+):
+    if viscolor_path is not None or pledit_path is not None:
+        print(
+            "Overriding base convert functionality to test pledit and viscolor conversions"
+        )
+        cli_textcolor_convert(viscolor_path, pledit_path)
+        return
+
+    blendamp.convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing)
     return
 
 

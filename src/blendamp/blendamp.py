@@ -337,7 +337,7 @@ def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
         for curr_path in extra_files:
             curr_dest = os.path.join(dest_extra, os.path.basename(curr_path))
             if os.path.isdir(curr_path):
-                shutil.copytree(curr_path, curr_dest)
+                shutil.copytree(curr_path, curr_dest, dirs_exist_ok=True)
             else:
                 shutil.copyfile(curr_path, curr_dest)
 

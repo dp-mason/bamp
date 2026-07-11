@@ -84,30 +84,3 @@ def add_viscolor_data(
         im.paste(color_image, (start_pos[0], start_pos[1] + row * sample_size))
 
         row += 1
-
-
-# OLD CLI TEST
-# @click.command()
-# @click.option("--viscolor-path", default="None")
-# @click.option("--pledit-path", default="None")
-# def viscolor_convert(viscolor_path: str = "None", pledit_path: str = "None"):
-#
-#     impath = os.path.join(os.curdir, "test_viscolor.png")
-#
-#     create_placeholder_image(impath, (275, 348), False)
-#     im = blendamp.Image.open(impath, "r")
-#
-#     sample_size = blendamp.WINAMP_SPEC["blendamp"]["text.png"]["COLOR_SAMPLE_SIZE"]
-#     pledit_start_pos = blendamp.WINAMP_SPEC["blendamp"]["text.png"]["PLEDIT_START"]
-#     viscolor_start_pos = blendamp.WINAMP_SPEC["blendamp"]["text.png"]["VISCOLOR_START"]
-#
-#     add_viscolor_data(viscolor_path, im, viscolor_start_pos, sample_size)
-#     add_pledit_data(pledit_path, im, pledit_start_pos, sample_size)
-#
-#     im.save(impath)
-#
-#     return
-#
-#
-# if __name__ == "__main__":
-#     viscolor_convert()
