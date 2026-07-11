@@ -2,6 +2,22 @@ from typing import Tuple
 import yaml
 
 
+# snippet used to generate the character mappings in the spec
+def generate_spec_mappings(char_height, row_number, row):
+
+    row1 = list('ABCDEFTHIJKLMNOPQRSTUVWXYZ"@')
+    row2 = list("0123456789") + ["..."] + list(".=()-'!_+\\/[]^&%,=$#")
+    row3 = list("äöa?*")
+
+    print(row1)
+    print(row2)
+    print(row3)
+
+    return
+
+
+# add a new region to the list and make sure it is ordered by size and
+# region name length
 def add_to_region_list(rl: list, new_region):
     assert type(new_region) is tuple and len(new_region) == 5
     if len(rl) == 0:
@@ -19,6 +35,7 @@ def add_to_region_list(rl: list, new_region):
     rl.insert(position, new_region)
 
 
+# find all the overlapping elements that exist at a given pixel position
 def layers_at(x_pos: int, y_pos: int):
 
     # Open and read the YAML file
@@ -47,4 +64,3 @@ def layers_at(x_pos: int, y_pos: int):
         print(f"{idx}:", target_regions[idx])
 
     # with open("NEW_winamp_skin_specification.yaml", "w") as newfile:
-    #     yaml.dump(MAPPINGS, newfile, default_flow_style=False)

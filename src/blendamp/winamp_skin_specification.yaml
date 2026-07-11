@@ -1,8 +1,10 @@
 BLENDAMP_RESOLUTION: [275, 348]
 text_extras:
-  COLOR_SAMPLE_SIZE: 8
+  COLOR_SAMPLE_SIZE: 12
   VISCOLOR_START: [0, 35]
   PLEDIT_START: [137, 35]
+  CHAR_WIDTH: 4
+  CHAR_HEIGHT: 6
 
 blendamp:
   # Background, everything behind every button

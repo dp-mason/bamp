@@ -79,8 +79,14 @@ def add_viscolor_data(
         visline = visline.strip()
         rgb = [int(strval.strip()) for strval in visline.split(",")]
 
-        color_image = Image.fromarray(np.full((8, 8, 3), rgb[:3], dtype=np.uint8))
+        color_image = Image.fromarray(
+            np.full((sample_size, sample_size, 3), rgb[:3], dtype=np.uint8)
+        )
 
         im.paste(color_image, (start_pos[0], start_pos[1] + row * sample_size))
 
         row += 1
+
+
+def create_viscolor_from_img(im: Image.Image):
+    return
