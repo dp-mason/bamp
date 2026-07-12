@@ -277,7 +277,11 @@ def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
 
     for fname in dirfiles:
         fname_lower = fname.lower()
-        if fname_lower.endswith(".bmp") or fname_lower.endswith(".cur"):
+        if (
+            fname_lower.endswith(".bmp")
+            or fname_lower.endswith(".cur")
+            or fname_lower in ["pledit.txt", "viscolor.txt"]
+        ):
             os.rename(
                 os.path.join(src_path, fname), os.path.join(src_path, fname_lower)
             )

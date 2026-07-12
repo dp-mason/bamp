@@ -77,7 +77,7 @@ def add_viscolor_data(
         if comment_ind > -1:
             visline = visline[: visline.rfind("//")]
         visline = visline.strip()
-        rgb = [int(strval.strip()) for strval in visline.split(",")]
+        rgb = [int(strval.strip()) for strval in visline.split(",")[0:3]]
 
         color_image = Image.fromarray(
             np.full((sample_size, sample_size, 3), rgb[:3], dtype=np.uint8)
