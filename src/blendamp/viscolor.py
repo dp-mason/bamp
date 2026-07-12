@@ -1,8 +1,8 @@
-import os
 from PIL import Image
-import click
 from typing import Tuple
 import numpy as np
+import sys
+from typing import List
 
 from .utils import create_placeholder_image
 
@@ -88,5 +88,35 @@ def add_viscolor_data(
         row += 1
 
 
-def create_viscolor_from_img(im: Image.Image):
-    return
+def extract_viscolor_into_txt(im: Image.Image, WINAMP_TEXT_EXTRAS: dict) -> List[str]:
+    total = WINAMP_TEXT_EXTRAS["VISCOLOR_TOTAL"]
+    sample_size = WINAMP_TEXT_EXTRAS["COLOR_SAMPLE_SIZE"]
+    viscolor_comments = WINAMP_TEXT_EXTRAS["VISCOLOR_COMMENTS"]
+
+    # top left corner
+    start = WINAMP_TEXT_EXTRAS["VISCOLOR_START"]
+    # bottom right corner
+    end = [start[0] + sample_size, start[1] + (total * sample_size)]
+
+    # crop for simplicity
+    viscolor_img: Image.Image = im.crop(start + end)
+
+    lines = []
+    for index in range(0, total):
+        # sample the innermost pixel and save it as a text line
+
+        y_coord = (sample_size / 2) + (sample_size * index)
+        pixel = viscolor_img.getpixel((sample_size / 2, y_coord))
+
+        if type(pixel) is not tuple:
+            sys.exit(
+                f'pixel retrieval returned {type(pixel)} instead of expected "tuple"'
+            )
+
+        # write the pixel to viscolor txt line
+        currline = str(pixel[0]) + ", " + str(pixel[1]) + ", " + str(pixel[2])
+        num_spaces = 15 - len(currline)
+        currline = currline + (" " * num_spaces) + viscolor_comments[index] + "\n"
+        lines.append(currline)
+
+    return lines

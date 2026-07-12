@@ -1,10 +1,36 @@
 BLENDAMP_RESOLUTION: [275, 348]
 text_extras:
   COLOR_SAMPLE_SIZE: 12
-  VISCOLOR_START: [0, 35]
   PLEDIT_START: [137, 35]
   CHAR_WIDTH: 4
   CHAR_HEIGHT: 6
+  VISCOLOR_TOTAL: 24
+  VISCOLOR_START: [0, 35]
+  VISCOLOR_COMMENTS:
+    - "// color 0 - (background color #1)"
+    - "// color 1 - (background color #2)"
+    - "// 2 - top of spectrum visualizer"
+    - "// 3"
+    - "// 4"
+    - "// 5"
+    - "// 6"
+    - "// 7"
+    - "// 8"
+    - "// 9"
+    - "// 10 = mid of spec"
+    - "// 11"
+    - "// 12"
+    - "// 13"
+    - "// 14"
+    - "// 15"
+    - "// 16"
+    - "// 17 = bottom of spec"
+    - "// 18 = osc 1 (brightest)"
+    - "// 19 = osc 2 (slightly dimmer)"
+    - "// 20 = osc 3"
+    - "// 21 = osc 4"
+    - "// 22 = osc 5 (dimmest)"
+    - "// 23 = spectrum analyzer peak dots"
 
 blendamp:
   # Background, everything behind every button

@@ -14,6 +14,7 @@ from pathlib import Path
 from .viscolor import add_pledit_data, add_viscolor_data
 
 from .utils import create_placeholder_image
+from blendamp import viscolor
 
 # Open and read the YAML file
 winamp_spec = resources.open_text("blendamp", "winamp_skin_specification.yaml")
@@ -122,6 +123,11 @@ def blendamp_to_winamp(
                     f"Error occurred while remapping {mapname} to {winamp_file_name}:{mapname} using"
                     f"target region: {output_region}.\n\n{e}"
                 )
+
+        if bamp_file_name == "text.png":
+            lines = viscolor.extract_viscolor_into_txt(im, WINAMP_SPEC["text_extras"])
+            with open(os.path.join(winamp_dir, "viscolor.txt"), "w") as viscolor_f:
+                viscolor_f.writelines(lines)
 
 
 def viscolor_to_blendamp(path_to_vc: str):
