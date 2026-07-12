@@ -31,6 +31,15 @@ text_extras:
     - "// 21 = osc 4"
     - "// 22 = osc 5 (dimmest)"
     - "// 23 = spectrum analyzer peak dots"
+  PLEDIT_FONT: "Arial" # Maybe we could decide a list of acceptable fonts?
+  PLEDIT_FIELDS:
+    - "Normal"
+    - "Current"
+    - "NormalBG"
+    - "SelectedBG"
+    - "mbBG"
+    - "mbFG"
+    - "Font"
 
 blendamp:
   # Background, everything behind every button

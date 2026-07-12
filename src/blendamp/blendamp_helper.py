@@ -62,5 +62,3 @@ def layers_at(x_pos: int, y_pos: int):
 
     for idx in range(0, len(target_regions)):
         print(f"{idx}:", target_regions[idx])
-
-    # with open("NEW_winamp_skin_specification.yaml", "w") as newfile:

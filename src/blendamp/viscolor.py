@@ -115,8 +115,47 @@ def extract_viscolor_into_txt(im: Image.Image, WINAMP_TEXT_EXTRAS: dict) -> List
 
         # write the pixel to viscolor txt line
         currline = str(pixel[0]) + ", " + str(pixel[1]) + ", " + str(pixel[2])
+        # align comments vertically
         num_spaces = 15 - len(currline)
         currline = currline + (" " * num_spaces) + viscolor_comments[index] + "\n"
+        lines.append(currline)
+
+    return lines
+
+
+def extract_pledit_into_txt(im: Image.Image, WINAMP_TEXT_EXTRAS: dict) -> List[str]:
+    keys = WINAMP_TEXT_EXTRAS["PLEDIT_FIELDS"]
+    sample_size = WINAMP_TEXT_EXTRAS["COLOR_SAMPLE_SIZE"]
+
+    # top left corner
+    start = WINAMP_TEXT_EXTRAS["PLEDIT_START"]
+    # bottom right corner (font is not )
+    end = [start[0] + sample_size, start[1] + ((len(keys) - 1) * sample_size)]
+
+    # crop for simplicity
+    viscolor_img: Image.Image = im.crop(start + end)
+
+    lines = []
+    lines.append("[Text]\n")
+    for index in range(0, len(keys)):
+        # sample the innermost pixel and save it as a text line
+
+        value = None
+        if keys[index] == "Font":
+            value = WINAMP_TEXT_EXTRAS["PLEDIT_FONT"]
+        else:
+            y_coord = (sample_size / 2) + (sample_size * index)
+            pixel = viscolor_img.getpixel((sample_size / 2, y_coord))
+
+            if type(pixel) is not tuple:
+                sys.exit(
+                    f'pixel retrieval returned {type(pixel)} instead of expected "tuple"'
+                )
+
+            value = ("#%02x%02x%02x" % (pixel[0], pixel[1], pixel[2])).upper()
+
+        # write the pixel to viscolor txt line
+        currline = keys[index] + "=" + value + "\n"
         lines.append(currline)
 
     return lines

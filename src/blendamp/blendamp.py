@@ -125,9 +125,13 @@ def blendamp_to_winamp(
                 )
 
         if bamp_file_name == "text.png":
-            lines = viscolor.extract_viscolor_into_txt(im, WINAMP_SPEC["text_extras"])
+            v_lines = viscolor.extract_viscolor_into_txt(im, WINAMP_SPEC["text_extras"])
             with open(os.path.join(winamp_dir, "viscolor.txt"), "w") as viscolor_f:
-                viscolor_f.writelines(lines)
+                viscolor_f.writelines(v_lines)
+
+            p_lines = viscolor.extract_pledit_into_txt(im, WINAMP_SPEC["text_extras"])
+            with open(os.path.join(winamp_dir, "pledit.txt"), "w") as pledit_f:
+                pledit_f.writelines(p_lines)
 
 
 def viscolor_to_blendamp(path_to_vc: str):
