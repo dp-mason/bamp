@@ -3,6 +3,7 @@ import yaml
 import os
 import sys
 import shutil
+import logging
 
 from PIL import Image
 from PIL.ImageFile import ImageFile as ImageFile
@@ -15,6 +16,9 @@ from .viscolor import add_pledit_data, add_viscolor_data
 
 from .utils import create_placeholder_image
 from blendamp import viscolor
+
+
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 # Open and read the YAML file
 winamp_spec = resources.open_text("blendamp", "winamp_skin_specification.yaml")
@@ -36,19 +40,47 @@ def composite_image_stack(image_filepaths: List[str]):
     return img
 
 
+def within_bounds(
+    im: Image.Image, coord: Tuple[int, int], exit_on_fail: bool = False
+) -> bool:
+    if not (
+        coord[0] >= 0
+        and coord[0] <= im.width
+        and coord[1] >= 0
+        and coord[1] <= im.height
+    ):
+        logging.warning(
+            f"region {coord} is outside image range:\n\twidth: {im.width}\n\theight: {im.height}"
+        )
+        if exit_on_fail:
+            raise Exception("fail on out of bounds")
+        return False
+    return True
+
+
 # TODO: incomplete sketch
 def paste_region_to_file(
     src: Image.Image,
-    src_region: tuple[float, float, float, float],
+    src_region: tuple[int, int, int, int],
     dest_output_path: str,
     dest_region: tuple[int, int, int, int],
 ):
+    # check whether source region is withing bounds of input
+    within_bounds(src, src_region[:2], exit_on_fail=True)
+    within_bounds(src, src_region[2:], exit_on_fail=True)
+
     out_img = Image.open(dest_output_path)
+
+    # check whether dest region is withing bounds of output
+    within_bounds(out_img, dest_region[:2], exit_on_fail=True)
+    within_bounds(out_img, dest_region[2:], exit_on_fail=True)
+
     subsct_img = src.crop(src_region)
 
     out_img.paste(subsct_img, dest_region[0:2])
 
     out_img.save(dest_output_path, out_img.format)
+
     return
 
 
@@ -80,6 +112,7 @@ def blendamp_to_winamp(
             new_map_res = tuple(WINAMP_SPEC["winamp"][filename]["resolution"])
             create_placeholder_image(full_output_path, new_map_res, winamp_file=True)
 
+    skip_pan_handle = False
     im = None
 
     for bamp_file_name, mappings in WINAMP_SPEC["blendamp"].items():
@@ -107,22 +140,53 @@ def blendamp_to_winamp(
                 im.save(os.path.join(winamp_dir, "COMPOSITED_" + bamp_file_name))
 
         for mapname, mapdata in mappings.items():
-            # TODO: turn this loop body into a function that takes a source and dest image file paths and regions
-            # capture the subsection of the image that represents a specific element
-
             # check if destination winamp map exists
             winamp_file_name = mapdata["dest"]
-            full_output_path: str = os.path.join(winamp_dir, winamp_file_name)
+            winamp_out_fpath: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(mapdata["region"])
-            output_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname][0:2])
+            output_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname])
 
-            try:
-                paste_region_to_file(im, input_region, full_output_path, output_region)
-            except Exception as e:
-                sys.exit(
-                    f"Error occurred while remapping {mapname} to {winamp_file_name}:{mapname} using"
-                    f"target region: {output_region}.\n\n{e}"
-                )
+            # allow an unspecified balance/volume handle to be ignored
+            if "optional_handle" in mapdata.keys() and mapdata["optional_handle"]:
+                if "_pressed" in mapname:
+                    # the winamp image has already been cropped
+                    continue
+                # open original layer without compositing
+                orig_img = Image.open(curr_abs_fp).convert("RGBA")
+                # check whether the section for the pan handle is completely transparent
+                handle_region = np.array(orig_img.crop(input_region))[:, :, 3]
+                if handle_region.all() < 1:
+                    logging.info(
+                        f"optional handle {mapname} was not designed, cropping {winamp_file_name}"
+                    )
+                    # no balance/pan handle was specified, crop it from the balance.bmp
+                    # image so that no sliding balance/pan handle is used
+                    with Image.open(winamp_out_fpath) as winout_img:
+                        new_res = WINAMP_SPEC["winamp"][winamp_file_name][
+                            "resolution_without_handle"
+                        ]
+                        box_coords = (0, 0, new_res[0] - 1, new_res[1] - 1)
+
+                        winout_img.crop(box_coords)
+                        winout_img.save(winamp_out_fpath)
+                    continue
+                else:
+                    logging.info(curr_abs_fp)
+                    logging.info(f"{mapname} is present")
+                    logging.info(handle_region)
+
+            # try:
+            logging.debug(
+                f"Remapping {mapname} to {winamp_file_name}:{mapname} using"
+                f" target region: {output_region}.\n\n"
+            )
+            paste_region_to_file(im, input_region, winamp_out_fpath, output_region)
+            # except Exception as e:
+            #     logging.error(
+            #         f"Error occurred while remapping {mapname} to {winamp_file_name}:{mapname} using"
+            #         f" target region: {output_region}.\n\n{e}"
+            #     )
+            #     sys.exit(1)
 
         if bamp_file_name == "text.png":
             v_lines = viscolor.extract_viscolor_into_txt(im, WINAMP_SPEC["text_extras"])
@@ -132,14 +196,6 @@ def blendamp_to_winamp(
             p_lines = viscolor.extract_pledit_into_txt(im, WINAMP_SPEC["text_extras"])
             with open(os.path.join(winamp_dir, "pledit.txt"), "w") as pledit_f:
                 pledit_f.writelines(p_lines)
-
-
-def viscolor_to_blendamp(path_to_vc: str):
-    return
-
-
-def viscolor_to_winamp(path_to_layer: str):
-    return
 
 
 def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
@@ -185,6 +241,18 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
 
             output_region = tuple(mapdata["region"])
 
+            # check if balance/volume handle has been intentionally cropped from balance bitmap
+            if mapname in [
+                "player_pan_handle",
+                "player_pan_handle_pressed",
+                "vol_handle",
+                "vol_handle_pressed",
+            ]:
+                if im.height == 420:
+                    logging.info(
+                        f"winamp files intentionally ignore {mapname}, skipping"
+                    )
+                    continue
             try:
                 paste_region_to_file(
                     im, input_region, full_blendamp_path, output_region
@@ -314,11 +382,34 @@ def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
                     f"Winamp/Blendamp skin is missing expected file or alternate name not specified: {filename}\n\n{src_path}\n{dirfiles}",
                 )
 
+    # resize nums_ex.bmp to the standard size
+    with Image.open(os.path.join(src_path, "nums_ex.bmp")) as nums_ex_img:
+        standard_res = WINAMP_SPEC["winamp"]["nums_ex.bmp"]["resolution"]
+        if nums_ex_img.width != standard_res[0]:
+            logging.info(
+                f"resizing nums_ex.bmp from {nums_ex_img.width} to {standard_res[0]}"
+            )
+            extended = Image.new(
+                nums_ex_img.mode,
+                (standard_res[0], standard_res[1]),
+                color=(255, 0, 0),  # TODO: background color
+            )
+
+            # Paste the original image at the top-left corner
+            extended.paste(nums_ex_img, (0, 0))
+
+            extended.save(os.path.join(src_path, "nums_ex.bmp"))
+
     return src_path, extra_files
 
 
-def convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing):
-
+def convert(
+    to_winamp,
+    winamp_dir,
+    blendamp_dir,
+    save_comps,
+    delete_existing,
+):
     src_path: str = blendamp_dir if to_winamp else winamp_dir
     dest_path: str = winamp_dir if to_winamp else blendamp_dir
 

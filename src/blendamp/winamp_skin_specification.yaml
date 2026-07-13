@@ -426,6 +426,7 @@ blendamp:
       dest: "posbar.bmp"
 
     vol_handle:
+      optional_handle: &vol_handle_optional True
       region: &vol_handle_region [158, 58, 172, 69]
       dest: "volume.bmp"
 
@@ -436,6 +437,7 @@ blendamp:
       region: &player_shuf_region [164, 89, 210, 104]
       dest: "shufrep.bmp"
     player_pan_handle:
+      optional_handle: &player_pan_handle_optional True
       region: &player_pan_handle_region [189, 58, 203, 69]
       dest: "balance.bmp"
     player_eq_off:
@@ -502,9 +504,11 @@ blendamp:
       region: *posbar_handle_region
       dest: "posbar.bmp"
     player_pan_handle_pressed:
+      optional_handle: *player_pan_handle_optional
       region: *player_pan_handle_region
       dest: "balance.bmp"
     vol_handle_pressed:
+      optional_handle: *vol_handle_optional
       region: *vol_handle_region
       dest: "volume.bmp"
     player_eject_button_pressed:
@@ -711,7 +715,7 @@ blendamp:
       dest: "text.bmp"
     nums:
       region: [0, 19, 108, 32]
-      dest: "nums.bmp"
+      dest: "nums_ex.bmp"
 
   # In the blendamp parameter layers, there is a layer for each individual frame used in the ui
   # Ex. A volume bar with 28 different backgrounds based on volume level will appear
@@ -761,6 +765,7 @@ winamp:
     pl_collapse_expand_button_pressed: [150, 42, 159, 51]
   balance.bmp:
     resolution: [68, 433]
+    resolution_without_handle: [68, 420]
 
     player_pan_handle: [15, 422, 29, 433]
     player_pan_handle_pressed: [0, 422, 14, 433]
@@ -886,9 +891,10 @@ winamp:
     player_mono_inactive: [29, 12, 56, 24]
     player_stereo_active: [0, 0, 29, 12]
     player_stereo_inactive: [0, 12, 29, 24]
-  nums.bmp:
-    alt_names: ["nums_ex.bmp", "numbers.bmp"]
+  nums_ex.bmp:
+    alt_names: ["nums.bmp", "numbers.bmp"]
     resolution: [108, 13]
+    alt_resolution: [99, 13]
     nums: [0, 0, 108, 13]
   playpaus.bmp:
     resolution: [42, 9]
@@ -960,6 +966,7 @@ winamp:
 
   volume.bmp:
     resolution: [68, 433]
+    resolution_without_handle: [68, 420]
     vol_frame_res: [68, 13]
     vertical_gap: 2
     vol_handle: [15, 422, 29, 433]

@@ -51,8 +51,8 @@ def cli_convert(
     blendamp_dir,
     save_comps,
     delete_existing,
-    viscolor_path: str,
-    pledit_path: str,
+    viscolor_path,
+    pledit_path,
 ):
     if viscolor_path is not None or pledit_path is not None:
         print(
@@ -61,7 +61,13 @@ def cli_convert(
         cli_textcolor_convert(viscolor_path, pledit_path)
         return
 
-    blendamp.convert(to_winamp, winamp_dir, blendamp_dir, save_comps, delete_existing)
+    blendamp.convert(
+        to_winamp,
+        winamp_dir,
+        blendamp_dir,
+        save_comps,
+        delete_existing,
+    )
     return
 
 

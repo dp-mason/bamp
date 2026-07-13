@@ -2,7 +2,10 @@
 
 
 ## TODO:
+
 - address small inconsistencies between the original winamp skin and the (winamp->blendamp->winamp) round trip skin:
+  - jackie chan skin balance handle
+  - jackie chan  skin text and nums
   - player posbar is brighter in the round trip skin?
 - extended bottom section missing win->blend
 - make sure the default and template skins process back and forth

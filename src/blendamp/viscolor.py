@@ -4,8 +4,6 @@ import numpy as np
 import sys
 from typing import List
 
-from .utils import create_placeholder_image
-
 
 def add_pledit_data(
     pledit_path: str, im: Image.Image, start_pos: Tuple[int, int], sample_size: int
