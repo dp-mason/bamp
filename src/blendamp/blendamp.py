@@ -112,7 +112,6 @@ def blendamp_to_winamp(
             new_map_res = tuple(WINAMP_SPEC["winamp"][filename]["resolution"])
             create_placeholder_image(full_output_path, new_map_res, winamp_file=True)
 
-    skip_pan_handle = False
     im = None
 
     for bamp_file_name, mappings in WINAMP_SPEC["blendamp"].items():
@@ -147,8 +146,8 @@ def blendamp_to_winamp(
             output_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname])
 
             # allow an unspecified balance/volume handle to be ignored
-            if "optional_handle" in mapdata.keys() and mapdata["optional_handle"]:
-                if "_pressed" in mapname:
+            if mapdata.get("optional_handle") is not None:
+                if mapname.endswith("_pressed"):
                     # the winamp image has already been cropped
                     continue
                 # open original layer without compositing
@@ -242,12 +241,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
             output_region = tuple(mapdata["region"])
 
             # check if balance/volume handle has been intentionally cropped from balance bitmap
-            if mapname in [
-                "player_pan_handle",
-                "player_pan_handle_pressed",
-                "vol_handle",
-                "vol_handle_pressed",
-            ]:
+            if mapdata.get("optional_handle") is not None:
                 if im.height == 420:
                     logging.info(
                         f"winamp files intentionally ignore {mapname}, skipping"
@@ -286,7 +280,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
     return
 
 
-def unpack_archive_input(src_path, to_winamp) -> str:
+def unpack_archive_input(src_path) -> str:
     if src_path.endswith(".wsz"):
         # rename .wsz -> .zip
         src_renamed = f"{src_path[:-4]}.zip"
@@ -422,7 +416,7 @@ def convert(
     # Open a zip archive if it has been passed as the source
     # No zip bomb checks are made at this stage, handle before calling this function
     if src_path[-4:] in [".zip", ".wsz"]:
-        src_path = unpack_archive_input(src_path, to_winamp)
+        src_path = unpack_archive_input(src_path)
 
     extra_files = []
     # process winamp input if converting to blendamp
