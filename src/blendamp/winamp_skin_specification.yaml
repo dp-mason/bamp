@@ -1,7 +1,7 @@
 BLENDAMP_RESOLUTION: [275, 348]
 text_extras:
   COLOR_SAMPLE_SIZE: 12
-  PLEDIT_START: [137, 35]
+  PLEDIT_START: [125, 80]
   CHAR_WIDTH: 5
   CHAR_HEIGHT: 6
   VISCOLOR_TOTAL: 24
@@ -68,7 +68,7 @@ text_extras:
     Y: [120, 0]
     Z: [125, 0]
     \": [130, 0]
-    \@: [135, 0]
+    "@": [135, 0]
     "0": [0, 6]
     "1": [5, 6]
     "2": [10, 6]

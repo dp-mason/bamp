@@ -49,7 +49,7 @@ def add_pledit_data(
 
     # paste to output file according to key order
     row = 0
-    for _, color in pledit_colors.items():
+    for key, color in pledit_colors.items():
         color_image = Image.fromarray(
             np.full((sample_size, sample_size, 3), color, dtype=np.uint8)
         )
@@ -58,6 +58,12 @@ def add_pledit_data(
             start_pos[1] + sample_size * row,
         )
         im.paste(color_image, sample_start)
+
+        # write comment in bitmap using the pixel font provided in top left corner
+        im.paste(
+            write_pixel_comment(key, im),
+            (sample_start[0] + sample_size + 2, sample_start[1] + 1),
+        )
 
         row += 1
 
@@ -97,7 +103,7 @@ def add_viscolor_data(
         # write comment using the pixel font included in text.png
         im.paste(
             write_pixel_comment(viscolor_comments[row], im),
-            (position[0] + sample_size + 1, position[1]),
+            (position[0] + sample_size + 1, position[1] + 1),
         )
 
         row += 1
