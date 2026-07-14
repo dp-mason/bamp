@@ -3,6 +3,7 @@ from typing import Tuple
 import numpy as np
 import sys
 from typing import List
+from .pixel_font import write_pixel_comment
 
 
 def add_pledit_data(
@@ -61,9 +62,18 @@ def add_pledit_data(
         row += 1
 
 
+# in order for comments to be supported you must have already copied the pixel
+# font data into text.png already
 def add_viscolor_data(
-    viscolor_path: str, im: Image.Image, start_pos: Tuple[int, int], sample_size: int
+    viscolor_path: str,
+    im: Image.Image,
+    start_pos: Tuple[int, int],
+    WINAMP_TEXT_EXTRAS: dict,
 ):
+    sample_size = WINAMP_TEXT_EXTRAS["COLOR_SAMPLE_SIZE"]
+    # remove leading "// " from comments
+    viscolor_comments = [com[3:] for com in WINAMP_TEXT_EXTRAS["VISCOLOR_COMMENTS"]]
+
     viscolor_lines = None
     with open(viscolor_path, "r") as viscolor_f:
         viscolor_lines = viscolor_f.readlines()
@@ -81,7 +91,14 @@ def add_viscolor_data(
             np.full((sample_size, sample_size, 3), rgb[:3], dtype=np.uint8)
         )
 
-        im.paste(color_image, (start_pos[0], start_pos[1] + row * sample_size))
+        position = (start_pos[0], start_pos[1] + row * sample_size)
+        im.paste(color_image, position)
+
+        # write comment using the pixel font included in text.png
+        im.paste(
+            write_pixel_comment(viscolor_comments[row], im),
+            (position[0] + sample_size + 1, position[1]),
+        )
 
         row += 1
 

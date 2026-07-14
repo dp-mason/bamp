@@ -1,6 +1,8 @@
+from PIL import Image
 import click
 from . import blendamp
 from . import viscolor
+from . import pixel_font
 from .utils import create_placeholder_image
 import logging
 import os
@@ -45,6 +47,8 @@ def cli_textcolor_convert(
 @click.option("--delete-existing", is_flag=True, default=False)
 @click.option("--viscolor-path", default=None)
 @click.option("--pledit-path", default=None)
+@click.option("--text-comment", default=None)
+@click.option("--pixel-font-path", default=None)
 def cli_convert(
     to_winamp,
     winamp_dir,
@@ -53,12 +57,22 @@ def cli_convert(
     delete_existing,
     viscolor_path,
     pledit_path,
+    text_comment,
+    pixel_font_path,
 ):
     if viscolor_path is not None or pledit_path is not None:
         print(
             "Overriding base convert functionality to test pledit and viscolor conversions"
         )
         cli_textcolor_convert(viscolor_path, pledit_path)
+        return
+    if text_comment is not None:
+        print(
+            "Overriding base convert functionality to test text comment functionality"
+        )
+        with Image.open(pixel_font_path) as pixel_font_img:
+            comment_img = pixel_font.write_pixel_comment(text_comment, pixel_font_img)
+            comment_img.save(os.path.join(os.curdir, "test_comment.png"))
         return
 
     blendamp.convert(

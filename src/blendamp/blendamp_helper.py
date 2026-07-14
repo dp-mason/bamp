@@ -3,17 +3,39 @@ import yaml
 
 
 # snippet used to generate the character mappings in the spec
-def generate_spec_mappings(char_height, row_number, row):
+def generate_spec_mappings(char_height, char_width):
 
-    row1 = list('ABCDEFTHIJKLMNOPQRSTUVWXYZ"@')
+    row1 = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ"@')
     row2 = list("0123456789") + ["..."] + list(".=()-'!_+\\/[]^&%,=$#")
-    row3 = list("äöa?*")
+    row3 = list("äöa?* ")
 
-    print(row1)
-    print(row2)
-    print(row3)
+    posdict = {}
 
-    return
+    # I know this is stupid. Just allow it, ok?
+    for char_idx in range(0, len(row1)):
+        posdict[row1[char_idx]] = [
+            char_idx * char_width,
+            0,
+            # (char_idx + 1) * char_width - 1,
+            # char_height - 1,
+        ]
+    for char_idx in range(0, len(row2)):
+        posdict[row2[char_idx]] = [
+            char_idx * char_width,
+            char_height,
+        ]
+    for char_idx in range(0, len(row3)):
+        posdict[row3[char_idx]] = [
+            char_idx * char_width,
+            char_height * 2,
+        ]
+
+    return posdict
+
+
+myd = generate_spec_mappings(6, 5)
+for key, value in myd.items():
+    print(f"{key}: {value}")
 
 
 # add a new region to the list and make sure it is ordered by size and

@@ -272,7 +272,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
                 os.path.join(winamp_dir, "viscolor.txt"),
                 img,
                 viscolor_start_pos,
-                sample_size,
+                WINAMP_SPEC["text_extras"],
             )
             img.save(full_blendamp_path)
 
