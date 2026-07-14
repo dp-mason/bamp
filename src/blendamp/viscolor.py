@@ -62,7 +62,7 @@ def add_pledit_data(
         # write comment in bitmap using the pixel font provided in top left corner
         im.paste(
             write_pixel_comment(key, im),
-            (sample_start[0] + sample_size + 2, sample_start[1] + 1),
+            (sample_start[0] + sample_size + 2, sample_start[1] + 3),
         )
 
         row += 1
@@ -103,7 +103,7 @@ def add_viscolor_data(
         # write comment using the pixel font included in text.png
         im.paste(
             write_pixel_comment(viscolor_comments[row], im),
-            (position[0] + sample_size + 1, position[1] + 1),
+            (position[0] + sample_size + 1, position[1] + 3),
         )
 
         row += 1
