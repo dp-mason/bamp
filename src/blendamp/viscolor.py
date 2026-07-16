@@ -91,7 +91,15 @@ def add_viscolor_data(
         if comment_ind > -1:
             visline = visline[: visline.rfind("//")]
         visline = visline.strip()
-        rgb = [int(strval.strip()) for strval in visline.split(",")[0:3]]
+        rgb = [strval.strip() for strval in visline.split(",")[0:3]]
+
+        # there are so many friggin weird characters at the end of lines
+        for char_ind in range(0, len(rgb[2])):
+            if not rgb[2][char_ind].isdigit() or char_ind > 2:
+                rgb[2] = (rgb[2])[:char_ind]  # pop non-digit characters
+                break
+        # convert to list of integers
+        rgb = [int(numstr) for numstr in rgb]
 
         color_image = Image.fromarray(
             np.full((sample_size, sample_size, 3), rgb[:3], dtype=np.uint8)
