@@ -66,14 +66,14 @@ def paste_region_to_file(
     dest_region: tuple[int, int, int, int],
 ):
     # check whether source region is withing bounds of input
-    within_bounds(src, src_region[:2], exit_on_fail=True)
-    within_bounds(src, src_region[2:], exit_on_fail=True)
+    within_bounds(src, src_region[:2])
+    within_bounds(src, src_region[2:])
 
     out_img = Image.open(dest_output_path)
 
     # check whether dest region is withing bounds of output
-    within_bounds(out_img, dest_region[:2], exit_on_fail=True)
-    within_bounds(out_img, dest_region[2:], exit_on_fail=True)
+    within_bounds(out_img, dest_region[:2])
+    within_bounds(out_img, dest_region[2:])
 
     subsct_img = src.crop(src_region)
 
@@ -226,6 +226,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
             full_winamp_path: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname])
 
+            assert os.path.exists(full_winamp_path)
             im = Image.open(full_winamp_path, "r")
 
             # Try to catch corrupted bmp files
@@ -242,7 +243,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
 
             # check if balance/volume handle has been intentionally cropped from balance bitmap
             if mapdata.get("optional_handle") is not None:
-                if im.height == 420:
+                if im.height < 422:  # TODO: put magic number in specification
                     logging.info(
                         f"winamp files intentionally ignore {mapname}, skipping"
                     )
