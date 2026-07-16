@@ -147,9 +147,6 @@ def blendamp_to_winamp(
 
             # allow an unspecified balance/volume handle to be ignored
             if mapdata.get("optional_handle") is not None:
-                if mapname.endswith("_pressed"):
-                    # the winamp image has already been cropped
-                    continue
                 # open original layer without compositing
                 orig_img = Image.open(curr_abs_fp).convert("RGBA")
                 # check whether the section for the pan handle is completely transparent
@@ -166,7 +163,7 @@ def blendamp_to_winamp(
                         ]
                         box_coords = (0, 0, new_res[0] - 1, new_res[1] - 1)
 
-                        winout_img.crop(box_coords)
+                        winout_img = winout_img.crop(box_coords)
                         winout_img.save(winamp_out_fpath)
                     continue
                 else:
@@ -222,6 +219,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
         )
 
         for mapname, mapdata in mappings.items():
+            logging.debug(f"MAPNAME: {mapname}")
             winamp_file_name = mapdata["dest"]
             full_winamp_path: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname])
@@ -243,7 +241,12 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
 
             # check if balance/volume handle has been intentionally cropped from balance bitmap
             if mapdata.get("optional_handle") is not None:
-                if im.height < 422:  # TODO: put magic number in specification
+                if (
+                    im.height
+                    <= WINAMP_SPEC["winamp"][winamp_file_name][
+                        "resolution_without_handle"
+                    ][1]
+                ):
                     logging.info(
                         f"winamp files intentionally ignore {mapname}, skipping"
                     )

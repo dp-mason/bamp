@@ -829,7 +829,7 @@ winamp:
     pl_collapse_expand_button_pressed: [150, 42, 159, 51]
   balance.bmp:
     resolution: [68, 433]
-    resolution_without_handle: [68, 420]
+    resolution_without_handle: [68, 422]
 
     player_pan_handle: [15, 422, 29, 433]
     player_pan_handle_pressed: [0, 422, 14, 433]
@@ -1030,7 +1030,7 @@ winamp:
 
   volume.bmp:
     resolution: [68, 433]
-    resolution_without_handle: [68, 420]
+    resolution_without_handle: [68, 422]
     vol_frame_res: [68, 13]
     vertical_gap: 2
     vol_handle: [15, 422, 29, 433]
