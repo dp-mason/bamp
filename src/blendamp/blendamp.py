@@ -88,7 +88,8 @@ def paste_region_to_file(
         else:
             multiply = int(multiply)
             subsct_img = subsct_img.resize(
-                (subsct_img.width * multiply, subsct_img.height * multiply)
+                (subsct_img.width * multiply, subsct_img.height * multiply),
+                resample=Image.Resampling.NEAREST,  # don't smooth the spectrum when enlarging
             )
 
     out_img.paste(subsct_img, dest_region[0:2])
@@ -164,6 +165,7 @@ def blendamp_to_winamp(
             if mapdata.get("optional_handle") is not None:
                 # open original layer without compositing
                 orig_img = Image.open(curr_abs_fp).convert("RGBA")
+
                 # check whether the section for the pan handle is completely transparent
                 handle_region = np.array(orig_img.crop(input_region))[:, :, 3]
                 if handle_region.all() < 1:
