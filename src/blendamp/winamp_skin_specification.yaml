@@ -772,7 +772,7 @@ blendamp:
 
   text.png:
     eq_viz_spectrum:
-      region: [100, 133, 101, 152]
+      region: [125, 160, 129, 236]
       dest: "eqmain.bmp"
     text:
       region: [0, 0, 155, 18]

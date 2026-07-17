@@ -17,6 +17,7 @@ from .viscolor import add_pledit_data, add_viscolor_data
 from .utils import create_placeholder_image
 from blendamp import viscolor
 
+from .pixel_font import write_pixel_comment
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
@@ -64,6 +65,7 @@ def paste_region_to_file(
     src_region: tuple[int, int, int, int],
     dest_output_path: str,
     dest_region: tuple[int, int, int, int],
+    multiply=None,
 ):
     # check whether source region is withing bounds of input
     within_bounds(src, src_region[:2])
@@ -76,6 +78,18 @@ def paste_region_to_file(
     within_bounds(out_img, dest_region[2:])
 
     subsct_img = src.crop(src_region)
+
+    if multiply is not None:
+        if multiply < 1:
+            divisor = int(1 / multiply)
+            subsct_img = subsct_img.resize(
+                (int(subsct_img.width / divisor), int(subsct_img.height / divisor))
+            )
+        else:
+            multiply = int(multiply)
+            subsct_img = subsct_img.resize(
+                (subsct_img.width * multiply, subsct_img.height * multiply)
+            )
 
     out_img.paste(subsct_img, dest_region[0:2])
 
@@ -144,6 +158,7 @@ def blendamp_to_winamp(
             winamp_out_fpath: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(mapdata["region"])
             output_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname])
+            mult = None
 
             # allow an unspecified balance/volume handle to be ignored
             if mapdata.get("optional_handle") is not None:
@@ -170,13 +185,17 @@ def blendamp_to_winamp(
                     logging.info(curr_abs_fp)
                     logging.info(f"{mapname} is present")
                     logging.info(handle_region)
+            elif mapname == "eq_viz_spectrum":
+                mult = 0.25
 
             # try:
             logging.debug(
                 f"Remapping {mapname} to {winamp_file_name}:{mapname} using"
                 f" target region: {output_region}.\n\n"
             )
-            paste_region_to_file(im, input_region, winamp_out_fpath, output_region)
+            paste_region_to_file(
+                im, input_region, winamp_out_fpath, output_region, mult
+            )
             # except Exception as e:
             #     logging.error(
             #         f"Error occurred while remapping {mapname} to {winamp_file_name}:{mapname} using"
@@ -238,6 +257,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
             im = Image.fromarray(im_arr).convert("RGB")
 
             output_region = tuple(mapdata["region"])
+            mult = None
 
             # check if balance/volume handle has been intentionally cropped from balance bitmap
             if mapdata.get("optional_handle") is not None:
@@ -251,9 +271,13 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
                         f"winamp files intentionally ignore {mapname}, skipping"
                     )
                     continue
+            elif mapname == "eq_viz_spectrum":
+                # multiply size by 4
+                mult = 4
+
             try:
                 paste_region_to_file(
-                    im, input_region, full_blendamp_path, output_region
+                    im, input_region, full_blendamp_path, output_region, mult
                 )
             except Exception as e:
                 sys.exit(
@@ -278,6 +302,27 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
                 viscolor_start_pos,
                 WINAMP_SPEC["text_extras"],
             )
+
+            eq_comment = write_pixel_comment("EQ Adjust Spectrum", img)
+
+            img.paste(
+                eq_comment,
+                (
+                    mappings["eq_viz_spectrum"]["region"][0] + 6,
+                    mappings["eq_viz_spectrum"]["region"][1] + 20,
+                ),
+            )
+            # paste_region_to_file(
+            #     eq_comment,
+            #     (0, 0, eq_comment.width, eq_comment.height),
+            #     curr_abs_fp,
+            #     (
+            #         mappings["eq_viz_spectrum"]["region"][0] + 6,
+            #         mappings["eq_viz_spectrum"]["region"][1] + 20,
+            #         mappings["eq_viz_spectrum"]["region"][0] + 6 + eq_comment.width,
+            #         mappings["eq_viz_spectrum"]["region"][1] + 20 + eq_comment.height,
+            #     ),
+            # )
             img.save(full_blendamp_path)
 
     # Clear the to_blendamp diectory
