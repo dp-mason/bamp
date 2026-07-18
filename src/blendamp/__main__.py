@@ -45,6 +45,7 @@ def cli_textcolor_convert(
 @click.option("--blendamp-dir", default="blendamp")
 @click.option("--save-comps", is_flag=True, default=False)
 @click.option("--delete-existing", is_flag=True, default=False)
+@click.option("--pad-slider-edges", is_flag=True, default=False)
 @click.option("--viscolor-path", default=None)
 @click.option("--pledit-path", default=None)
 @click.option("--text-comment", default=None)
@@ -55,6 +56,7 @@ def cli_convert(
     blendamp_dir,
     save_comps,
     delete_existing,
+    pad_slider_edges,
     viscolor_path,
     pledit_path,
     text_comment,
@@ -81,6 +83,7 @@ def cli_convert(
         blendamp_dir,
         save_comps,
         delete_existing,
+        pad_slider_edges,
     )
     return
 

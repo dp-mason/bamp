@@ -101,7 +101,11 @@ def paste_region_to_file(
 
 
 def blendamp_to_winamp(
-    winamp_dir, blendamp_dir, save_comps=False, delete_existing=False
+    winamp_dir,
+    blendamp_dir,
+    save_comps=False,
+    delete_existing=False,
+    pad_slider_edges=False,
 ):
 
     # clear winamp_dir
@@ -194,7 +198,7 @@ def blendamp_to_winamp(
             # sometimes the players show part of the winamp image texture they arent
             # supposed to when fractionally scaled, this allows the background composite to be
             # included in the outer perimeter of the element (according to the spec)
-            if mapdata.get("allow_bleed"):
+            if mapdata.get("allow_bleed") and pad_slider_edges:
                 input_region = utils.dilate_box_mask(
                     input_region, mapdata["allow_bleed"]
                 )
@@ -466,6 +470,7 @@ def convert(
     blendamp_dir,
     save_comps,
     delete_existing,
+    pad_slider_edges=False,
 ):
     src_path: str = blendamp_dir if to_winamp else winamp_dir
     dest_path: str = winamp_dir if to_winamp else blendamp_dir
@@ -487,7 +492,9 @@ def convert(
         src_path, extra_files = sanitize_winamp_input(src_path)
 
     if to_winamp:
-        blendamp_to_winamp(dest_path, src_path, save_comps, delete_existing)
+        blendamp_to_winamp(
+            dest_path, src_path, save_comps, delete_existing, pad_slider_edges
+        )
     else:
         winamp_to_blendamp(src_path, dest_path, delete_existing)
 
