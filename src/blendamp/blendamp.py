@@ -18,6 +18,7 @@ from .utils import create_placeholder_image
 from blendamp import viscolor
 
 from .pixel_font import write_pixel_comment
+from blendamp import utils
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
@@ -189,6 +190,17 @@ def blendamp_to_winamp(
                     logging.info(handle_region)
             elif mapname == "eq_viz_spectrum":
                 mult = 0.25
+
+            # sometimes the players show part of the winamp image texture they arent
+            # supposed to when fractionally scaled, this allows the background composite to be
+            # included in the outer perimeter of the element (according to the spec)
+            if mapdata.get("allow_bleed"):
+                input_region = utils.dilate_box_mask(
+                    input_region, mapdata["allow_bleed"]
+                )
+                output_region = utils.dilate_box_mask(
+                    output_region, mapdata["allow_bleed"]
+                )
 
             # try:
             logging.debug(
@@ -494,6 +506,6 @@ def convert(
     if zip_output:
         base_name = os.path.basename(dest_path)
         shutil.make_archive(base_name, "zip", os.path.abspath(dest_path))
-        shutil.move(f"{base_name}.zip", Path(os.path.abspath(dest_path)).parent)
+        # shutil.move(f"{base_name}.zip", Path(os.path.abspath(dest_path)).parent)
 
     return
