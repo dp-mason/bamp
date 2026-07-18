@@ -5,6 +5,10 @@ import sys
 from typing import List
 from .pixel_font import write_pixel_comment
 
+import logging
+
+logging.basicConfig(stream=sys.stdout, level=logging.WARN)
+
 
 def add_pledit_data(
     pledit_path: str, im: Image.Image, start_pos: Tuple[int, int], sample_size: int
@@ -84,6 +88,21 @@ def add_viscolor_data(
     with open(viscolor_path, "r") as viscolor_f:
         viscolor_lines = viscolor_f.readlines()
 
+    if len(viscolor_lines) > len(viscolor_comments):
+        logging.warning(
+            f"Original viscolor.txt has {len(viscolor_lines)} lines,"
+            f" when {len(viscolor_comments)} was expected. Trimming extra lines."
+        )
+        # trim extra lines
+        viscolor_lines = viscolor_lines[: len(viscolor_comments)]
+    elif len(viscolor_lines) < len(viscolor_comments):
+        logging.warning(
+            f"Original viscolor.txt has {len(viscolor_lines)} lines,"
+            f" when {len(viscolor_comments)} was expected. Adding placeholder lines."
+        )
+        # add dummy lines
+        viscolor_lines += ["0,0,0\n"] * (len(viscolor_comments) - len(viscolor_lines))
+
     row = 0
     for visline in viscolor_lines:
         # strip comment
@@ -93,12 +112,12 @@ def add_viscolor_data(
         visline = visline.strip()
         rgb = [strval.strip() for strval in visline.split(",")[0:3]]
 
-        # there are so many friggin weird characters at the end of lines
+        # there are so many friggin weird characters at the end of lines sometimes
         for char_ind in range(0, len(rgb[2])):
             if not rgb[2][char_ind].isdigit() or char_ind > 2:
                 rgb[2] = (rgb[2])[:char_ind]  # pop non-digit characters
                 break
-        # convert to list of integers
+        # convert from string list to list of integers
         rgb = [int(numstr) for numstr in rgb]
 
         color_image = Image.fromarray(
