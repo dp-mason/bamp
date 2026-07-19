@@ -512,7 +512,10 @@ def convert(
 
     if zip_output:
         base_name = os.path.basename(dest_path)
-        shutil.make_archive(base_name, "zip", os.path.abspath(dest_path))
-        # shutil.move(f"{base_name}.zip", Path(os.path.abspath(dest_path)).parent)
+        abs_dest_path = os.path.abspath(dest_path)
+        shutil.make_archive(base_name, "zip", abs_dest_path)
+        if Path(abs_dest_path).parent != Path(os.path.abspath(os.curdir)):
+            logging.info(f"{abs_dest_path} is not same as {os.path.abspath(os.curdir)}")
+            shutil.move(f"{base_name}.zip", Path(abs_dest_path).parent)
 
     return
