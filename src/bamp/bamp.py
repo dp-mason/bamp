@@ -14,16 +14,15 @@ from pathlib import Path
 
 from .viscolor import add_pledit_data, add_viscolor_data
 
-from .utils import create_placeholder_image
-from blendamp import viscolor
+from .utils import create_placeholder_image, dilate_box_mask
+from .viscolor import extract_viscolor_into_txt, extract_pledit_into_txt
 
 from .pixel_font import write_pixel_comment
-from blendamp import utils
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 # Open and read the YAML file
-winamp_spec = resources.open_text("blendamp", "winamp_skin_specification.yaml")
+winamp_spec = resources.open_text("bamp", "winamp_skin_specification.yaml")
 WINAMP_SPEC: dict = yaml.safe_load(winamp_spec)
 winamp_spec.close()
 
@@ -100,9 +99,9 @@ def paste_region_to_file(
     return
 
 
-def blendamp_to_winamp(
+def bamp_to_winamp(
     winamp_dir,
-    blendamp_dir,
+    bamp_dir,
     save_comps=False,
     delete_existing=False,
     pad_slider_edges=False,
@@ -134,8 +133,8 @@ def blendamp_to_winamp(
 
     im = None
 
-    for bamp_file_name, mappings in WINAMP_SPEC["blendamp"].items():
-        curr_abs_fp = os.path.join(blendamp_dir, bamp_file_name)
+    for bamp_file_name, mappings in WINAMP_SPEC["bamp"].items():
+        curr_abs_fp = os.path.join(bamp_dir, bamp_file_name)
 
         if im is None:
             im = (Image.open(curr_abs_fp)).convert("RGBA")
@@ -199,12 +198,8 @@ def blendamp_to_winamp(
             # supposed to when fractionally scaled, this allows the background composite to be
             # included in the outer perimeter of the element (according to the spec)
             if mapdata.get("allow_bleed") and pad_slider_edges:
-                input_region = utils.dilate_box_mask(
-                    input_region, mapdata["allow_bleed"]
-                )
-                output_region = utils.dilate_box_mask(
-                    output_region, mapdata["allow_bleed"]
-                )
+                input_region = dilate_box_mask(input_region, mapdata["allow_bleed"])
+                output_region = dilate_box_mask(output_region, mapdata["allow_bleed"])
 
             # try:
             logging.debug(
@@ -222,36 +217,35 @@ def blendamp_to_winamp(
             #     sys.exit(1)
 
         if bamp_file_name == "text.png":
-            v_lines = viscolor.extract_viscolor_into_txt(im, WINAMP_SPEC["text_extras"])
+            v_lines = extract_viscolor_into_txt(im, WINAMP_SPEC["text_extras"])
             with open(os.path.join(winamp_dir, "viscolor.txt"), "w") as viscolor_f:
                 viscolor_f.writelines(v_lines)
 
-            p_lines = viscolor.extract_pledit_into_txt(im, WINAMP_SPEC["text_extras"])
+            p_lines = extract_pledit_into_txt(im, WINAMP_SPEC["text_extras"])
             with open(os.path.join(winamp_dir, "pledit.txt"), "w") as pledit_f:
                 pledit_f.writelines(p_lines)
 
 
-def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
-    if not os.path.exists(blendamp_dir):
-        os.makedirs(blendamp_dir)
+def winamp_to_bamp(winamp_dir, bamp_dir, delete_existing=False):
+    if not os.path.exists(bamp_dir):
+        os.makedirs(bamp_dir)
     elif (
         delete_existing
-        or input(f"Delete Existing Blendamp Skin at {blendamp_dir}?: ").lower().strip()
-        == "y"
+        or input(f"Delete Existing Bamp Skin at {bamp_dir}?: ").lower().strip() == "y"
     ):
-        # Clear the blendamp diectory
-        for map_fn in os.listdir(blendamp_dir):
+        # Clear the bamp diectory
+        for map_fn in os.listdir(bamp_dir):
             if map_fn.lower()[-4:] in [".png", ".txt"]:
-                os.remove(os.path.join(blendamp_dir, map_fn))
+                os.remove(os.path.join(bamp_dir, map_fn))
     else:
-        sys.exit(f"Non-empty directory exists at path {blendamp_dir}")
+        sys.exit(f"Non-empty directory exists at path {bamp_dir}")
 
-    for bamp_fn, mappings in WINAMP_SPEC["blendamp"].items():
-        # Create placeholder blendamp file
-        full_blendamp_path: str = os.path.join(blendamp_dir, bamp_fn)
+    for bamp_fn, mappings in WINAMP_SPEC["bamp"].items():
+        # Create placeholder bamp file
+        full_bamp_path: str = os.path.join(bamp_dir, bamp_fn)
         create_placeholder_image(
-            full_blendamp_path,
-            tuple(WINAMP_SPEC["BLENDAMP_RESOLUTION"]),
+            full_bamp_path,
+            tuple(WINAMP_SPEC["BAMP_RESOLUTION"]),
             winamp_file=False,
         )
 
@@ -295,11 +289,11 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
 
             try:
                 paste_region_to_file(
-                    im, input_region, full_blendamp_path, output_region, mult
+                    im, input_region, full_bamp_path, output_region, mult
                 )
             except Exception as e:
                 sys.exit(
-                    f"Error occurred while remapping {full_winamp_path}:{mapname} to {full_blendamp_path}:{mapname} using"
+                    f"Error occurred while remapping {full_winamp_path}:{mapname} to {full_bamp_path}:{mapname} using"
                     f"target region: {output_region}.\n\n{e}"
                 )
 
@@ -307,7 +301,7 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
             sample_size = WINAMP_SPEC["text_extras"]["COLOR_SAMPLE_SIZE"]
             pledit_start_pos = WINAMP_SPEC["text_extras"]["PLEDIT_START"]
             viscolor_start_pos = WINAMP_SPEC["text_extras"]["VISCOLOR_START"]
-            img = Image.open(full_blendamp_path)
+            img = Image.open(full_bamp_path)
             add_pledit_data(
                 os.path.join(winamp_dir, "pledit.txt"),
                 img,
@@ -341,9 +335,9 @@ def winamp_to_blendamp(winamp_dir, blendamp_dir, delete_existing=False):
             #         mappings["eq_viz_spectrum"]["region"][1] + 20 + eq_comment.height,
             #     ),
             # )
-            img.save(full_blendamp_path)
+            img.save(full_bamp_path)
 
-    # Clear the to_blendamp diectory
+    # Clear the to_bamp diectory
     return
 
 
@@ -440,7 +434,7 @@ def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
                     )
             else:
                 sys.exit(
-                    f"Winamp/Blendamp skin is missing expected file or alternate name not specified: {filename}\n\n{src_path}\n{dirfiles}",
+                    f"Winamp/Bamp skin is missing expected file or alternate name not specified: {filename}\n\n{src_path}\n{dirfiles}",
                 )
 
     # resize nums_ex.bmp to the standard size
@@ -467,13 +461,13 @@ def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
 def convert(
     to_winamp,
     winamp_dir,
-    blendamp_dir,
+    bamp_dir,
     save_comps,
     delete_existing,
     pad_slider_edges=False,
 ):
-    src_path: str = blendamp_dir if to_winamp else winamp_dir
-    dest_path: str = winamp_dir if to_winamp else blendamp_dir
+    src_path: str = bamp_dir if to_winamp else winamp_dir
+    dest_path: str = winamp_dir if to_winamp else bamp_dir
 
     if dest_path.endswith(".zip"):
         zip_output = True
@@ -487,16 +481,16 @@ def convert(
         src_path = unpack_archive_input(src_path)
 
     extra_files = []
-    # process winamp input if converting to blendamp
+    # process winamp input if converting to bamp
     if not to_winamp:
         src_path, extra_files = sanitize_winamp_input(src_path)
 
     if to_winamp:
-        blendamp_to_winamp(
+        bamp_to_winamp(
             dest_path, src_path, save_comps, delete_existing, pad_slider_edges
         )
     else:
-        winamp_to_blendamp(src_path, dest_path, delete_existing)
+        winamp_to_bamp(src_path, dest_path, delete_existing)
 
     # move extraneous files to the destination directory under reserved subdir
     if len(extra_files) > 0:

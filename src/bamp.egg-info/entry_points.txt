@@ -1,0 +1,2 @@
+[console_scripts]
+convert = bamp.cli:cli_convert

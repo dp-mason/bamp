@@ -9,8 +9,8 @@ def create_placeholder_image(img_path: str, res: tuple[int, int], winamp_file: b
         winamp_img = Image.new("RGB", res, (255, 0, 255))
         winamp_img.save(img_path, "bmp")
     else:
-        blendamp_img = Image.new("RGBA", res, (0, 0, 0, 0))
-        blendamp_img.save(img_path, "png")
+        bamp_img = Image.new("RGBA", res, (0, 0, 0, 0))
+        bamp_img.save(img_path, "png")
 
 
 def dilate_box_mask(

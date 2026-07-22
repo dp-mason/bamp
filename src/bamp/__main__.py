@@ -1,6 +1,6 @@
 from PIL import Image
 import click
-from . import blendamp
+from . import bamp
 from . import viscolor
 from . import pixel_font
 from .utils import create_placeholder_image
@@ -17,11 +17,11 @@ def cli_textcolor_convert(
     impath = os.path.join(os.curdir, "test_viscolor.png")
 
     create_placeholder_image(impath, (275, 348), False)
-    im = blendamp.Image.open(impath, "r")
+    im = bamp.Image.open(impath, "r")
 
-    sample_size = blendamp.WINAMP_SPEC["text_extras"]["COLOR_SAMPLE_SIZE"]
-    pledit_start_pos = blendamp.WINAMP_SPEC["text_extras"]["PLEDIT_START"]
-    viscolor_start_pos = blendamp.WINAMP_SPEC["text_extras"]["VISCOLOR_START"]
+    sample_size = bamp.WINAMP_SPEC["text_extras"]["COLOR_SAMPLE_SIZE"]
+    pledit_start_pos = bamp.WINAMP_SPEC["text_extras"]["PLEDIT_START"]
+    viscolor_start_pos = bamp.WINAMP_SPEC["text_extras"]["VISCOLOR_START"]
 
     if viscolor_path is not None:
         viscolor.add_viscolor_data(viscolor_path, im, viscolor_start_pos, sample_size)
@@ -40,9 +40,9 @@ def cli_textcolor_convert(
 
 
 @click.command()
-@click.option("--to-winamp/--to-blendamp", default=True)
+@click.option("--to-winamp/--to-bamp", default=True)
 @click.option("--winamp-dir", default="winamp_skin")
-@click.option("--blendamp-dir", default="blendamp")
+@click.option("--bamp-dir", default="bamp")
 @click.option("--save-comps", is_flag=True, default=False)
 @click.option("--delete-existing", is_flag=True, default=False)
 @click.option("--pad-slider-edges", is_flag=True, default=False)
@@ -53,7 +53,7 @@ def cli_textcolor_convert(
 def cli_convert(
     to_winamp,
     winamp_dir,
-    blendamp_dir,
+    bamp_dir,
     save_comps,
     delete_existing,
     pad_slider_edges,
@@ -77,10 +77,10 @@ def cli_convert(
             comment_img.save(os.path.join(os.curdir, "test_comment.png"))
         return
 
-    blendamp.convert(
+    bamp.convert(
         to_winamp,
         winamp_dir,
-        blendamp_dir,
+        bamp_dir,
         save_comps,
         delete_existing,
         pad_slider_edges,

@@ -5,7 +5,7 @@ from importlib import resources
 from typing import Tuple
 
 # Open and read the YAML file
-with resources.open_text("blendamp", "winamp_skin_specification.yaml") as winamp_spec:
+with resources.open_text("bamp", "winamp_skin_specification.yaml") as winamp_spec:
     TEXT_SPEC: dict = yaml.safe_load(winamp_spec)["text_extras"]
     winamp_spec.close()
 

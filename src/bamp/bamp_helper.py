@@ -66,7 +66,7 @@ def layers_at(x_pos: int, y_pos: int):
 
     target_regions = []
 
-    for file_key, elems_dict in MAPPINGS["blendamp"].items():
+    for file_key, elems_dict in MAPPINGS["bamp"].items():
         if file_key == "text.png":
             continue
         for element, elemdata in elems_dict.items():

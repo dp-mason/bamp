@@ -1,4 +1,4 @@
-BLENDAMP_RESOLUTION: [275, 348]
+BAMP_RESOLUTION: [275, 348]
 text_extras:
   COLOR_SAMPLE_SIZE: 12
   PLEDIT_START: [125, 80]
@@ -105,7 +105,7 @@ text_extras:
     "?": [15, 12]
     "*": [20, 12]
     " ": [25, 12]
-blendamp:
+bamp:
   # Background, everything behind every button
   # If there is alpha in any other layer, this this is the texture
   # that will be composited underneath
@@ -865,7 +865,7 @@ blendamp:
       region: [0, 19, 108, 32]
       dest: "nums_ex.bmp"
 
-  # In the blendamp parameter layers, there is a layer for each individual frame used in the ui
+  # In the bamp parameter layers, there is a layer for each individual frame used in the ui
   # Ex. A volume bar with 28 different backgrounds based on volume level will appear
   # in the same region across 28 sequential layers to make animation design easier
   # This also includes buttons with multiple states

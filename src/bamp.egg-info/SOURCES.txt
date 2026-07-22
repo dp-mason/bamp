@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+pyproject.toml
+src/bamp/__init__.py
+src/bamp/__main__.py
+src/bamp/bamp.py
+src/bamp/bamp_helper.py
+src/bamp/pixel_font.py
+src/bamp/utils.py
+src/bamp/viscolor.py
+src/bamp.egg-info/PKG-INFO
+src/bamp.egg-info/SOURCES.txt
+src/bamp.egg-info/dependency_links.txt
+src/bamp.egg-info/entry_points.txt
+src/bamp.egg-info/requires.txt
+src/bamp.egg-info/top_level.txt
