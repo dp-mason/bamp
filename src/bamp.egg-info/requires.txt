@@ -1,4 +1,0 @@
-pyyaml
-click
-numpy
-pillow
