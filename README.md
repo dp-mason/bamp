@@ -2,7 +2,12 @@
 
 A modern way to create classic WinAmp skins. Edit with ease, retain full control, use the tools you prefer.
 
+TODO: Link to website
+
 ## About
+
+TODO: Improve Intro Paragraph
+- make it clear EXACTLY what this being done... bamp converts and existing winamp skin to a stack of images laid out like the final user interface would be, with all elements that would occupy the same space separated across stacked layers
 
 Bamp is a modern alternative specification for WinAmp skins that allows for ease of editing in your graphic design tool of choice. The corresponding converter allows for conversion to and from the standard WinAmp specification allowing you to test changes or modify existing WinAmp skins.
 There are two primary advantages to editing skins in Bamp over WinAmp. The first is the layered approach. In the standard specification, each UI element is found in a different area in 2D space, across a wide variety of files of different dimensions, with very little to no relationship to its actual position in the user interface. Alternatively, Bamp provides users with a set of textures whose layout is much closer to how each element would appear when the skin is loaded. For example, the unpressed and pressed state of buttons are defined in the same 2D space across different layers. All the user needs to do after defining the unpressed state  is copy that element to the layer directly above in order to begin work on the pressed state. The way that the converter is written also allows artists to leverage the alpha channel to make the bare minimum changes necessary or to completely omit buttons from their design. This really comes in handy for elements such as the eq, balance, and volume faders that each have 27 states.

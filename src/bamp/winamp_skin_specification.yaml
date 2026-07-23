@@ -155,7 +155,7 @@ bamp:
       dest: "pledit.bmp"
 
   # Animations
-  70.png:
+  01.png:
     eq_fader_background_00:
       region: &eq_fader_background_00 [21, 154, 35, 217]
       allow_bleed: 1
@@ -171,7 +171,7 @@ bamp:
     player_menu_0:
       region: &player_menu_0_region [10, 22, 18, 65] # Blank, O, A, I, D, V, Unhighlighted
       dest: "titlebar.bmp"
-  71.png:
+  02.png:
     eq_fader_background_01:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -187,7 +187,7 @@ bamp:
     player_menu_1: # O
       region: *player_menu_0_region
       dest: "titlebar.bmp"
-  72.png:
+  03.png:
     eq_fader_background_02:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -203,7 +203,7 @@ bamp:
     player_menu_2: # A
       region: *player_menu_0_region
       dest: "titlebar.bmp"
-  73.png:
+  04.png:
     eq_fader_background_03:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -219,7 +219,7 @@ bamp:
     player_menu_3: # I
       region: *player_menu_0_region
       dest: "titlebar.bmp"
-  74.png:
+  05.png:
     eq_fader_background_04:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -235,7 +235,7 @@ bamp:
     player_menu_4: # D
       region: *player_menu_0_region
       dest: "titlebar.bmp"
-  75.png:
+  06.png:
     eq_fader_background_05:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -251,7 +251,7 @@ bamp:
     player_menu_5: # V
       region: *player_menu_0_region
       dest: "titlebar.bmp"
-  76.png:
+  07.png:
     eq_fader_background_06:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -267,7 +267,7 @@ bamp:
     player_menu_6: # Unhighlighted
       region: *player_menu_0_region
       dest: "titlebar.bmp"
-  77.png:
+  08.png:
     eq_fader_background_07:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -280,7 +280,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  78.png:
+  09.png:
     eq_fader_background_08:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -293,7 +293,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  79.png:
+  10.png:
     eq_fader_background_09:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -306,7 +306,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  80.png:
+  11.png:
     eq_fader_background_10:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -319,7 +319,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  81.png:
+  12.png:
     eq_fader_background_11:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -332,7 +332,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  82.png:
+  13.png:
     eq_fader_background_12:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -345,7 +345,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  83.png:
+  14.png:
     eq_fader_background_13:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -358,7 +358,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  84.png:
+  15.png:
     eq_fader_background_14:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -371,7 +371,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  85.png:
+  16.png:
     eq_fader_background_15:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -384,7 +384,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  86.png:
+  17.png:
     eq_fader_background_16:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -397,7 +397,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  87.png:
+  18.png:
     eq_fader_background_17:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -410,7 +410,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  88.png:
+  19.png:
     eq_fader_background_18:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -423,7 +423,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  89.png:
+  20.png:
     eq_fader_background_19:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -436,7 +436,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  90.png:
+  21.png:
     eq_fader_background_20:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -449,7 +449,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  91.png:
+  22.png:
     eq_fader_background_21:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -462,7 +462,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  92.png:
+  23.png:
     eq_fader_background_22:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -475,7 +475,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  93.png:
+  24.png:
     eq_fader_background_23:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -488,7 +488,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  94.png:
+  25.png:
     eq_fader_background_24:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -501,7 +501,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  95.png:
+  26.png:
     eq_fader_background_25:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -514,7 +514,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  96.png:
+  27.png:
     eq_fader_background_26:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -527,7 +527,7 @@ bamp:
       region: *player_pan_fader_bg_00
       allow_bleed: 1
       dest: "balance.bmp"
-  97.png:
+  28.png:
     eq_fader_background_27:
       region: *eq_fader_background_00
       allow_bleed: 1
@@ -542,7 +542,7 @@ bamp:
       dest: "balance.bmp"
 
   # placeholder
-  01.png:
+  29.png:
     pl_scroll_bar:
       region: &pl_scroll_bar_region [260, 292, 268, 310]
       dest: "pledit.bmp"
@@ -622,7 +622,7 @@ bamp:
   # Buttons and Handles - Pressed
   # Temporary home for every element that we  either want to be on top of everything
   # or just fall back on to what is on the existing background
-  02.png:
+  30.png:
     player_pl_off_pressed:
       region: *player_pl_region
       dest: "shufrep.bmp"
@@ -694,7 +694,7 @@ bamp:
       region: *eq_handle_region
       dest: "eqmain.bmp"
 
-  03.png:
+  31.png:
     player_titlebar_condensed:
       region: *player_titlebar_region
       dest: "titlebar.bmp"
@@ -727,7 +727,7 @@ bamp:
     pl_top_right_corner_collapsed_inactive:
       region: *pl_top_right_corner_collapsed_region
       dest: "pledit.bmp"
-  04.png:
+  32.png:
     player_titlebar_condensed_inactive:
       region: *player_titlebar_region
       dest: "titlebar.bmp"
@@ -763,7 +763,7 @@ bamp:
     pl_collapse_button_pressed:
       region: [254, 235, 263, 244]
       dest: "pledit.bmp"
-  05.png:
+  33.png:
     player_titlebar_exit:
       region: &player_titlebar_exit_region [264, 3, 273, 12]
       dest: "titlebar.bmp"
@@ -799,7 +799,7 @@ bamp:
     pl_collapse_expand_button_pressed:
       region: [254, 235, 263, 244]
       dest: "pledit.bmp"
-  06.png:
+  34.png:
     player_titlebar_collapse_pressed:
       region: *player_titlebar_collapse_region
       dest: "titlebar.bmp"
@@ -828,7 +828,7 @@ bamp:
     eq_collapsed_pan_handle_1:
       region: *eq_collapsed_pan_handle_region
       dest: "eq_ex.bmp"
-  07.png:
+  35.png:
     player_expand:
       region: *player_titlebar_collapse_region
       dest: "titlebar.bmp"
@@ -842,14 +842,14 @@ bamp:
     eq_collapsed_pan_handle_2:
       region: *eq_collapsed_pan_handle_region
       dest: "eq_ex.bmp"
-  08.png:
+  36.png:
     player_expand_pressed:
       region: *player_titlebar_collapse_region
       dest: "titlebar.bmp"
     player_collapsed_posbar_handle_1:
       region: *player_collapsed_posbar_handle_region
       dest: "titlebar.bmp"
-  09.png:
+  37.png:
     player_collapsed_posbar_handle_2:
       region: *player_collapsed_posbar_handle_region
       dest: "titlebar.bmp"
