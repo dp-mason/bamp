@@ -559,6 +559,13 @@ bamp:
       region: *pl_top_center_region
       dest: "pledit.bmp"
 
+    pl_narrow_repeated_section:
+      region: [125, 310, 150, 348]
+      dest: "pledit.bmp"
+    pl_wide_repeated_section:
+      region: [150, 310, 225, 348]
+      dest: "pledit.bmp"
+
     eq_presets:
       region: &eq_presets_region [217, 134, 261, 146]
       dest: "eqmain.bmp"
@@ -911,6 +918,9 @@ winamp:
     pl_top_right_corner_collapsed_inactive: [99, 57, 149, 71]
     pl_collapsed_bar_repeated: [72, 57, 97, 71]
     pl_collapse_expand_button_pressed: [150, 42, 159, 51]
+
+    pl_narrow_repeated_section: [179, 0, 204, 38]
+    pl_wide_repeated_section: [205, 0, 280, 38]
   balance.bmp:
     resolution: [68, 433]
     resolution_without_handle: [68, 422]

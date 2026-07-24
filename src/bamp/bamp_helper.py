@@ -1,5 +1,5 @@
 from typing import Tuple
-import yaml
+from .bamp import WINAMP_SPEC
 
 
 # snippet used to generate the character mappings in the spec
@@ -33,9 +33,9 @@ def generate_spec_mappings(char_height, char_width):
     return posdict
 
 
-myd = generate_spec_mappings(6, 5)
-for key, value in myd.items():
-    print(f"{key}: {value}")
+# myd = generate_spec_mappings(6, 5)
+# for key, value in myd.items():
+#     print(f"{key}: {value}")
 
 
 # add a new region to the list and make sure it is ordered by size and
@@ -58,15 +58,11 @@ def add_to_region_list(rl: list, new_region):
 
 
 # find all the overlapping elements that exist at a given pixel position
-def layers_at(x_pos: int, y_pos: int):
-
-    # Open and read the YAML file
-    with open("winamp_skin_specification.yaml", "r") as yfile:
-        MAPPINGS: dict = yaml.safe_load(yfile)
+def elems_at(x_pos: int, y_pos: int):
 
     target_regions = []
 
-    for file_key, elems_dict in MAPPINGS["bamp"].items():
+    for file_key, elems_dict in WINAMP_SPEC["bamp"].items():
         if file_key == "text.png":
             continue
         for element, elemdata in elems_dict.items():
