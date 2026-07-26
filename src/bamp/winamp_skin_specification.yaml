@@ -105,6 +105,12 @@ text_extras:
     "?": [15, 12]
     "*": [20, 12]
     " ": [25, 12]
+
+CALLING_CARD_TEXT:
+  - "Made with Bamp!"
+  - "www.bamp.skin"
+  - "github.com/dp-mason/bamp"
+
 bamp:
   # Background, everything behind every button
   # If there is alpha in any other layer, this this is the texture
@@ -861,7 +867,7 @@ bamp:
       region: *player_collapsed_posbar_handle_region
       dest: "titlebar.bmp"
 
-  text.png:
+  font_and_palette.png:
     eq_viz_spectrum:
       region: [125, 160, 129, 236]
       dest: "eqmain.bmp"

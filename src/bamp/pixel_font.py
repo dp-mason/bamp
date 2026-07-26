@@ -2,7 +2,6 @@ import yaml
 
 from PIL import Image
 from importlib import resources
-from typing import Tuple
 
 # Open and read the YAML file
 with resources.open_text("bamp", "winamp_skin_specification.yaml") as winamp_spec:

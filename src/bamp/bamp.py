@@ -216,7 +216,7 @@ def bamp_to_winamp(
             #     )
             #     sys.exit(1)
 
-        if bamp_file_name == "text.png":
+        if bamp_file_name == "font_and_palette.png":
             v_lines = extract_viscolor_into_txt(im, WINAMP_SPEC["text_extras"])
             with open(os.path.join(winamp_dir, "viscolor.txt"), "w") as viscolor_f:
                 viscolor_f.writelines(v_lines)
@@ -224,6 +224,11 @@ def bamp_to_winamp(
             p_lines = extract_pledit_into_txt(im, WINAMP_SPEC["text_extras"])
             with open(os.path.join(winamp_dir, "pledit.txt"), "w") as pledit_f:
                 pledit_f.writelines(p_lines)
+
+    # Write the calling card to file
+    calling_card_lines = WINAMP_SPEC["CALLING_CARD_TEXT"]
+    with open(os.path.join(winamp_dir, "bamp.txt"), "w") as pledit_f:
+        pledit_f.writelines(calling_card_lines)
 
 
 def winamp_to_bamp(winamp_dir, bamp_dir, delete_existing=False):
@@ -297,7 +302,7 @@ def winamp_to_bamp(winamp_dir, bamp_dir, delete_existing=False):
                     f"target region: {output_region}.\n\n{e}"
                 )
 
-        if bamp_fn == "text.png":
+        if bamp_fn == "font_and_palette.png":
             sample_size = WINAMP_SPEC["text_extras"]["COLOR_SAMPLE_SIZE"]
             pledit_start_pos = WINAMP_SPEC["text_extras"]["PLEDIT_START"]
             viscolor_start_pos = WINAMP_SPEC["text_extras"]["VISCOLOR_START"]
@@ -400,6 +405,8 @@ def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
 
     for fname in dirfiles:
         fname_lower = fname.lower()
+        # TODO: I would like to a better job preserving the old version of pledit and viscolor files
+        #   also, I would like to compare against the file names in the specification in this conditional
         if (
             fname_lower.endswith(".bmp")
             or fname_lower.endswith(".cur")

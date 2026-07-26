@@ -63,7 +63,7 @@ def elems_at(x_pos: int, y_pos: int):
     target_regions = []
 
     for file_key, elems_dict in WINAMP_SPEC["bamp"].items():
-        if file_key == "text.png":
+        if file_key == "font_and_palette.png":
             continue
         for element, elemdata in elems_dict.items():
             region: list = elemdata["region"]

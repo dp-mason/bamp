@@ -73,7 +73,7 @@ def add_pledit_data(
 
 
 # in order for comments to be supported you must have already copied the pixel
-# font data into text.png already
+# font data into font_and_palette.png already
 def add_viscolor_data(
     viscolor_path: str,
     im: Image.Image,
@@ -127,7 +127,7 @@ def add_viscolor_data(
         position = (start_pos[0], start_pos[1] + row * sample_size)
         im.paste(color_image, position)
 
-        # write comment using the pixel font included in text.png
+        # write comment using the pixel font included in font_and_palette.png
         im.paste(
             write_pixel_comment(viscolor_comments[row], im),
             (position[0] + sample_size + 1, position[1] + 3),
