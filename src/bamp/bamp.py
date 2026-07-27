@@ -307,18 +307,29 @@ def winamp_to_bamp(winamp_dir, bamp_dir, delete_existing=False):
             pledit_start_pos = WINAMP_SPEC["text_extras"]["PLEDIT_START"]
             viscolor_start_pos = WINAMP_SPEC["text_extras"]["VISCOLOR_START"]
             img = Image.open(full_bamp_path)
-            add_pledit_data(
-                os.path.join(winamp_dir, "pledit.txt"),
-                img,
-                pledit_start_pos,
-                sample_size,
-            )
-            add_viscolor_data(
-                os.path.join(winamp_dir, "viscolor.txt"),
-                img,
-                viscolor_start_pos,
-                WINAMP_SPEC["text_extras"],
-            )
+            try:
+                add_pledit_data(
+                    os.path.join(winamp_dir, "pledit.txt"),
+                    img,
+                    pledit_start_pos,
+                    sample_size,
+                )
+            except Exception as e:
+                logging.exception(
+                    f"Encountered an unknown error while processing pledit text\n\n{e}"
+                )
+
+            try:
+                add_viscolor_data(
+                    os.path.join(winamp_dir, "viscolor.txt"),
+                    img,
+                    viscolor_start_pos,
+                    WINAMP_SPEC["text_extras"],
+                )
+            except Exception as e:
+                logging.exception(
+                    f"Encountered an unknown error while processing viscolor text\n\n{e}"
+                )
 
             eq_comment = write_pixel_comment("EQ Adjust Spectrum", img)
 

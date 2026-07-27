@@ -104,21 +104,30 @@ def add_viscolor_data(
         viscolor_lines += ["0,0,0\n"] * (len(viscolor_comments) - len(viscolor_lines))
 
     row = 0
-    for visline in viscolor_lines:
+    for visline in viscolor_lines[0 : len(viscolor_comments)]:
+        # TODO: a regex would probably be best here
+
         # strip comment
         comment_ind = visline.rfind("//")
         if comment_ind > -1:
             visline = visline[: visline.rfind("//")]
         visline = visline.strip()
-        rgb = [strval.strip() for strval in visline.split(",")[0:3]]
 
-        # there are so many friggin weird characters at the end of lines sometimes
-        for char_ind in range(0, len(rgb[2])):
-            if not rgb[2][char_ind].isdigit() or char_ind > 2:
-                rgb[2] = (rgb[2])[:char_ind]  # pop non-digit characters
-                break
-        # convert from string list to list of integers
-        rgb = [int(numstr) for numstr in rgb]
+        if visline.count(",") >= 2:
+            rgb = [strval.strip() for strval in visline.split(",")[0:3]]
+
+            # there are so many friggin weird characters at the end of lines sometimes
+            for char_ind in range(0, len(rgb[2])):
+                if not rgb[2][char_ind].isdigit() or char_ind > 2:
+                    rgb[2] = (rgb[2])[:char_ind]  # pop non-digit characters
+                    break
+            # convert from string list to list of integers
+            rgb = [int(numstr) for numstr in rgb]
+        else:
+            logging.warning(
+                f"Presumably malformed line, replacing with black:\n\t{visline}"
+            )
+            rgb = [0, 0, 0]
 
         color_image = Image.fromarray(
             np.full((sample_size, sample_size, 3), rgb[:3], dtype=np.uint8)
