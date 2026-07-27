@@ -107,9 +107,9 @@ text_extras:
     " ": [25, 12]
 
 CALLING_CARD_TEXT:
-  - "Made with Bamp!"
-  - "www.bamp.skin"
-  - "github.com/dp-mason/bamp"
+  - "Made with Bamp!\n"
+  - "www.bamp.skin\n"
+  - "github.com/dp-mason/bamp\n"
 
 bamp:
   # Background, everything behind every button
