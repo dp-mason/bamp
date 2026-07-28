@@ -2,7 +2,7 @@
 
 A modern way to create classic WinAmp skins. Edit with ease, retain full control, use the tools you prefer.
 
-[bamp.skin](https://bamp.skin)
+[Give it a whirl on www.bamp.skin!](https://bamp.skin)
 
 ## About
 
