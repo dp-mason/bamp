@@ -16,7 +16,7 @@ This is a subsection of the larger Bamp base layer as a simple example, to see t
 
 This could be on the background layer, could be layer `00.png`
 
-<img src="/docs/media/button_bg.png" alt="button background layer" width="384px"/>
+<img src="/docs/media/button_bg.png" alt="button background layer" width="384px" style="image-rendering: pixelated;"/>
 
 On the layer above we have the changes necessary to create the unpressed, resting state of the button.
 
