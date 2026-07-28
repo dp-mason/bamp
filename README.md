@@ -28,7 +28,7 @@ Next, if we would like to implement a separate "pressed" state we would make the
 
 If we do not want to implement this, we would just leave that layer transparent, the pressed state will default to the unpressed state. The converter will collapse the layers one atop the other before splicing them into the map they belong to in the WinAmp specification alongside other elements. In this case `shufrep.bmp`.
 
-<img src="/docs/media/shufrep.jpg" alt="final shufrep.bmp output" width="736px"/>
+<img src="/docs/media/shufrep.jpg" alt="final shufrep.bmp output" width="368px"/>
 
 **The second is that Bamp allows you to stay in your image editor.** In the original WinAmp specification there are two text files: `pledit.txt` and `viscolor.txt` that contain text representations of colors used in the visualization and playlist editor. Instead of requiring the tedious entry of RGB values and hexcodes, Bamp simply asks the user to set these colors in `font_and_palette.png`. The converter only samples the center pixel of each square region, so no need to be exact. 
 Artists can utilize the palette management tools in their preferred editor to make sure the same colors are used. The converter will generate the necessary text files after converting to the WinAmp specification.
