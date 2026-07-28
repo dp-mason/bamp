@@ -1,6 +1,6 @@
 # Bamp!
 
-A modern way to create classic WinAmp skins. Edit with ease, retain full control, use the tools you prefer.
+A new workflow for creating classic WinAmp skins. Edit with ease, exercise full control, fully leverage the tools you prefer.
 
 [Give it a whirl on www.bamp.skin!](https://bamp.skin)
 
