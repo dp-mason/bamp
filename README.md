@@ -16,19 +16,19 @@ This is a subsection of the larger Bamp base layer as a simple example, to see t
 
 This could be on the background layer, could be layer `00.png`
 
-<img src="/docs/media/button_bg.png" alt="button background layer" width="384px" style="image-rendering: pixelated;"/>
+<img src="/docs/media/button_bg.png" alt="button background layer"/>
 
 On the layer above we have the changes necessary to create the unpressed, resting state of the button.
 
-<img src="/docs/media/unpressed_minimal.png" alt="unpressed layer with minimal changes" width="384px"/>
+<img src="/docs/media/unpressed_minimal.png" alt="unpressed layer with minimal changes"/>
 
 Next, if we would like to implement a separate "pressed" state we would make the minimum changes necessary on the layer above. 
 
-<img src="/docs/media/pressed_minimal_change.png" alt="pressed button state with minimal changes" width="384px"/>
+<img src="/docs/media/pressed_minimal_change.png" alt="pressed button state with minimal changes"/>
 
 If we do not want to implement this, we would just leave that layer transparent, the pressed state will default to the unpressed state. The converter will collapse the layers one atop the other before splicing them into the map they belong to in the WinAmp specification alongside other elements. In this case `shufrep.bmp`.
 
-<img src="/docs/media/shufrep.jpg" alt="final shufrep.bmp output" width="368px"/>
+<img src="/docs/media/shufrep.jpg" alt="final shufrep.bmp output" width=/>
 
 **The second is that Bamp allows you to stay in your image editor.** In the original WinAmp specification there are two text files: `pledit.txt` and `viscolor.txt` that contain text representations of colors used in the visualization and playlist editor. Instead of requiring the tedious entry of RGB values and hexcodes, Bamp simply asks the user to set these colors in `font_and_palette.png`. The converter only samples the center pixel of each square region, so no need to be exact. 
 Artists can utilize the palette management tools in their preferred editor to make sure the same colors are used. The converter will generate the necessary text files after converting to the WinAmp specification.
