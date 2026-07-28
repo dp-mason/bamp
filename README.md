@@ -16,15 +16,15 @@ This is a subsection of the larger Bamp base layer as a simple example, to see t
 
 This could be on the background layer, could be layer `00.png`
 
-![button background layer](./docs/media/button_bg.png)
+<img src="/docs/media/button_bg.png" alt="button background layer" width="200%"/>
 
 On the layer above we have the changes necessary to create the unpressed, resting state of the button.
 
-![unpressed layer with minimal changes](/docs/media/unpressed_minimal.png)
+![unpressed layer with minimal changes](/docs/media/unpressed_minimal.png =192x)
 
 Next, if we would like to implement a separate "pressed" state we would make the minimum changes necessary on the layer above. 
 
-![pressed button state with minimal changes](/docs/media/pressed_minimal_change.png)
+![pressed button state with minimal changes](/docs/media/pressed_minimal_change.png =192x)
 
 If we do not want to implement this, we would just leave that layer transparent, the pressed state will default to the unpressed state. The converter will collapse the layers one atop the other before splicing them into the map they belong to in the WinAmp specification alongside other elements. In this case `shufrep.bmp`.
 
