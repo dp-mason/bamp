@@ -24,7 +24,7 @@ def dilate_box_mask(
 def find_bamp_textures(dirpath: str, level: int = 0):
     if "00.png" in os.listdir(dirpath):
         # presumably found bamp textures
-        logging.logger.info("found path containing bamp textures")
+        logging.info("found path containing bamp textures")
         return dirpath
     elif level < 3:
         for subpath in os.listdir(dirpath):
@@ -36,6 +36,6 @@ def find_bamp_textures(dirpath: str, level: int = 0):
             # recurse down each subdirectory
             if find_bamp_textures(full_subpath, level=level + 1) is not None:
                 return full_subpath
-            logging.logger.info(f"bamp textures not found in {full_subpath}")
+            logging.info(f"bamp textures not found in {full_subpath}")
 
     return None
