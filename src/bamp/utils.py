@@ -1,6 +1,7 @@
 from typing import Tuple
 from PIL import Image
 import os
+import logging
 
 
 def create_placeholder_image(img_path: str, res: tuple[int, int], winamp_file: bool):
@@ -23,19 +24,18 @@ def dilate_box_mask(
 def find_bamp_textures(dirpath: str, level: int = 0):
     if "00.png" in os.listdir(dirpath):
         # presumably found bamp textures
+        logging.logger.info("found path containing bamp textures")
         return dirpath
     elif level < 3:
         for subpath in os.listdir(dirpath):
             full_subpath = os.path.join(dirpath, subpath)
 
-            if not os.path.isdir(subpath):
+            if not os.path.isdir(full_subpath):
                 continue
 
             # recurse down each subdirectory
-            if (
-                find_bamp_textures(os.path.join(full_subpath), level=level + 1)
-                is not None
-            ):
+            if find_bamp_textures(full_subpath, level=level + 1) is not None:
                 return full_subpath
+            logging.logger.info(f"bamp textures not found in {full_subpath}")
 
     return None
