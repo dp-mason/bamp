@@ -51,9 +51,8 @@ def within_bounds(
         and coord[1] <= im.height
     ):
         logging.warning(
-            f"region {coord} is outside image range:\n\twidth: {im.width}\n\theight: {
-                im.height
-            }"
+            f"region {coord} is outside image range:\n\twidth: {im.width}\n\t"
+            f"height: {im.height}"
         )
         if exit_on_fail:
             raise Exception("fail on out of bounds")
@@ -176,9 +175,7 @@ def bamp_to_winamp(
                 handle_region = np.array(orig_img.crop(input_region))[:, :, 3]
                 if handle_region.all() < 1:
                     logging.info(
-                        f"optional handle {mapname} was not designed, cropping {
-                            winamp_file_name
-                        }"
+                        f"optional handle {mapname} was not designed, cropping {winamp_file_name}"
                     )
                     # no balance/pan handle was specified, crop it from the balance.bmp
                     # image so that no sliding balance/pan handle is used
@@ -302,9 +299,7 @@ def winamp_to_bamp(winamp_dir, bamp_dir, delete_existing=False):
                 )
             except Exception as e:
                 sys.exit(
-                    f"Error occurred while remapping {full_winamp_path}:{mapname} to {
-                        full_bamp_path
-                    }:{mapname} using"
+                    f"Error occurred while remapping {full_winamp_path}:{mapname} to {full_bamp_path}:{mapname} using"
                     f"target region: {output_region}.\n\n{e}"
                 )
 
@@ -334,9 +329,7 @@ def winamp_to_bamp(winamp_dir, bamp_dir, delete_existing=False):
                 )
             except Exception as e:
                 logging.exception(
-                    f"Encountered an unknown error while processing viscolor text\n\n{
-                        e
-                    }"
+                    f"Encountered an unknown error while processing viscolor text\n\n{e}"
                 )
 
             eq_comment = write_pixel_comment("EQ Adjust Spectrum", img)
@@ -456,15 +449,13 @@ def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
                     src_path, filename, FILE_SPEC_INFO["alt_names"]
                 ):
                     sys.exit(
-                        f"Alt names specified for {
-                            filename
-                        }, but none were identified in winamp files:\n\t{dirfiles}"
+                        f"Alt names specified for "
+                        f"{filename}, but none were identified in winamp files:\n\t{dirfiles}"
                     )
             else:
                 sys.exit(
-                    f"Winamp/Bamp skin is missing expected file or alternate name not specified: {
-                        filename
-                    }\n\n{src_path}\n{dirfiles}",
+                    f"Winamp/Bamp skin is missing expected file or alternate name not specified: "
+                    f"{filename}\n\n{src_path}\n{dirfiles}",
                 )
 
     # resize nums_ex.bmp to the standard size
