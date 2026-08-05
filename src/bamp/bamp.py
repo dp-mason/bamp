@@ -14,7 +14,7 @@ from pathlib import Path
 
 from .viscolor import add_pledit_data, add_viscolor_data
 
-from .utils import create_placeholder_image, dilate_box_mask
+from .utils import create_placeholder_image, dilate_box_mask, find_bamp_textures
 from .viscolor import extract_viscolor_into_txt, extract_pledit_into_txt
 
 from .pixel_font import write_pixel_comment
@@ -51,7 +51,9 @@ def within_bounds(
         and coord[1] <= im.height
     ):
         logging.warning(
-            f"region {coord} is outside image range:\n\twidth: {im.width}\n\theight: {im.height}"
+            f"region {coord} is outside image range:\n\twidth: {im.width}\n\theight: {
+                im.height
+            }"
         )
         if exit_on_fail:
             raise Exception("fail on out of bounds")
@@ -174,7 +176,9 @@ def bamp_to_winamp(
                 handle_region = np.array(orig_img.crop(input_region))[:, :, 3]
                 if handle_region.all() < 1:
                     logging.info(
-                        f"optional handle {mapname} was not designed, cropping {winamp_file_name}"
+                        f"optional handle {mapname} was not designed, cropping {
+                            winamp_file_name
+                        }"
                     )
                     # no balance/pan handle was specified, crop it from the balance.bmp
                     # image so that no sliding balance/pan handle is used
@@ -298,7 +302,9 @@ def winamp_to_bamp(winamp_dir, bamp_dir, delete_existing=False):
                 )
             except Exception as e:
                 sys.exit(
-                    f"Error occurred while remapping {full_winamp_path}:{mapname} to {full_bamp_path}:{mapname} using"
+                    f"Error occurred while remapping {full_winamp_path}:{mapname} to {
+                        full_bamp_path
+                    }:{mapname} using"
                     f"target region: {output_region}.\n\n{e}"
                 )
 
@@ -328,7 +334,9 @@ def winamp_to_bamp(winamp_dir, bamp_dir, delete_existing=False):
                 )
             except Exception as e:
                 logging.exception(
-                    f"Encountered an unknown error while processing viscolor text\n\n{e}"
+                    f"Encountered an unknown error while processing viscolor text\n\n{
+                        e
+                    }"
                 )
 
             eq_comment = write_pixel_comment("EQ Adjust Spectrum", img)
@@ -448,11 +456,15 @@ def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
                     src_path, filename, FILE_SPEC_INFO["alt_names"]
                 ):
                     sys.exit(
-                        f"Alt names specified for {filename}, but none were identified in winamp files:\n\t{dirfiles}"
+                        f"Alt names specified for {
+                            filename
+                        }, but none were identified in winamp files:\n\t{dirfiles}"
                     )
             else:
                 sys.exit(
-                    f"Winamp/Bamp skin is missing expected file or alternate name not specified: {filename}\n\n{src_path}\n{dirfiles}",
+                    f"Winamp/Bamp skin is missing expected file or alternate name not specified: {
+                        filename
+                    }\n\n{src_path}\n{dirfiles}",
                 )
 
     # resize nums_ex.bmp to the standard size
@@ -499,15 +511,17 @@ def convert(
         src_path = unpack_archive_input(src_path)
 
     extra_files = []
-    # process winamp input if converting to bamp
-    if not to_winamp:
-        src_path, extra_files = sanitize_winamp_input(src_path)
 
     if to_winamp:
+        # process bamp input if converting to winamp
+        # TODO: capture extra files
+        src_path = find_bamp_textures(src_path)
         bamp_to_winamp(
             dest_path, src_path, save_comps, delete_existing, pad_slider_edges
         )
     else:
+        # process winamp input if converting to bamp
+        src_path, extra_files = sanitize_winamp_input(src_path)
         winamp_to_bamp(src_path, dest_path, delete_existing)
 
     # move extraneous files to the destination directory under reserved subdir
