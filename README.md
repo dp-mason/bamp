@@ -1,4 +1,4 @@
-# Bamp!
+![BAMP](/docs/media/bampbig.png)
 
 A new workflow for creating classic WinAmp skins. Edit with ease, exercise full control, fully leverage the tools you prefer.
 
