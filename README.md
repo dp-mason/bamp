@@ -63,3 +63,7 @@ Given how difficult it is to create a fully featured WinAmp skin, it is impressi
 - I would love to add support for transparent skins. There are some old programs written in maybe pascal for generating region.txt files that could be translated to python, but this is a bit too much of an undertaking for the beta. If you want to edit and existing skin with transparency just make sure its regions.txt ends up in the root folder. It should be in the `extra` directory after the round trip conversion from WinAmp->Bamp->WinAmp. If anyone would like to help develop this support, open an issue if one does not exist at the time of reading this. I have a general idea of what is needed.
 - Some old bmp files do not convert properly I think because they are old and being interpreted by the Pillow python library incorrectly, but I am not sure. It would be nice to have a process that eliminates this inconsistency.
 - cursor support... cursors should be stacked in the same way other elements are, probably in the layers associated with the fader backgrounds
+
+### Acknowledgements
+
+Thanks to [Jacob Platania](https://www.jacobplatania.com/) for supplying the BAMP logo and being the first to understand the scope of the project.
