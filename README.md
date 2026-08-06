@@ -1,4 +1,4 @@
-![BAMP](/docs/media/bampbig.png)
+<img src="./docs/media/bampbig.png" alt="bamp logo" style="width: 66%; height: auto"/>
 
 A new workflow for creating classic WinAmp skins. Edit with ease, exercise full control, fully leverage the tools you prefer.
 
