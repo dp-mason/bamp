@@ -898,7 +898,7 @@ bamp:
 winamp:
   avs.bmp:
     resolution: [97, 188]
-    ignore: true
+    optional: true
   pledit.bmp:
     resolution: [280, 186]
     pl_top_center: [26, 0, 126, 20]
@@ -971,6 +971,7 @@ winamp:
     player_eject_button: [114, 0, 135, 16]
     player_eject_button_pressed: [114, 16, 135, 32]
   eq_ex.bmp:
+    optional: true
     resolution: [275, 82]
     eq_collapsed: [0, 0, 275, 14]
     eq_collapsed_inactive: [0, 15, 275, 29]
@@ -1050,7 +1051,7 @@ winamp:
     resolution: [275, 116]
     main_background: [0, 0, 275, 116]
   mb.bmp:
-    ignore: true
+    optional: true
     resolution: [242, 119]
   monoster.bmp:
     resolution: [58, 24]
