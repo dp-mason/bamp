@@ -164,7 +164,7 @@ def bamp_to_winamp(
             winamp_out_fpath: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(mapdata["region"])
             output_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname])
-            mult = None
+            mult = None # resize factor
 
             # allow an unspecified balance/volume handle to be ignored
             if mapdata.get("optional_handle") is not None:
@@ -259,8 +259,15 @@ def winamp_to_bamp(winamp_dir, bamp_dir, delete_existing=False):
             logging.debug(f"MAPNAME: {mapname}")
             winamp_file_name = mapdata["dest"]
             full_winamp_path: str = os.path.join(winamp_dir, winamp_file_name)
-            input_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname])
+            input_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname]) 
 
+            # allow optional winamp files to be excluded
+            if not os.path.exists(full_winamp_path):
+                # TODO: this is not the appropriate way to do this
+                if (WINAMP_SPEC["winamp"][winamp_file_name]).get("optional") in [None, False]:
+                    continue
+                else:
+                    raise ValueError(f"Expected file {full_winamp_path} does not exist.")
             assert os.path.exists(full_winamp_path)
             im = Image.open(full_winamp_path, "r")
 
