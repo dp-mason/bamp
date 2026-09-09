@@ -164,7 +164,7 @@ def bamp_to_winamp(
             winamp_out_fpath: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(mapdata["region"])
             output_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname])
-            mult = None
+            mult = None  # resize factor
 
             # allow an unspecified balance/volume handle to be ignored
             if mapdata.get("optional_handle") is not None:
@@ -261,6 +261,15 @@ def winamp_to_bamp(winamp_dir, bamp_dir, delete_existing=False):
             full_winamp_path: str = os.path.join(winamp_dir, winamp_file_name)
             input_region = tuple(WINAMP_SPEC["winamp"][winamp_file_name][mapname])
 
+            # allow optional winamp files to be excluded
+            if not os.path.exists(full_winamp_path):
+                # TODO: this is not the appropriate way to do this
+                if (WINAMP_SPEC["winamp"][winamp_file_name]).get("optional"):
+                    continue
+                else:
+                    raise ValueError(
+                        f"Expected file {full_winamp_path} does not exist. Optional is set to - {(WINAMP_SPEC['winamp'][winamp_file_name]).get('optional')}"
+                    )
             assert os.path.exists(full_winamp_path)
             im = Image.open(full_winamp_path, "r")
 
@@ -320,17 +329,19 @@ def winamp_to_bamp(winamp_dir, bamp_dir, delete_existing=False):
                     f"Encountered an unknown error while processing pledit text\n\n{e}"
                 )
 
-            try:
-                add_viscolor_data(
-                    os.path.join(winamp_dir, "viscolor.txt"),
-                    img,
-                    viscolor_start_pos,
-                    WINAMP_SPEC["text_extras"],
-                )
-            except Exception as e:
-                logging.exception(
-                    f"Encountered an unknown error while processing viscolor text\n\n{e}"
-                )
+            viscolor_path = os.path.join(winamp_dir, "viscolor.txt")
+            if os.path.exists(viscolor_path):
+                try:
+                    add_viscolor_data(
+                        os.path.join(winamp_dir, "viscolor.txt"),
+                        img,
+                        viscolor_start_pos,
+                        WINAMP_SPEC["text_extras"],
+                    )
+                except Exception as e:
+                    logging.exception(
+                        f"Encountered an unknown error while processing viscolor text\n\n{e}"
+                    )
 
             eq_comment = write_pixel_comment("EQ Adjust Spectrum", img)
 
@@ -419,11 +430,10 @@ def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
         fname_lower = fname.lower()
         # TODO: I would like to a better job preserving the old version of pledit and viscolor files
         #   also, I would like to compare against the file names in the specification in this conditional
-        if (
-            fname_lower.endswith(".bmp")
-            or fname_lower.endswith(".cur")
-            or fname_lower in ["pledit.txt", "viscolor.txt"]
-        ):
+        if fname_lower.endswith((".bmp", ".cur")) or fname_lower in [
+            "pledit.txt",
+            "viscolor.txt",
+        ]:
             os.rename(
                 os.path.join(src_path, fname), os.path.join(src_path, fname_lower)
             )
@@ -442,9 +452,12 @@ def sanitize_winamp_input(src_path) -> Tuple[str, List[str]]:
             continue
         else:
             FILE_SPEC_INFO = WINAMP_SPEC["winamp"][filename]
-            if "ignore" in FILE_SPEC_INFO.keys() and FILE_SPEC_INFO["ignore"]:
+            if FILE_SPEC_INFO.get("optional"):
+                logging.warning(
+                    f"Optional file {filename} is missing from the input winamp skin"
+                )
                 continue
-            elif "alt_names" in FILE_SPEC_INFO.keys():
+            elif "alt_names" in FILE_SPEC_INFO:
                 if not standardize_file_name(
                     src_path, filename, FILE_SPEC_INFO["alt_names"]
                 ):
