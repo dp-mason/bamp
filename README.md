@@ -41,7 +41,7 @@ The easiest way to get started is to use the webapp [bamp.skin](bamp.skin), it s
 
 1. Download an existing skin you would like to modify from the WinAmp skin museum or if you would like to make a new one from scratch, download your favorite template skin
 2. install this repo as a pip package
-  - `pip install bamp`
+  - `pip install ./bamp`
 3. use the Bamp CLI to convert the winamp skin you downloaded to the Bamp specification. wsz and zip files are supported.
   - `python -m bamp --to-bamp --bamp-dir /path/to/output/bamp/directory --winamp-dir /path/to/winamp/skin.zip`
 4. edit the `png` image layers provided by Bamp in your editor
